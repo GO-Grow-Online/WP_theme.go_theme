@@ -12,7 +12,6 @@ jQuery(function($) {
     // onScroll_animation();
 
     function ajax_form() {
-        // Attach a submit event handler to the form
       $('#contact-form').on('submit', function(event) {
 
         event.preventDefault();
