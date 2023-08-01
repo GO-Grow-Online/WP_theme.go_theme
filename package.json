@@ -1,0 +1,12 @@
+{
+  "name": "GO : Grow Online theme",
+  "version": "1.0.0",
+  "description": "A simple npm mostly to compile sass files with Dart sass",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "comp-sass": "sass assets/scss/style.scss:style.css assets/scss/critical-css.scss:critical.css -w"
+  },
+  "author": "GO : Grow Online",
+  "license": "MIT"
+}

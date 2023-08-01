@@ -1,0 +1,12 @@
+## Team
+
+GO : Grow Online
+https://grow-online.be
+
+Julien Scheen
+https://julienscheen.be
+
+
+## Site
+
+Software: Built with [Timber](http://upstatement.com/timber) by Upstatement
