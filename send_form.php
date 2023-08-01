@@ -30,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If there are field errors, display them
     if (!empty($errors)) {
-        $response['empty_fields'] = $errors;
         
         header('Content-Type: application/json');
         echo json_encode($response);

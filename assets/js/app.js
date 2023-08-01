@@ -19,34 +19,45 @@ jQuery(function($) {
 
         var formData = $(this).serialize();
 
-        // Send the AJAX request
-        $.ajax({
-          type: 'POST',
-
-          url: $(this).attr("action"),
-          data: formData,
-          dataType: 'json',
-
-          success: function(response) {
-
-            // Handle response if not AJAX hapenned
-            if (response.success) {
-              alert('Form submitted successfully!');
-
-              // Use this line to redirect the user avec the form was sent
-              // window.location.href = 'success-page.html';
-            } else {
-              response.empty_fields.forEach(field => {
-                console.log(field);
-              });
-              alert('Error: ' + response);
-            }
-          },
-          error: function(xhr, status, error) {
-            // Handle AJAX errors, if any
-            console.log('AJAX Error:', error);
-          }
+        // Vérifie si les champs obligatoires ont bien une valeur
+        $(this).find('.field--error').removeClass('.field--error');
+        var required_fields = $(this).find("*".prop('required'));
+        let form_valid = true;
+        required_fields.each(field, function() { 
+          field.addClass('.field--error');
+          form_valid = false;
         });
+
+
+        if(form_valid) {
+          // Send the AJAX request
+          $.ajax({
+            type: 'POST',
+
+            url: $(this).attr("action"),
+            data: formData,
+            dataType: 'json',
+
+            success: function(response) {
+
+              // Handle response if not AJAX hapenned
+              if (response.success) {
+                alert('Le formulaire à bien été envoyé ! Nous recontacterons dans les plus brefs délais.');
+
+                // Use this line to redirect the user avec the form was sent
+                // window.location.href = 'success-page.html';
+              } else {
+                alert('Error: ' + response);
+              }
+            },
+            error: function(xhr, status, error) {
+              // Handle AJAX errors, if any
+              console.log('AJAX Error:', error);
+            }
+          });
+        }else{
+          console.log("Veuillez vérifier les champs mis en avant.")
+        }
       });
 
     }
