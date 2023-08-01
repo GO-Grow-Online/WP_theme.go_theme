@@ -26,11 +26,11 @@ jQuery(function($) {
         let form_valid = true;
 
         // Vérifie si les champs obligatoires ont bien une valeur
-        var required_fields = $(this).find(".required > textarea, .required > select, .required > input, .required > button");
+        var required_fields = $(this).find(".required textarea, .required select, .required input, .required button");
         required_fields.each(function() {
           console.log($(this).val());
           if ($(this).val().trim() === "") {
-            $(this).addClass('form-field--error');
+            $(this).parent().addClass('form-field--error');
             form_valid = false;
           }
         });
