@@ -162,33 +162,7 @@ header {
     }
 }
 
-main, footer {
-    filter: blur(0rem);
-    transition: all $fast $bezier;
-
-    &:after {
-        content: "";
-        position: absolute;
-        width: 120%;
-        height: 120%;
-        pointer-events: none;
-        background-color: #0000004e;
-        z-index: 1;
-        top: -10%;
-        left: -10%;
-
-        opacity: 0;
-        transition: all $fast $bezier;
-    }
-}
-
 body.menu--open {
-    main, footer {
-        filter: blur(0.25rem);
-        &::after {
-            opacity: 1;
-        }
-    }
     header {
         .nav-main {
             pointer-events: all;
