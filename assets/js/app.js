@@ -55,12 +55,13 @@ jQuery(function($) {
 
               // Handle response if not AJAX hapenned
               if (response.success) {
-                alert('Le formulaire à bien été envoyé ! Nous recontacterons dans les plus brefs délais.');
+                $(this).addClass('form--succes');
 
                 // Use this line to redirect the user avec the form was sent
                 // window.location.href = 'success-page.html';
               } else {
-                alert('Error: ' + response);
+                $(this).addClass('form--failed');
+                console.log('Error: ' + response);
               }
             },
             error: function(xhr, status, error) {
