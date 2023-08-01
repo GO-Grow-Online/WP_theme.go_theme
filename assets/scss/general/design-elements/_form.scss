@@ -14,24 +14,22 @@ textarea, input, select, option {
     padding: $p-y $p-x;
     padding-left: calc($p-x + 2rem);
 
+    box-shadow: 0 0 0 1px darken($light, 40%)!important;
+
     &:focus {
         outline: none!important;
     }
     
     &::placeholder {
         color: darken($light, 40%);
-        text-transform: uppercase;
-        font-weight: 900;
     }
 
     &.wpforms-error {
-        border-color: $primary!important;
+        box-shadow: 0 0 0 1px $primary!important;
     }
 }
 
 select {
-    text-transform: uppercase;
-    font-weight: 900!important;
     padding-right: calc($p-y + 2rem);
 }
 

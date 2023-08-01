@@ -506,6 +506,46 @@ body.lb-disable-scrolling {
     gap: 1.75rem;
   }
 }
+textarea, input, select, option {
+  background-color: #f1f1f1;
+  color: #8b8b8b;
+  border: none;
+  max-width: 100% !important;
+  width: 100% !important;
+  font-weight: 900;
+  appearance: none;
+  padding: 1rem 1.25rem;
+  padding-left: 3.25rem;
+  box-shadow: 0 0 0 1px #8b8b8b !important;
+}
+textarea:focus, input:focus, select:focus, option:focus {
+  outline: none !important;
+}
+textarea::placeholder, input::placeholder, select::placeholder, option::placeholder {
+  color: #8b8b8b;
+}
+textarea.wpforms-error, input.wpforms-error, select.wpforms-error, option.wpforms-error {
+  box-shadow: 0 0 0 1px #000000 !important;
+}
+
+select {
+  padding-right: 3rem;
+}
+
+textarea {
+  padding: 1rem 1.25rem;
+  height: 15rem !important;
+}
+
+@media (min-width: 720px) {
+  textarea, input, select, option {
+    padding: 1rem 1.2rem;
+    padding-left: 3.2rem;
+  }
+  textarea {
+    padding: 1rem 1.2rem;
+  }
+}
 footer > .wrapper {
   display: grid;
   grid-template-columns: 1fr;

@@ -20,12 +20,15 @@ jQuery(function($) {
         var formData = $(this).serialize();
 
         // Vérifie si les champs obligatoires ont bien une valeur
-        $(this).find('.field--error').removeClass('.field--error');
-        var required_fields = $(this).find("*").prop('required');
+        $(this).find('.field--error').removeClass('field--error');
+        var required_fields = $(this).find("*[required]");
         let form_valid = true;
-        required_fields.each(field, function() { 
-          field.addClass('.field--error');
-          form_valid = false;
+
+        required_fields.each(function() {
+          if (!$(this).val().trim()) { // Vérifie si la valeur du champ est vide (ou composée uniquement d'espaces)
+            $(this).addClass('field--error'); // Applique la classe d'erreur si le champ est vide
+            form_valid = false;
+          }
         });
 
 
