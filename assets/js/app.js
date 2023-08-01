@@ -21,12 +21,9 @@ jQuery(function($) {
         // Send the AJAX request
         $.ajax({
           type: 'POST',
-          // url: '<?php echo esc_url(admin_url("admin-ajax.php")); ?>', 
-          // data: formData,
-          // dataType: 'json',
 
-          url: ajax_form_url.ajax_url,
-          data: formData + '&action=custom_ajax_action',
+          url: $(this).attr("action"),
+          data: formData,
           dataType: 'json',
 
           success: function(response) {
