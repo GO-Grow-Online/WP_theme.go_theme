@@ -17,7 +17,7 @@ jQuery(function($) {
 
         event.preventDefault();
 
-
+        $(this).find('.form-field--error').removeClass('form-field--error');
         $(this).removeClass('form--sended');
         $(this).addClass('form--sending');
 
@@ -28,7 +28,6 @@ jQuery(function($) {
 
         // Vérifie si les champs obligatoires ont bien une valeur
         var required_fields = $(this).find(".required");
-        $(this).find('.form-field--error').removeClass('form-field--error');
         required_fields.each(function() {
           if (!$(this).val().trim()) {
             $(this).addClass('form-field--error');
