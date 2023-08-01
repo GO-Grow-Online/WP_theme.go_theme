@@ -73,7 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }*/
 
         $response['success'] = true;
-        $response['empty_fields'] = $errors;
         
         header('Content-Type: application/json');
         echo json_encode($response);
