@@ -58,6 +58,9 @@ jQuery(function($) {
                 // window.location.href = 'success-page.html';
               } else {
                 $(this).addClass('form--failed');
+                response.each(error_field, function() {
+                  $('[name="'+ error_field +'"]').addClass('form-field--error');
+                });
                 console.log('Error: ' + response);
               }
             },
