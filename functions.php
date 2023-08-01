@@ -49,7 +49,9 @@ function j0e_remove_large_image_sizes() {
 function my_theme_scripts() {
 	// wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/js/slick.js', array( 'jquery' ), null, true );
 	// wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/assets/js/lightbox.js', array( 'jquery' ), null, true );
+	// Pass the admin-ajax.php URL to the custom JavaScript file
 	wp_enqueue_script( 'script', get_template_directory_uri() . '/assets/js/app.js', array( 'jquery' ), null, true );
+    wp_localize_script('ajax_form_url', 'ajax_form_url', array('ajax_url' => admin_url('send_form.php')));
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
 
