@@ -16,10 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get every fields values
     foreach ($_POST as $name => $value) {
         $data[$name] = $value;
-
-        if($value === "") {
-            $errors[] .= $name;
-        }
     }
     
     // SPECIFIC PHP FIELD VERIFICATION
