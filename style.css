@@ -515,7 +515,7 @@ body.lb-disable-scrolling {
   font-weight: 900;
   appearance: none;
   padding: 1rem 1.25rem;
-  padding-left: 3.25rem;
+  padding-left: 1.25rem;
   box-shadow: 0 0 0 1px #8b8b8b !important;
 }
 .form-field textarea:focus, .form-field input:focus, .form-field select:focus, .form-field option:focus {
@@ -525,7 +525,7 @@ body.lb-disable-scrolling {
   color: #8b8b8b;
 }
 .form-field select {
-  padding-right: 3rem;
+  padding-right: 1rem;
 }
 .form-field textarea {
   padding: 1rem 1.25rem;
@@ -534,11 +534,16 @@ body.lb-disable-scrolling {
 .form-field--error textarea, .form-field--error input, .form-field--error select, .form-field--error option {
   box-shadow: 0 0 0 1px #000000 !important;
 }
+.form-message {
+  position: absolute;
+  margin: 1.25rem;
+  opacity: 0;
+}
 
 @media (min-width: 720px) {
   textarea, input, select, option {
     padding: 1rem 1.2rem;
-    padding-left: 3.2rem;
+    padding-left: 1.2rem;
   }
   textarea {
     padding: 1rem 1.2rem;

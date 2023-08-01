@@ -14,7 +14,7 @@ $p-y : 1rem;
             appearance: none;
             
             padding: $p-y $p-x;
-            padding-left: calc($p-x + 2rem);
+            padding-left: $p-x;
 
             box-shadow: 0 0 0 1px darken($light, 40%)!important;
 
@@ -28,7 +28,7 @@ $p-y : 1rem;
         }
 
         select {
-            padding-right: calc($p-y + 2rem);
+            padding-right: $p-y;
         }
 
         textarea {
@@ -45,6 +45,12 @@ $p-y : 1rem;
             }
         }
     }
+
+    &-message {
+        position: absolute;
+        margin: $p-x;
+        opacity: 0;
+    }
 }
 
 
@@ -55,7 +61,7 @@ $p-y : 1rem;
 
     textarea, input, select, option {
         padding: $p-y $p-x;
-        padding-left: $p-x + 2rem;
+        padding-left: $p-x;
     }
 
     textarea {
