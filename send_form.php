@@ -30,8 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If there are field errors, display them
     if (!empty($errors)) {
+        $response['empty_fields'] = $errors;
+        
         header('Content-Type: application/json');
-        echo json_encode($errors);
+        echo json_encode($response);
 
     // If fields are valid, try to send the mail
     } else {
@@ -71,6 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }*/
 
         $response['success'] = true;
+        $response['empty_fields'] = $errors;
         
         header('Content-Type: application/json');
         echo json_encode($response);
