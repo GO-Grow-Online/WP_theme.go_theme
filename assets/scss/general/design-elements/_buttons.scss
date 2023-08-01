@@ -1,0 +1,35 @@
+// Buttons
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2.5rem;        
+}
+
+.btn {
+
+    position: relative;
+    display: inline-block;
+
+    transition: $fast $bezier;
+
+    &-square {
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+@media (min-width :  map-get($breakpoints, md)) {
+
+}
+
+
+@media (min-width :  map-get($breakpoints, lg)) {
+    .btn {
+    }
+}

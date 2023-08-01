@@ -1,0 +1,18 @@
+// main.scss
+@import 'utils/_variables';  
+@import 'utils/_mixins';
+ 
+@import 'general/_general';   
+// @import 'general/_on-scroll-animation';   
+
+@import 'api/_slick'; 
+@import 'api/_lightbox'; 
+
+@import 'general/design-elements/_buttons'; 
+@import 'general/design-elements/_cards'; 
+// @import 'general/design-elements/_collapses'; 
+// @import 'general/design-elements/_slick'; 
+// @import 'general/design-elements/_form'; 
+
+@import 'layout/_footer';  
+@import 'layout/_sections';

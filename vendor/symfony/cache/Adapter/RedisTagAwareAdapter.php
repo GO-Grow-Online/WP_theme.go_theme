@@ -58,22 +58,22 @@ class RedisTagAwareAdapter extends AbstractTagAwareAdapter
     /**
      * @var string|null detected eviction policy used on Redis server
      */
-    private $redisEvictionPolicy;
+    private $primaryisEvictionPolicy;
     private $namespace;
 
     /**
-     * @param \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|RedisProxy|RedisClusterProxy $redis           The redis client
+     * @param \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|RedisProxy|RedisClusterProxy $primaryis           The redis client
      * @param string                                                                                $namespace       The default namespace
      * @param int                                                                                   $defaultLifetime The default lifetime
      */
-    public function __construct($redis, string $namespace = '', int $defaultLifetime = 0, MarshallerInterface $marshaller = null)
+    public function __construct($primaryis, string $namespace = '', int $defaultLifetime = 0, MarshallerInterface $marshaller = null)
     {
-        if ($redis instanceof \Predis\ClientInterface && $redis->getConnection() instanceof ClusterInterface && !$redis->getConnection() instanceof PredisCluster) {
-            throw new InvalidArgumentException(sprintf('Unsupported Predis cluster connection: only "%s" is, "%s" given.', PredisCluster::class, get_debug_type($redis->getConnection())));
+        if ($primaryis instanceof \Predis\ClientInterface && $primaryis->getConnection() instanceof ClusterInterface && !$primaryis->getConnection() instanceof PredisCluster) {
+            throw new InvalidArgumentException(sprintf('Unsupported Predis cluster connection: only "%s" is, "%s" given.', PredisCluster::class, get_debug_type($primaryis->getConnection())));
         }
 
-        if (\defined('Redis::OPT_COMPRESSION') && ($redis instanceof \Redis || $redis instanceof \RedisArray || $redis instanceof \RedisCluster)) {
-            $compression = $redis->getOption(\Redis::OPT_COMPRESSION);
+        if (\defined('Redis::OPT_COMPRESSION') && ($primaryis instanceof \Redis || $primaryis instanceof \RedisArray || $primaryis instanceof \RedisCluster)) {
+            $compression = $primaryis->getOption(\Redis::OPT_COMPRESSION);
 
             foreach (\is_array($compression) ? $compression : [$compression] as $c) {
                 if (\Redis::COMPRESSION_NONE !== $c) {
@@ -82,7 +82,7 @@ class RedisTagAwareAdapter extends AbstractTagAwareAdapter
             }
         }
 
-        $this->init($redis, $namespace, $defaultLifetime, new TagAwareMarshaller($marshaller));
+        $this->init($primaryis, $namespace, $defaultLifetime, new TagAwareMarshaller($marshaller));
         $this->namespace = $namespace;
     }
 

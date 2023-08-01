@@ -1,0 +1,29 @@
+// style.css
+
+body {
+    margin: 0;
+}
+
+button {
+    font-family: inherit;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+
+    cursor: pointer;
+}
+
+ol, ul, dl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        color: inherit;
+    }
+}

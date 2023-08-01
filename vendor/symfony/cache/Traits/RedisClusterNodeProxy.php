@@ -25,15 +25,15 @@ namespace Symfony\Component\Cache\Traits;
 class RedisClusterNodeProxy
 {
     private $host;
-    private $redis;
+    private $primaryis;
 
     /**
-     * @param \RedisCluster|RedisClusterProxy $redis
+     * @param \RedisCluster|RedisClusterProxy $primaryis
      */
-    public function __construct(array $host, $redis)
+    public function __construct(array $host, $primaryis)
     {
         $this->host = $host;
-        $this->redis = $redis;
+        $this->redis = $primaryis;
     }
 
     public function __call(string $method, array $args)

@@ -18,7 +18,7 @@ namespace Symfony\Component\Cache\Traits;
  */
 class RedisClusterProxy
 {
-    private $redis;
+    private $primaryis;
     private $initializer;
 
     public function __construct(\Closure $initializer)

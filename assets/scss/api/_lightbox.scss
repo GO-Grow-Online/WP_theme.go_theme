@@ -1,0 +1,265 @@
+body.lb-disable-scrolling {
+  overflow: hidden;
+}
+
+
+.lightboxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: $white;
+  // filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  display: none;
+  backdrop-filter: blur(0.5rem);
+}
+
+.lightbox {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  text-align: center;
+  outline: none;
+
+  display: flex;
+  justify-content: center;
+}
+
+
+.lightbox a img {
+  border: none;
+}
+
+.lb-outerContainer {
+  position: relative;
+  *zoom: 1;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+
+  /* Background color behind image.
+     This is visible during transitions. */
+  // background-color: white;
+}
+
+.lb-outerContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lb-loader {
+  position: absolute;
+  top: 43%;
+  left: 0;
+  height: 25%;
+  width: 100%;
+  text-align: center;
+  line-height: 0;
+}
+
+@keyframes loading {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+.lb-cancel {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+
+  svg{
+    margin: auto;    
+    animation-name: loading;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(8);
+  }
+}
+
+.lb-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+.lb-container > .nav {
+  left: 0;
+}
+
+.lb-nav a {
+  outline: none;
+}
+
+.lb-prev, .lb-next {
+  height: 100%;
+  cursor: pointer;
+  display: block;
+  line-height: 0;
+
+  display: flex;
+  align-items: center;
+  padding: $card-mobile-spacing;
+}
+
+.lb-prev {
+  justify-content: flex-start;
+  background: linear-gradient(to right, #00000073 0%, #00000000);
+}
+
+.lb-next {
+  justify-content: flex-end;
+  background: linear-gradient(to left, #00000073 0%, #00000000 50%, #00000000 100%);
+}
+
+.lb-nav a.lb-prev {
+  width: 34%;
+  left: 0;
+  float: left;
+  // filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: opacity 0.6s;
+  -moz-transition: opacity 0.6s;
+  -o-transition: opacity 0.6s;
+  transition: opacity 0.6s;
+}
+
+.lb-nav a.lb-prev:hover {
+  // filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.lb-nav a.lb-next {
+  width: 64%;
+  right: 0;
+  float: right;
+  // filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: opacity 0.6s;
+  -moz-transition: opacity 0.6s;
+  -o-transition: opacity 0.6s;
+  transition: opacity 0.6s;
+}
+
+.lb-nav a.lb-next:hover {
+  // filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.lb-dataContainer {
+
+  position: absolute;
+  bottom: 0;
+  z-index: 1001;
+
+  margin: 0 10px;
+  width: 100%;
+
+  p {
+    margin: 0;
+  }
+}
+
+.lb-dataContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lb-data {
+}
+
+.lb-data .lb-details {
+  float: left;
+  text-align: left;
+
+  padding: $card-mobile-spacing;
+  background-color: $white;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.lb-data .lb-caption {
+}
+
+.lb-data .lb-caption a {
+  color: $text-color
+}
+
+.lb-data .lb-number {
+  display: block;
+  clear: left;
+  color: $text-color;
+}
+
+.lb-data .lb-close {
+  display: block;
+  float: right;
+  text-align: right;
+  outline: none;
+  // filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.lb-data .lb-close:hover {
+  cursor: pointer;
+  // filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.lb-number {
+  opacity: .3;
+  font-weight: 800;
+}
+
+.lb-container {
+  filter: drop-shadow(0 20px 70px #00000077);
+}
+.lightbox .lb-image {
+  display: block;
+  height: auto;
+  max-width: inherit;
+  max-height: 93vh;
+  // object-fit: contain;
+}
+
+.lb-container {
+  max-height: 93vh;
+}
+
+.lb-close {
+  padding: $card-mobile-spacing;
+}
+
+@media (min-width: map-get($breakpoints, lg)) {
+
+  
+  .lb-data .lb-details {
+    padding: $card-mobile-spacing;
+  }
+
+  .lightbox svg {
+    width: $icon-size-desktop * 1.5;
+    height: $icon-size-desktop * 1.5;
+  }
+
+  .lb-container {
+  }
+
+  .lb-prev, .lb-next, .lb-close {
+    padding: $card-desktop-spacing;
+  }
+}

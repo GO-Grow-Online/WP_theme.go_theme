@@ -1,0 +1,23 @@
+.wrapper {
+    padding: map-get($sec-spacings, mobile-y) map-get($sec-spacings, mobile-x);
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (min-width: map-get($breakpoints, md)) {
+    .wrapper {
+        padding: map-get($sec-spacings, tablet-y) map-get($sec-spacings, tablet-x);
+    }
+}
+
+@media (min-width: map-get($breakpoints, lg)) {
+    .wrapper {
+        padding: map-get($sec-spacings, desktop-y) map-get($sec-spacings, desktop-x);
+    
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }    
+}

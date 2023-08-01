@@ -1,0 +1,9 @@
+// Critical css : loaded before any other styles
+@import 'utils/_variables';  
+@import 'utils/_reset';
+@import 'utils/_mixins';
+
+@import 'general/_type';
+
+@import 'layout/_header';  
+@import 'layout/_heading';  

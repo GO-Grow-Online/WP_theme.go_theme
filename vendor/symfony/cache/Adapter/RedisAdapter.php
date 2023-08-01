@@ -21,12 +21,12 @@ class RedisAdapter extends AbstractAdapter
     use RedisTrait;
 
     /**
-     * @param \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|RedisProxy|RedisClusterProxy $redis           The redis client
+     * @param \Redis|\RedisArray|\RedisCluster|\Predis\ClientInterface|RedisProxy|RedisClusterProxy $primaryis           The redis client
      * @param string                                                                                $namespace       The default namespace
      * @param int                                                                                   $defaultLifetime The default lifetime
      */
-    public function __construct($redis, string $namespace = '', int $defaultLifetime = 0, MarshallerInterface $marshaller = null)
+    public function __construct($primaryis, string $namespace = '', int $defaultLifetime = 0, MarshallerInterface $marshaller = null)
     {
-        $this->init($redis, $namespace, $defaultLifetime, $marshaller);
+        $this->init($primaryis, $namespace, $defaultLifetime, $marshaller);
     }
 }

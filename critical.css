@@ -1,68 +1,99 @@
 body {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+ol, ul, dl {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: inherit;
+}
+
+body {
   font-size: 14px;
   line-height: 1.7;
   font-family: "Outfit", sans-serif;
-  color: #000;
+  color: #242424;
 }
 
-h1, .h1, h2, .h2, h3, .h3 {
-  line-height: 1.25;
-}
-h1:first-child, .h1:first-child, h2:first-child, .h2:first-child, h3:first-child, .h3:first-child {
-  margin-top: 0;
+.h1, h1 {
+  font-size: 24.137569rem;
 }
 
-p:last-child {
-  margin-bottom: 0;
+.h2, h2 {
+  font-size: 14.19857rem;
 }
 
-h1, .h1 {
-  font-size: 2.52rem;
+.h3, h3 {
+  font-size: 8.3521rem;
 }
 
-h2, .h2 {
-  font-size: 1.48rem;
+.h4, h4 {
+  font-size: 4.913rem;
 }
 
-h1 > span, .h1 > span, h2 > span, .h2 > span, h3 > span, .h3 > span {
-  font-size: 0.9rem;
-  line-height: 1.35;
-  margin-left: 2px;
-  font-weight: 900;
-  color: #e96711;
-  display: block;
-  text-transform: uppercase;
+.h5, h5 {
+  font-size: 2.89rem;
 }
 
-h3, .h3 {
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size: 1rem;
+.h6, h6 {
+  font-size: 1.7rem;
 }
 
 @media (min-width: 720px) {
   body {
     font-size: 15px;
   }
-  h1, .h1 {
-    font-size: 5rem;
+  .h1, h1 {
+    font-size: 31.3788397rem;
   }
-  h2, .h2 {
-    font-size: 3.1rem;
+  .h2, h2 {
+    font-size: 18.458141rem;
   }
-  h1 > span, .h1 > span, h2 > span, .h2 > span {
-    font-size: 1.05rem;
+  .h3, h3 {
+    font-size: 10.85773rem;
   }
-  h3, .h3 {
-    font-weight: 800;
-    text-transform: none;
-    font-size: 1.7rem;
+  .h4, h4 {
+    font-size: 6.3869rem;
+  }
+  .h5, h5 {
+    font-size: 3.757rem;
+  }
+  .h6, h6 {
+    font-size: 2.21rem;
   }
 }
 header {
   position: relative;
   z-index: 1000;
   box-shadow: 0 0 50px -20px rgba(0, 0, 0, 0.2156862745);
+}
+header::after {
+  content: "";
+  height: 5rem;
+  width: 5rem;
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 0;
+  background-color: #fff;
+  clip-path: polygon(0 0, 0% 100%, 100% 0);
+  pointer-events: none;
 }
 header > .wrapper {
   padding: 0;
@@ -81,7 +112,7 @@ header .logo {
   height: 5rem;
   transition: all 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 }
-header .logo > svg, header .logo > img {
+header .logo > svg {
   width: 100%;
   height: 100%;
 }
@@ -105,7 +136,7 @@ header .nav-main ul li a:not(.btn) {
   transition: color 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 }
 header .nav-main ul li a:not(.btn):hover {
-  color: #e96711;
+  color: #AB1A0A;
 }
 header .nav-main ul li a.btn {
   margin: 0.5rem 0;
@@ -116,8 +147,8 @@ header .nav-main ul li.has-children svg {
 header .nav-main ul li ul.dropdown {
   padding-left: 0.9rem;
   margin-bottom: 1.5rem;
-  border-left: 2px solid #e96711;
-  color: #4d4d4d;
+  border-left: 2px solid #AB1A0A;
+  color: #717171;
 }
 header .nav-main ul > li:last-child a:not(.btn) {
   margin-bottom: 0;
@@ -139,12 +170,27 @@ header .nav-bottom {
   box-shadow: 0 -10px 50px -20px rgba(0, 0, 0, 0.4431372549);
   background-color: #fff;
 }
+header .nav-bottom-cta {
+  font-weight: 900;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  color: #AB1A0A;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  height: 4rem;
+}
+header .nav-bottom-cta img {
+  margin-right: 0.5rem;
+  height: 1.2rem;
+  width: 1.2rem;
+}
 header .btn-menu {
   position: relative;
   width: 4rem;
   height: 4rem;
   padding: 1rem;
-  background-color: #e96711;
+  background-color: #AB1A0A;
   pointer-events: all;
   clip-path: none;
   display: flex;
@@ -165,10 +211,34 @@ header .btn-menu svg, header .btn-menu path {
   stroke: #fff !important;
 }
 
+main, footer {
+  filter: blur(0rem);
+  transition: all 0.3s cubic-bezier(0.83, 0, 0.17, 1);
+}
+main:after, footer:after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.3058823529);
+  z-index: 1;
+  top: -10%;
+  left: -10%;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+body.menu--open main, body.menu--open footer {
+  filter: blur(0.25rem);
+}
+body.menu--open main::after, body.menu--open footer::after {
+  opacity: 1;
+}
 body.menu--open header .nav-main {
   pointer-events: all;
   opacity: 1;
-  clip-path: polygon(100% 0, 100% 0rem, 100% 100%, 0 100%, 0 0);
+  clip-path: polygon(calc(100% - 2rem) 0, 100% 2rem, 100% 100%, 0 100%, 0 0);
 }
 body.menu--open header .btn-menu svg.open {
   opacity: 0;
@@ -228,7 +298,7 @@ body.scrolled .logo {
     display: inline-block;
     width: 0.75rem;
     height: 0.75rem;
-    color: #e96711;
+    color: #AB1A0A;
     margin-left: 0.75rem;
     transform: rotate(0deg);
     transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);

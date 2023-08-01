@@ -1,0 +1,57 @@
+$sp : map-get($sec-spacings, mobile-x);
+$p-x : 1.25rem;
+$p-y : 1rem;
+
+textarea, input, select, option {
+    background-color: $light;
+    color: darken($light, 40%);
+    border: none;
+    max-width: 100%!important;
+    width: 100%!important;
+    font-weight: 900;
+    appearance: none;
+    
+    padding: $p-y $p-x;
+    padding-left: calc($p-x + 2rem);
+
+    &:focus {
+        outline: none!important;
+    }
+    
+    &::placeholder {
+        color: darken($light, 40%);
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+
+    &.wpforms-error {
+        border-color: $primary!important;
+    }
+}
+
+select {
+    text-transform: uppercase;
+    font-weight: 900!important;
+    padding-right: calc($p-y + 2rem);
+}
+
+textarea {
+    padding: $p-y $p-x;
+    height: 15rem!important;
+}
+
+
+@media (min-width: map-get($breakpoints, md)) {
+
+    $p-x : 1.2rem;
+    $p-y : 1rem;
+
+    textarea, input, select, option {
+        padding: $p-y $p-x;
+        padding-left: $p-x + 2rem;
+    }
+
+    textarea {
+        padding: $p-y $p-x;
+    }
+}

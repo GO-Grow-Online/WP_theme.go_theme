@@ -1,0 +1,31 @@
+//////////
+// TYPE //
+//////////
+
+body {
+    font-size: 14px;
+    line-height: $line-height;
+    font-family: $font1;
+    color: $text-color;
+}
+
+// Utiliser @each pour générer les classes
+@each $heading, $font-size in $font-sizes {
+    .h#{$heading}, h#{$heading} {
+      font-size: $font-size;
+    }
+}
+
+
+@media (min-width: map-get($breakpoints, md)) {
+    body {
+        font-size: 15px;
+    }
+
+    // Utiliser @each pour générer les classes
+    @each $heading, $font-size in $font-sizes {
+        .h#{$heading}, h#{$heading} {
+        font-size: calc($font-size * $fs-desktop-multiplier);
+        }
+    }
+}
