@@ -37,7 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If fields are valid, try to send the mail
     } else {
-
+        
+        /*
         // Add custom HTML template for mail and replace "{ field key }" with the form values
         $body = file_get_contents('assets/mail-tpl.html');
 
@@ -69,7 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $response['success'] = true;
         } else {
             $response['success'] =  $mail->ErrorInfo;
-        }
+        }*/
+
+        $response['success'] = true;
         
         header('Content-Type: application/json');
         echo json_encode($response);
