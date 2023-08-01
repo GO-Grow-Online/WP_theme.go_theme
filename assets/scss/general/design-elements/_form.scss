@@ -37,6 +37,9 @@ $p-y : 1rem;
         }
 
         &--required {
+        }
+
+        &--error {
             textarea, input, select, option {
                 box-shadow: 0 0 0 1px $primary!important;
             }

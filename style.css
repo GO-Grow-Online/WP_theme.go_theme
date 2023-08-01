@@ -531,7 +531,7 @@ body.lb-disable-scrolling {
   padding: 1rem 1.25rem;
   height: 15rem !important;
 }
-.form-field--required textarea, .form-field--required input, .form-field--required select, .form-field--required option {
+.form-field--error textarea, .form-field--error input, .form-field--error select, .form-field--error option {
   box-shadow: 0 0 0 1px #000000 !important;
 }
 
