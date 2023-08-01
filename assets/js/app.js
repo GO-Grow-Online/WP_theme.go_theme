@@ -16,6 +16,7 @@ jQuery(function($) {
       $('#contact-form').submit(function(event) {
 
         event.preventDefault();
+
         var formData = $(this).serialize();
 
         // Send the AJAX request

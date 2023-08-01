@@ -16,6 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get every fields values
     foreach ($_POST as $name => $value) {
         $data[$name] = $value;
+
+        if($value === "") {
+            $response['empty_fields'] .= $name;
+        }
     }
     
     // SPECIFIC PHP FIELD VERIFICATION
@@ -28,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($errors) && !$response['empty_fields']) {
         foreach ($errors as $error) {
             echo $error;
+            echo explode($response['empty_fields'], "");
         }
 
     // If fields are valid, try to send the mail
