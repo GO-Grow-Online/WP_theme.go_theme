@@ -47,6 +47,7 @@ $p-y : 1rem;
     }
 
     &-message {
+        pointer-events: none;
         position: absolute;
         margin: $p-x;
         opacity: 0;

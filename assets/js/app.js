@@ -29,6 +29,7 @@ jQuery(function($) {
         // Vérifie si les champs obligatoires ont bien une valeur
         var required_fields = $(this).find(".required");
         required_fields.each(function() {
+          console.log($(this).val());
           if ($(this).val().trim() === "") {
             $(this).addClass('form-field--error');
             form_valid = false;
@@ -63,7 +64,8 @@ jQuery(function($) {
             },
             error: function(xhr, status, error) {
               // Handle AJAX errors, if any
-              console.log('AJAX Error:', error);
+              $(this).addClass('form--failed');
+              console.log('Erreur AJAX:', error);
             }
           });
         }else{

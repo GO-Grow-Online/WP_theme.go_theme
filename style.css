@@ -535,6 +535,7 @@ body.lb-disable-scrolling {
   box-shadow: 0 0 0 1px red !important;
 }
 .form-message {
+  pointer-events: none;
   position: absolute;
   margin: 1.25rem;
   opacity: 0;
