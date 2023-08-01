@@ -531,7 +531,7 @@ body.lb-disable-scrolling {
   padding: 1rem 1.25rem;
   height: 15rem !important;
 }
-.form-field--error textarea, .form-field--error input, .form-field--error select, .form-field--error option {
+.form-field.form-field--error textarea, .form-field.form-field--error input, .form-field.form-field--error select, .form-field.form-field--error option {
   box-shadow: 0 0 0 1px red !important;
 }
 .form-message {
