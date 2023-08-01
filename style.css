@@ -506,7 +506,7 @@ body.lb-disable-scrolling {
     gap: 1.75rem;
   }
 }
-textarea, input, select, option {
+.form-field textarea, .form-field input, .form-field select, .form-field option {
   background-color: #f1f1f1;
   color: #8b8b8b;
   border: none;
@@ -518,23 +518,21 @@ textarea, input, select, option {
   padding-left: 3.25rem;
   box-shadow: 0 0 0 1px #8b8b8b !important;
 }
-textarea:focus, input:focus, select:focus, option:focus {
+.form-field textarea:focus, .form-field input:focus, .form-field select:focus, .form-field option:focus {
   outline: none !important;
 }
-textarea::placeholder, input::placeholder, select::placeholder, option::placeholder {
+.form-field textarea::placeholder, .form-field input::placeholder, .form-field select::placeholder, .form-field option::placeholder {
   color: #8b8b8b;
 }
-textarea.wpforms-error, input.wpforms-error, select.wpforms-error, option.wpforms-error {
-  box-shadow: 0 0 0 1px #000000 !important;
-}
-
-select {
+.form-field select {
   padding-right: 3rem;
 }
-
-textarea {
+.form-field textarea {
   padding: 1rem 1.25rem;
   height: 15rem !important;
+}
+.form-field--required textarea, .form-field--required input, .form-field--required select, .form-field--required option {
+  box-shadow: 0 0 0 1px #000000 !important;
 }
 
 @media (min-width: 720px) {
