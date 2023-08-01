@@ -17,11 +17,15 @@ jQuery(function($) {
 
         event.preventDefault();
 
+
+        $(this).removeClass('form--sended');
+        $(this).addClass('form--sending');
+
         var formData = $(this).serialize();
 
         // Vérifie si les champs obligatoires ont bien une valeur
         $(this).find('.field--error').removeClass('field--error');
-        var required_fields = $(this).find(".form-field--required");
+        var required_fields = $(this).find(".form--sended .form-field--required");
         let form_valid = true;
 
         required_fields.each(function() {
@@ -31,6 +35,7 @@ jQuery(function($) {
           }
         });
 
+        $(this).addClass('form--sended');
 
         if(form_valid) {
           // Send the AJAX request
