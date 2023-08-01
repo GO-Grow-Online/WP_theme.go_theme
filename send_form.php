@@ -30,9 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If there are field errors, display them
     if (!empty($errors)) {
-        foreach ($errors as $error) {
-            echo $error;
-        }
+        header('Content-Type: application/json');
+        echo json_encode($errors);
 
     // If fields are valid, try to send the mail
     } else {
