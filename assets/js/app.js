@@ -28,10 +28,10 @@ jQuery(function($) {
 
         // Vérifie si les champs obligatoires ont bien une valeur
         var required_fields = $(this).find(".required");
-        $(this).find('.field--error').removeClass('field--error');
+        $(this).find('.form-field--error').removeClass('form-field--error');
         required_fields.each(function() {
           if (!$(this).val().trim()) {
-            $(this).addClass('field--error');
+            $(this).addClass('form-field--error');
             form_valid = false;
           }
         });
