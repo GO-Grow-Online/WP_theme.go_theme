@@ -26,7 +26,7 @@ jQuery(function($) {
           // dataType: 'json',
 
           url: ajax_form_url.ajax_url,
-          data: formData,
+          data: formData + '&action=custom_ajax_action',
           dataType: 'json',
 
           success: function(response) {
