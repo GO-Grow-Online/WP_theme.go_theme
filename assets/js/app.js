@@ -26,7 +26,7 @@ jQuery(function($) {
         let form_valid = true;
 
         // Vérifie si les champs obligatoires ont bien une valeur
-        var required_fields = $(this).find(".required > *:not(label)");
+        var required_fields = $(this).find(".required > textarea, .required > select, .required > input, .required > button");
         required_fields.each(function() {
           console.log($(this).val());
           if ($(this).val().trim() === "") {
