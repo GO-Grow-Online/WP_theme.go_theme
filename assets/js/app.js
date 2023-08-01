@@ -21,7 +21,7 @@ jQuery(function($) {
 
         // Vérifie si les champs obligatoires ont bien une valeur
         $(this).find('.field--error').removeClass('.field--error');
-        var required_fields = $(this).find("*".prop('required'));
+        var required_fields = $(this).find("*").prop('required');
         let form_valid = true;
         required_fields.each(field, function() { 
           field.addClass('.field--error');
