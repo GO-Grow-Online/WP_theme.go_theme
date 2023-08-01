@@ -1,0 +1,43 @@
+<header>
+	<div class="wrapper">
+		<a class="logo" href="{{site.link}}">
+			{% include 'assets/static/svg/logo.svg' %}
+		</a>
+		
+		<nav class="nav-main">
+			<ul>
+				{% for item in menu.items %}
+					<li {% if item.children %}class="has-children"{% endif %}>
+						<a class="{{ item.classes|join(' ') }}" href="{{ item.link }}">{{ item.title }}{% if item.children %}{% include "assets/static/icons/menu-arrow.svg" %}{% endif %}</a>
+						{% if item.children %}
+							<ul class="dropdown">
+								{% for child in item.children %}
+									<li>
+										<a href="{{ child.link }}">{{ child.title }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		</nav>
+		
+		<div class="nav-bottom">
+			<button class="btn btn-menu js--toggle" data-toggle="menu">
+				{% include 'assets/static/icons/open-menu.svg' %}
+				{% include 'assets/static/icons/close-menu.svg' %}
+			</button>
+
+			{% if g.bottom_nav_link.title %}
+			<a class="nav-bottom-cta" href="{{ g.bottom_nav_link.url }}">
+				{% if g.bottom_nav_link_icon %}
+				<img class="icon" src="{{ g.bottom_nav_link_icon.url }}" alt="Icône du bouton '{{ g.bottom_nav_link.title }}'">
+				{% endif %}
+
+				{{ g.bottom_nav_link.title }}
+			</a>
+			{% endif %}
+		</div>
+	</div>
+</header>

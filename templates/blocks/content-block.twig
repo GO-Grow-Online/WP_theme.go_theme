@@ -1,0 +1,15 @@
+{% set st = block.st != "" ? block.st : empty %}
+{% set t = block.t != "" ? block.t : empty %}
+{% set ctn = block.ctn != "" ? block.ctn : empty %}
+
+<h2>
+    {% if st is not empty %}<span>{{ st }}</span>{% endif %}
+    {% if t is not empty %}{{ t }}{% endif %}
+</h2>
+
+
+<div class="wysiwyg">{{ ctn }}</div>
+
+{% include "blocks/buttons-group.twig" %}
+
+{% set block = null %}
