@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($errors)) {
         
         header('Content-Type: application/json');
-        echo json_encode($response);
+        echo json_encode($errors);
 
     // If fields are valid, try to send the mail
     } else {
