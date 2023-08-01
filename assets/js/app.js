@@ -14,14 +14,14 @@ jQuery(function($) {
     function ajax_form() {
         // Attach a submit event handler to the form
       $('#contact-form').submit(function(event) {
-        
+
         event.preventDefault();
         var formData = $(this).serialize();
 
         // Send the AJAX request
         $.ajax({
           type: 'POST',
-          url: '../../send_form.php', 
+          url: '<?php echo esc_url(admin_url("admin-ajax.php")); ?>', 
           data: formData,
           dataType: 'json',
           success: function(response) {
