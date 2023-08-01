@@ -16,8 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get every fields values
     foreach ($_POST as $name => $value) {
         $data[$name] = $value;
-    }   
-
+    }
     
     // SPECIFIC PHP FIELD VERIFICATION
     // Verify is the email is valid
@@ -69,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         header('Content-Type: application/json');
         echo json_encode($response);
-        echo json_encode($data);
     }    
 }
 
