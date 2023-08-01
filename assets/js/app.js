@@ -23,19 +23,25 @@ jQuery(function($) {
 
         var formData = $(this).serialize();
 
+        // Form loaded serve to detect if form has allready been sent a first time
+        if(!$(this).hasClass('form--loaded')) {
+
         // Vérifie si les champs obligatoires ont bien une valeur
         $(this).find('.field--error').removeClass('field--error');
-        var required_fields = $(this).find(".form--sended .form-field--required");
-        let form_valid = true;
+          var required_fields = $(this).find(".form-field--required");
+          let form_valid = true;
 
-        required_fields.each(function() {
-          if (!$(this).val().trim()) { // Vérifie si la valeur du champ est vide (ou composée uniquement d'espaces)
-            $(this).addClass('field--error'); // Applique la classe d'erreur si le champ est vide
-            form_valid = false;
-          }
-        });
+          required_fields.each(function() {
+            if (!$(this).val().trim()) {
+              $(this).addClass('field--error');
+              form_valid = false;
+            }
+          });
+        }
 
+        $(this).removeClass('form--loaded');
         $(this).addClass('form--sended');
+        $(this).removeClass('form--sending');
 
         if(form_valid) {
           // Send the AJAX request
