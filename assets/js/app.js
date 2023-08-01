@@ -29,7 +29,7 @@ jQuery(function($) {
         // Vérifie si les champs obligatoires ont bien une valeur
         var required_fields = $(this).find(".required");
         required_fields.each(function() {
-          if (!$(this).val().trim()) {
+          if ($(this).val().trim() === "") {
             $(this).addClass('form-field--error');
             form_valid = false;
           }
