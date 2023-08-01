@@ -24,12 +24,12 @@ jQuery(function($) {
         var formData = $(this).serialize();
 
         // Form loaded serve to detect if form has allready been sent a first time
+        let form_valid = true;
         if(!$(this).hasClass('form--loaded')) {
 
-        // Vérifie si les champs obligatoires ont bien une valeur
-        var required_fields = $(this).find(".form-field--required");
-        let form_valid = true;
-        $(this).find('.field--error').removeClass('field--error');
+          // Vérifie si les champs obligatoires ont bien une valeur
+          var required_fields = $(this).find(".form-field--required");
+          $(this).find('.field--error').removeClass('field--error');
           required_fields.each(function() {
             if (!$(this).val().trim()) {
               $(this).addClass('field--error');
