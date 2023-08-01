@@ -13,7 +13,7 @@ jQuery(function($) {
 
     function ajax_form() {
         // Attach a submit event handler to the form
-      $('#contact-form').submit(function(event) {
+      $('#contact-form').on('submit', function(event) {
 
         event.preventDefault();
 
@@ -25,18 +25,16 @@ jQuery(function($) {
 
         // Form loaded serve to detect if form has allready been sent a first time
         let form_valid = true;
-        if(!$(this).hasClass('form--loaded')) {
 
-          // Vérifie si les champs obligatoires ont bien une valeur
-          var required_fields = $(this).find(".form-field--required");
-          $(this).find('.field--error').removeClass('field--error');
-          required_fields.each(function() {
-            if (!$(this).val().trim()) {
-              $(this).addClass('field--error');
-              form_valid = false;
-            }
-          });
-        }
+        // Vérifie si les champs obligatoires ont bien une valeur
+        var required_fields = $(this).find(".required");
+        $(this).find('.field--error').removeClass('field--error');
+        required_fields.each(function() {
+          if (!$(this).val().trim()) {
+            $(this).addClass('field--error');
+            form_valid = false;
+          }
+        });
 
         $(this).removeClass('form--loaded');
         $(this).addClass('form--sended');
