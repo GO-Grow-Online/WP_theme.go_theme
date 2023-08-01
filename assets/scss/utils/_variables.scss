@@ -68,10 +68,12 @@ $light-shadow: 0px 0px 25px -15px #00000038;
 
 // Colors 
 $text-color : #242424;
-$primary : #AB1A0A;
+
+$primary : #000000;
 $light : #f1f1f1;
-$primary-gradient : linear-gradient(to left, $primary, darken($primary, 10%));;
+
 $white : #fff;
+$black : #000000;
 
 // Icons
 $icon-size-mobile : 1.25rem;

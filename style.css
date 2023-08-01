@@ -3,17 +3,17 @@
 }
 
 ::-moz-selection {
-  background-color: #AB1A0A;
+  background-color: #000000;
   color: #fff;
 }
 
 ::selection {
-  background-color: #AB1A0A;
+  background-color: #000000;
   color: #fff;
 }
 
 ::-webkit-selection {
-  background-color: #AB1A0A;
+  background-color: #000000;
   color: #fff;
 }
 
@@ -31,7 +31,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #AB1A0A;
+  background-color: #000000;
 }
 
 ::-webkit-scrollbar-button {
@@ -78,7 +78,7 @@ img.contain {
 .social-links-item a {
   display: block;
   padding: 0.5rem;
-  color: #AB1A0A;
+  color: #000000;
   transition: opacity 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 }
 .social-links-item a svg {
@@ -489,7 +489,7 @@ body.lb-disable-scrolling {
   flex-direction: column;
 }
 .card svg {
-  color: #AB1A0A;
+  color: #000000;
 }
 .card-body {
   background-color: #fff;
@@ -527,11 +527,11 @@ footer > .wrapper .link-list .link-list-item a svg {
   transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 }
 footer > .wrapper .link-list .link-list-item a path {
-  stroke: #AB1A0A;
+  stroke: #000000;
   margin-right: 0.75rem;
 }
 footer > .wrapper .link-list .link-list-item a:hover {
-  color: #AB1A0A;
+  color: #000000;
 }
 footer > .wrapper .link-list .link-list-item a:hover svg {
   transform: translateX(0.3rem);

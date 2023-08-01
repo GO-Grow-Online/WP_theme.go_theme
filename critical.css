@@ -84,17 +84,6 @@ header {
   z-index: 1000;
   box-shadow: 0 0 50px -20px rgba(0, 0, 0, 0.2156862745);
 }
-header::after {
-  content: "";
-  height: 5rem;
-  width: 5rem;
-  position: absolute;
-  top: calc(100% - 1px);
-  left: 0;
-  background-color: #fff;
-  clip-path: polygon(0 0, 0% 100%, 100% 0);
-  pointer-events: none;
-}
 header > .wrapper {
   padding: 0;
   display: flex;
@@ -107,8 +96,6 @@ header .logo {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #fff;
-  padding: 1.5rem;
   height: 5rem;
   transition: all 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 }
@@ -136,7 +123,7 @@ header .nav-main ul li a:not(.btn) {
   transition: color 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 }
 header .nav-main ul li a:not(.btn):hover {
-  color: #AB1A0A;
+  color: #000000;
 }
 header .nav-main ul li a.btn {
   margin: 0.5rem 0;
@@ -147,7 +134,7 @@ header .nav-main ul li.has-children svg {
 header .nav-main ul li ul.dropdown {
   padding-left: 0.9rem;
   margin-bottom: 1.5rem;
-  border-left: 2px solid #AB1A0A;
+  border-left: 2px solid #000000;
   color: #717171;
 }
 header .nav-main ul > li:last-child a:not(.btn) {
@@ -175,7 +162,7 @@ header .nav-bottom-cta {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  color: #AB1A0A;
+  color: #000000;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   height: 4rem;
@@ -190,7 +177,7 @@ header .btn-menu {
   width: 4rem;
   height: 4rem;
   padding: 1rem;
-  background-color: #AB1A0A;
+  background-color: #000000;
   pointer-events: all;
   clip-path: none;
   display: flex;
@@ -269,9 +256,7 @@ body.scrolled .logo {
   }
   header .logo {
     position: relative;
-    height: auto !important;
-    width: 150px;
-    padding: 0 !important;
+    width: auto;
   }
   header .nav-main {
     position: relative;
@@ -298,7 +283,7 @@ body.scrolled .logo {
     display: inline-block;
     width: 0.75rem;
     height: 0.75rem;
-    color: #AB1A0A;
+    color: #000000;
     margin-left: 0.75rem;
     transform: rotate(0deg);
     transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);

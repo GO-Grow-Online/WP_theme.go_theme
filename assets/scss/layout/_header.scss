@@ -8,18 +8,6 @@ header {
     z-index: $ui;
     box-shadow: 0 0 50px -20px #00000037;
 
-    &::after {
-        content: "";
-        height: 5rem;
-        width: 5rem;
-        position: absolute;
-        top: calc(100% - 1px);
-        left: 0;
-        background-color: $white;
-        clip-path: polygon(0 0, 0% 100%, 100% 0);
-        pointer-events: none;
-    }
-
     & > .wrapper {
         padding: 0;
 
@@ -34,9 +22,6 @@ header {
         top: 0;
         left: 0;
         width: 100%;
-        background-color: $white;
-        
-        padding: map-get($sec-spacings, mobile-x);
         height: $header-height-mobile;
 
         transition: all $fast $bezier;
@@ -251,9 +236,7 @@ body.scrolled {
 
         .logo {
             position: relative;
-            height: auto!important;
-            width: 150px;
-            padding: 0!important;
+            width: auto;
         }
 
         .nav-main {
