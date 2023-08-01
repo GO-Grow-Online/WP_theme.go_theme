@@ -36,7 +36,9 @@ jQuery(function($) {
               // Use this line to redirect the user avec the form was sent
               // window.location.href = 'success-page.html';
             } else {
-              console.log(JSON.stringify(response));
+              response.empty_fields.forEach(field => {
+                console.log(field);
+              });
               alert('Error: ' + response);
             }
           },
