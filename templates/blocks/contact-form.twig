@@ -1,17 +1,23 @@
 <form id="contact-form" class="form" action="{{ theme.link }}/send_form.php" method="post">
     <div class="form-field">
         <label for="name">Nom :</label>
-        <input type="text" name="name"><br>
+        <input required type="text" name="name"><br>
     </div>
 
-    <label for="email">Email :</label>
-    <input type="text" name="email"><br>
+    <div class="form-field">
+        <label for="email">Email :</label>
+        <input required type="text" name="email"><br>
+    </div>
 
-    <label for="subject">Sujet :</label>
-    <input type="text" name="subject"><br>
+    <div class="form-field">
+        <label for="subject">Sujet :</label>
+        <input required type="text" name="subject"><br>
+    </div>
 
-    <label for="message">Message :</label><br>
-    <textarea name="message" rows="5" cols="40"></textarea><br>
+    <div class="form-field">
+        <label for="message">Message :</label><br>
+        <textarea name="message" rows="5" cols="40"></textarea><br>
+    </div>
 
     <input type="submit" value="Envoyer">
 </form>
