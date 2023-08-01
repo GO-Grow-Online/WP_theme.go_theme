@@ -18,26 +18,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data[$name] = $value;
 
         if($value === "") {
-            $response['empty_fields'] .= $name;
+            $errors[] .= $name;
         }
     }
     
     // SPECIFIC PHP FIELD VERIFICATION
     // Verify is the email is valid
     if (!empty($data['email']) && !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-        $response['errors_fields'] .= 'email';
+        $errors[] .= 'email';
     }
 
     // If there are field errors, display them
-    if (!empty($errors) && !$response['empty_fields']) {
+    if (!empty($errors)) {
         foreach ($errors as $error) {
             echo $error;
-            echo explode($response['empty_fields'], "");
         }
 
     // If fields are valid, try to send the mail
     } else {
-        
+
         /*
         // Add custom HTML template for mail and replace "{ field key }" with the form values
         $body = file_get_contents('assets/mail-tpl.html');
