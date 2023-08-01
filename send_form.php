@@ -1,6 +1,11 @@
 <?php
 
-require 'assets/PHPMailer-master/src/PHPMailer.php';
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+
+require '/assets/PHPMailer-master/src/Exception.php';
+require '/assets/PHPMailer-master/src/PHPMailer.php';
+require '/assets/PHPMailer-master/src/SMTP.php';
 
 // Vérification du formulaire soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

@@ -1,6 +1,7 @@
 jQuery(function($) {
     open_stuff();
     fixed_header();
+    ajax_form();
     // slick_sliders();
     // collapse();
     // lightbox();
@@ -9,6 +10,40 @@ jQuery(function($) {
     // smooth_scroll();
     
     // onScroll_animation();
+
+    function ajax_form() {
+        // Attach a submit event handler to the form
+      $('#contact-form').submit(function(event) {
+        
+        event.preventDefault();
+        var formData = $(this).serialize();
+
+        // Send the AJAX request
+        $.ajax({
+          type: 'POST',
+          url: '../../send_form.php', 
+          data: formData,
+          dataType: 'json',
+          success: function(response) {
+
+            // Handle response if not AJAX hapenned
+            if (response.success) {
+              alert('Form submitted successfully!');
+
+              // Use this line to redirect the user avec the form was sent
+              // window.location.href = 'success-page.html';
+            } else {
+              alert('Error: ' + response.errors_fields);
+            }
+          },
+          error: function(xhr, status, error) {
+            // Handle AJAX errors, if any
+            console.log('AJAX Error:', error);
+          }
+        });
+      });
+
+    }
 
     function smooth_scroll() {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
