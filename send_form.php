@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require 'assets/PHPMailer-master/src/PHPMailer.php';
 
 // Vérification du formulaire soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
