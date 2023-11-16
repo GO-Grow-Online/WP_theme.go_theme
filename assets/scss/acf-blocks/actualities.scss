@@ -1,0 +1,10 @@
+@import '../utils/_variables';  
+
+.actualities {
+}
+
+@media (min-width :  map-get($breakpoints, lg)) {
+    .actualities {
+        
+    }
+}

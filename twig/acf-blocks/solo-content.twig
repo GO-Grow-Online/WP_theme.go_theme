@@ -1,0 +1,26 @@
+{% extends "acf-blocks/base.twig" %}
+
+{% block content %}
+
+<div class="wrapper wrapper-lg-2col wrapper-align-start">
+    <div class="col-lg-full">
+        {% set title_group = b.title %}
+        {% include 'elements/h2-title.twig' %}
+    </div>
+    
+    <div class="{% if b.two_col %}col-lg-left{% endif %} wysiwyg">
+        {{ b.content1 }}
+    </div>
+    
+    {% if b.two_col %}
+    <div class="col-lg-right wysiwyg">
+        {{ b.content2 }}
+    </div>
+    {% endif %}
+
+    {% set btn1 = b.btn_1 %}
+    {% set btn2 = b.btn_2 %}
+    {% include "elements/buttons-group.twig" %}
+
+</div>
+{% endblock %}

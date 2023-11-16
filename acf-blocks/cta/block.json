@@ -1,0 +1,20 @@
+{
+    "name": "cta",
+    "title": "Call 2 Action",
+    "description": "",
+    "style": [ "file:./cta.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["Call 2 Action", "CTA", "cta"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "cta.php",
+        "postTypes": [ "page", "post" ]
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "alignContent": false,
+        "alignText": false
+    }
+}
