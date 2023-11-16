@@ -1,0 +1,16 @@
+{% extends "acf-blocks/base.twig" %}
+
+{% block content %}
+<div class="wrapper">
+    {% set target = b.cond_ext ? "_blank" : "_self" %}
+    {% set link = b.cond_ext ? b.ext_link : b.int_link %}
+    <a target="{{ target }}" href="{{ link }}" class="cta-wrapper">
+        <div class="ctn">
+            {% set title_group = b.title %}
+            {% include 'elements/h2-title.twig' %}
+            <div class="wysiwyg ctn-wysiwyg">{{ b.content }}</div>
+        </div>
+        <button class="btn btn-primary">{{ b.cta_text }}</button>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+@import '../utils/_variables';  
+
+
+.solo-content {
+    .wrapper {
+        align-items: start;
+    }
+}
+
+@media (min-width :  map-get($breakpoints, lg)) {
+    .solo-content { 
+        .wysiwyg:not(.col-lg-left):not(.col-lg-right) {
+            grid-column: 1/3;
+        }
+    }
+}

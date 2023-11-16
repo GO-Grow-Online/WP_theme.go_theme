@@ -1,0 +1,13 @@
+@import '../utils/_variables';  
+
+.actualities {
+    .btn-group {
+        justify-content: center;
+    }
+}
+
+@media (min-width :  map-get($breakpoints, lg)) {
+    .actualities {
+        
+    }
+}
