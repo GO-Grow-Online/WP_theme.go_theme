@@ -1,0 +1,71 @@
+$sp : map-get($sec-spacings, mobile-x);
+$p-x : 1.25rem;
+$p-y : 1rem;
+
+.form {
+    &-field {
+        textarea, input, select, option {
+            background-color: $light;
+            color: darken($light, 40%);
+            border: none;
+            max-width: 100%!important;
+            width: 100%!important;
+            font-weight: 900;
+            appearance: none;
+            
+            padding: $p-y $p-x;
+            padding-left: $p-x;
+
+            box-shadow: 0 0 0 1px darken($light, 40%)!important;
+
+            &:focus {
+                outline: none!important;
+            }
+            
+            &::placeholder {
+                color: darken($light, 40%);
+            }
+        }
+
+        select {
+            padding-right: $p-y;
+        }
+
+        textarea {
+            padding: $p-y $p-x;
+            height: 15rem!important;
+        }
+
+        &.form-field--required {
+        }
+
+        &.form-field--error {
+            textarea, input, select, option {
+                box-shadow: 0 0 0 1px red!important;
+            }
+        }
+    }
+
+    &-message {
+        pointer-events: none;
+        position: absolute;
+        margin: $p-x;
+        opacity: 0;
+    }
+}
+
+
+@media (min-width: map-get($breakpoints, md)) {
+
+    $p-x : 1.2rem;
+    $p-y : 1rem;
+
+    textarea, input, select, option {
+        padding: $p-y $p-x;
+        padding-left: $p-x;
+    }
+
+    textarea {
+        padding: $p-y $p-x;
+    }
+}
