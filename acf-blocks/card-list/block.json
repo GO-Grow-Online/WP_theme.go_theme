@@ -1,0 +1,25 @@
+{
+    "name": "card-list",
+    "title": "Card list",
+    "description": "",
+    "style": [ "file:./card-list.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["Content and media"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "card-list.php",
+        "postTypes": [ "page" ]
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": true,
+            "link": false
+        },
+        "alignText": false
+    }
+}

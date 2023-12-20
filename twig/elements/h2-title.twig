@@ -1,0 +1,13 @@
+{% set subTitle = title_group.st ? title_group.st : empty %}
+{% set title = title_group.t ? title_group.t : empty %}
+
+{% if title is not empty %}
+<h2 class="ctn-title">
+    {% if subTitle %}<span>{{ subTitle }}</span>{% endif %}
+    {{ title }}
+</h2>
+{% endif %}
+
+{% set title = null %}
+{% set subTitle = null %}
+{% set title_group = null %}

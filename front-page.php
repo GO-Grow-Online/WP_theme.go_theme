@@ -12,5 +12,10 @@
  */
 
 $context = Timber::context();
-$context['p'] = new Timber\Post();
+
+// services custom post
+
+$timber_post = new Timber\Post();
+
+$context['p'] = $timber_post;
 Timber::render( 'front-page.twig' , $context );

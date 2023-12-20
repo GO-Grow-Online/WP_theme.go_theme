@@ -1,0 +1,23 @@
+{
+    "name": "solo-media",
+    "title": "Media (image or video)",
+    "description": "Allow to intert an image or video in your content",
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["Content and media"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "solo-media.php"
+    },        
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": true,
+            "link": false
+        },
+        "alignText": false
+    }
+}

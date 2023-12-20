@@ -1,0 +1,176 @@
+.bx-wrapper {
+  position: relative;
+  margin-bottom: 60px;
+  padding: 0;
+  *zoom: 1;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+
+  .list {
+    margin: 0;
+    display: block;
+    
+    &-item {
+      & > * {
+        transform: scale(.8);
+        transition: all $fast $bezier;
+      }
+      &[aria-hidden="false"] > * {
+        transform: scale(1);
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  &.bxslider {
+    margin: 0;
+    padding: 0;
+  }
+
+  .bx-viewport {
+    -webkit-transform: translatez(0);
+    overflow: visible !important;
+  }
+
+  /* THEME =================================== */
+  .bx-pager, .bx-controls-auto {
+    position: absolute;
+    bottom: -3rem;
+    width: 100%;
+  }
+
+  /* LOADER */
+  .bx-loading {
+    min-height: 50px;
+    background: url('../static/icons/loading.svg') center center no-repeat;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+  }
+
+  /* PAGER */
+  .bx-pager {
+    text-align: center;
+    color: $secondary;
+
+    &.bx-default-pager a {
+      background: $secondary;
+      // text-indent: -9999px;
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      margin: 0.5rem;
+      border-radius: $round;
+      transition: all $fast $bezier;
+
+      &:hover, &.active, &:focus {
+        background: $primary;
+        transform: scale(1.5);
+      }
+    }
+
+    &-item, .bx-controls-auto .bx-controls-auto-item {
+      display: inline-block;
+      vertical-align: bottom;
+
+      &.bx-pager-item {
+        font-size: 0;
+        line-height: 0;
+      }
+    }
+  }
+ 
+  /* DIRECTION CONTROLS (NEXT / PREV) */
+  .bx-prev, .bx-next {
+    transform: scale(1);
+    transition: all $fast $bezier;
+
+    &:hover {
+      transform: scale(0.75);
+    }
+  }
+
+  .bx-next {
+    right: 0;
+  }
+
+  .bx-prev {
+    left: 0;
+  }
+
+  .bx-controls-direction a {
+    position: absolute;
+    bottom: -3rem;
+    outline: 0;
+    width: 2rem;
+    height: 2rem;
+
+    opacity: 1;
+
+    z-index: 5;
+
+    transition: all $fast $bezier;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &.disabled {
+      opacity: .5;
+      pointer-events: none;
+    }
+  }
+
+  /* AUTO CONTROLS (START / STOP) */
+  .bx-controls-auto {
+    text-align: center;
+
+    .bx-start {
+      display: block;
+      // text-indent: -9999px;
+      width: 10px;
+      height: 11px;
+      outline: 0;
+      background: url('../static/icons/chevron-down.svg') -86px -11px no-repeat;
+      margin: 0 3px;
+
+      &:hover, &.active, &:focus {
+        background-position: -86px 0;
+      }
+    }
+
+    .bx-stop {
+      display: block;
+      text-indent: -9999px;
+      width: 9px;
+      height: 11px;
+      outline: 0;
+      background: url('images/controls.png') -86px -44px no-repeat;
+      margin: 0 3px;
+
+      &:hover, &.active, &:focus {
+        background-position: -86px -33px;
+      }
+    }
+  }
+
+  /* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+  .bx-controls.bx-has-controls-auto.bx-has-pager {
+    .bx-pager {
+      text-align: left;
+      width: 80%;
+    }
+
+    .bx-controls-auto {
+      right: 0;
+      width: 35px;
+    }
+  }
+}

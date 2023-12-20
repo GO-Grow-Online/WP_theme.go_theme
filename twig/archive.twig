@@ -1,0 +1,31 @@
+{% extends "base.twig" %}
+
+
+{% block heading %}
+<!-- ARCHIVE HEADING -->
+<section class="heading">
+    <div class="wrapper">
+        {% set title = p.heading_title is not empty ? p.heading_title : p.title %}
+
+        <h1>{{ title }}</h1>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block content %}
+
+<section>
+    <div class="wrapper">
+        <ul class="list list--3col">
+            {% for item in archive %}
+            <li>
+                {% include 'elements/card.twig' %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+
+{% endblock %}

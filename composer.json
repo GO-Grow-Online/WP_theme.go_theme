@@ -1,17 +1,13 @@
 {
-  "name": "go_composer/starter_theme",
-  "description": "GO : Grow Online Starter theme to build any website",
+  "name": "upstatement/timber-starter-theme",
+  "description": "Starter theme to build a Timber theme",
   "type":"wordpress-theme",
   "minimum-stability" : "stable",
   "authors": [
     {
       "email": "jared@upstatement.com",
       "name": "jarednova"
-    },
-    {
-      "email": "julien.growonline@gmail.com",
-      "name": "Julien Scheen"
-    }
+    }  
   ],
   "repositories": [
     {
@@ -19,18 +15,15 @@
       "url": "https://wpackagist.org"
     }
   ],
-  "config": {
-    "platform": {
-      "php": "7.4"
-    },
-    "allow-plugins": {
-      "composer/installers": true
-    }
-  },
   "require": {
-    "phpmailer/phpmailer": "^6.5"
+	  "timber/timber": "^1.22"
   },
   "require-dev": {
     "phpunit/phpunit": "5.7.16|6.*"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
   }
 }

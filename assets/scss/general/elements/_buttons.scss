@@ -1,0 +1,57 @@
+// Buttons
+.btn {
+
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+
+    border-radius: $radius;
+
+    font-size: 0.9rem;
+    padding: 1rem 1.25rem;
+
+    transition: $fast $bezier;
+
+    &.btn-primary {
+        background-color: $primary;
+        color: $white;
+    }
+
+    &.btn-secondary {
+        color: $primary;
+        background-color: $light;
+    }
+
+    &:hover {
+        background-color: $secondary;
+        color: $white;
+    }
+    
+    &-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 2.5rem;        
+    }
+
+    &-square {
+        width: 3rem;
+        height: 3rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+@media (min-width :  map-get($breakpoints, md)) {
+
+}
+
+
+@media (min-width :  map-get($breakpoints, lg)) {
+    .btn {
+        font-size: 1rem;
+    }
+}
