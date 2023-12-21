@@ -12,7 +12,9 @@
 {% if img %}
 
     {% if force_portrait == true and mime_type != "image/svg+xml" %} 
+    <!--googleoff: index-->
     <img class="imgWrap--portrait-bg" loading="{{ loading_type }}" type="image/webp" src="{{ img.sizes.thumbnail|towebp(90) }}" alt="{{ img.alt }}">
+    <!--googleon: index-->
     {% endif %}
 
     {% if figcaption %}
