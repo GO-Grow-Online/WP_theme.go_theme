@@ -141,7 +141,6 @@ header {
         position: relative;
         width: $nav-bottom-height;
         height: $nav-bottom-height;
-        padding: 1rem;
         background-color: $primary;
         pointer-events: all;
 
@@ -325,6 +324,17 @@ body.scrolled {
             padding: 1rem 2rem;
         }
     }    
+
+    // Add a space when user is connected to website's administration
+    .admin-bar {
+        header {
+            top: 32px;
+
+            .logo {
+                top: 0;
+            }
+        }
+    }
 }
 
 

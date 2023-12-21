@@ -56,10 +56,12 @@
 
   /* PAGER */
   .bx-pager {
+    pointer-events: none;
     text-align: center;
     color: $secondary;
 
     &.bx-default-pager a {
+      pointer-events: all;
       background: $secondary;
       // text-indent: -9999px;
       display: block;

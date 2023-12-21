@@ -4,7 +4,7 @@
 
 {% set mime_type = img.mime_type %}
 
-{% set figcaption = figcaption is not empty ? figcaption : true %}
+{% set figcaption = figcaption is not empty ? figcaption : false %}
 {% set force_portrait = fn('get_field', 'force_portait', img.id) is not null ? fn('get_field', 'force_portait', img.id) : false %}
 {% set is_seamless = fn('get_field','seamless', img.id) is not null ? fn('get_field','seamless', img.id) : false %}
 
@@ -20,8 +20,7 @@
     {% endif %}
 
     {# If there is an image without any predefined formats #}
-
-        {% if image_format is null or mime_type != "image/svg+xml" %}
+    {% if image_format is null and mime_type != "image/svg+xml" %}
 
         {# Check if images have a mobile and tablet sizes attached to them, and if yes, use them #}
         
@@ -39,17 +38,17 @@
             <img loading="{{ loading_type }}" alt="{{ img.alt }}" src="{{ medium|towebp(90) }}">
         </picture>
 
-        {% else  %}
+    {% else  %}
 
         {# If there is a predefined image format, no need for "picture" element #}
         {# Also check if image is svg #}
         {% if mime_type != "image/svg+xml" %}
-            <img width="{{ img.sizes[image_format].width }}" height="{{ img.sizes[image_format].height }}" type="image/webp" src="{{ img.sizes[image_format]|towebp(90) }}" alt="{{ img.alt }}">
+            <img loading="{{ loading_type }}" width="{{ img.sizes[image_format].width }}" height="{{ img.sizes[image_format].height }}" type="image/webp" src="{{ img.sizes[image_format]|towebp(90) }}" alt="{{ img.alt }}">
         {% else %}
-            <img width="500" height="500" src="{{ img.url }}" alt="{{ img.alt }}">
+            <img loading="{{ loading_type }}" width="{{ img.sizes[image_format].width }}" height="{{ img.sizes[image_format].height }}" type="image/svg+xml" src="{{ img.url }}" alt="{{ img.alt }}">
         {% endif %}
 
-        {% endif %}
+    {% endif %}
     {% endif %}
 
     {% if figcaption %}
@@ -59,7 +58,7 @@
         <meta itemprop="description" content="{{ img.description }}" />
         <meta itemprop="name" content="{{ img.title }}" />
     </figure>
-{% endif %}
+    {% endif %}
 
 {% if img is empty %}
     {# If there is no image at all, get the static image fallback #}
@@ -67,7 +66,6 @@
 {% endif %}
 
 </div>
-
 
 {% set mob = null %}
 {% set tab = null %}

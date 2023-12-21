@@ -43,6 +43,15 @@
     background-color: darken($light, 20%);
 }
 
+//////////////////////////
+/////// FONT FACES ///////
+//////////////////////////
+
+@font-face {
+    font-family: 'Urbanist';
+    src: url('../static/fonts/urbanist.ttf') format('truetype');
+}
+
 ///////////////////////////
 ///// VIDEOS & IMAGES /////
 ///////////////////////////
@@ -60,13 +69,18 @@ img, figure, video {
     }
 }
 
+svg {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .imgWrap, .vidWrap {
 
     max-height: 70vh;
-
-    overflow: hidden;
-
+    
     &:not(.imgWrap--seamless) {
+        overflow: hidden;
         border-radius: $radius2;
         box-shadow: $shadow;
     }
@@ -74,6 +88,7 @@ img, figure, video {
 
 .imgWrap {
     position: relative;
+    display: flex;
     width: 100%;
     height: 100%;
 
@@ -367,7 +382,7 @@ main {
 }
 
 // Icon size
-.icon, .icon svg {
+.icon, .icon > svg {
     width: $icon-size-sm;
     height: $icon-size-sm;
 }
@@ -433,7 +448,7 @@ $sp : $card-sm-spacing;
 @media (min-width :  map-get($breakpoints, md)) {
 
     // Icon sizes
-    .icon {
+    .icon, .icon > svg {
         width: $icon-size-md;
         height: $icon-size-md;
     }
@@ -471,7 +486,7 @@ $sp : $card-sm-spacing;
     }
 
     // Icon sizes
-    .icon {
+    .icon, .icon > svg {
         width: $icon-size-lg;
         height: $icon-size-lg;
     }

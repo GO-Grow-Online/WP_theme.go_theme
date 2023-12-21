@@ -1,0 +1,25 @@
+{
+    "name": "heading_fp",
+    "title": "Front-page heading",
+    "description": "",
+    "style": [ "file:./heading_fp.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["heading"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "heading_fp.php",
+        "postTypes": [ "page" ]
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": true,
+            "link": false
+        },
+        "alignText": false
+    }
+}

@@ -6,6 +6,7 @@
 
     <div class="card-header">
         <div class="card-header-img">
+            {% set image_format = card-thumbnail %}
             {% include 'elements/image.twig' %}
         </div>
     </div>
@@ -19,7 +20,7 @@
         {% endif %}
         
         <span class="card-body-link link-icon">
-            <span class="icon">{% include 'assets/static/icons/info-square.svg' %}</span>
+            <span class="icon">{% include 'assets/static/icons/card-more-info.svg' %}</span>
             {{ __('En savoir plus', "Non-editable strings") }}
         </span>
     </div>

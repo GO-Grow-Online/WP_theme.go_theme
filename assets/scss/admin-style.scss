@@ -6,39 +6,59 @@
     object-fit: contain;
 }
 
+.edit-post-visual-editor__post-title-wrapper {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+    margin: 0!important;
+    background-color: $light!important;
+    text-align: center!important;
+    
+    h1 {
+        font-size: 2rem!important;
+        margin-bottom: 0!important;
+    }
+}
+
+// Overide default gutenberg styles
 html :where(.wp-block) {
     max-width: 100%;
 }
 
-.edit-post-visual-editor__post-title-wrapper {
-    display: none!important;
+div.edit-post-visual-editor, .editor-styles-wrapper, .editor-canvas {
+    padding: 0!important;
 }
 
-div.edit-post-visual-editor, .editor-styles-wrapper, .editor-canvas {
+.card {
+    position: inherit;
+    margin-top: inherit;
+    padding: inherit;
+    min-width: inherit;
+    max-width: inherit;
+    border: inherit;
+    box-shadow: inherit;
+    background: inherit;
+    box-sizing: inherit;
+}
 
-    padding: 0!important;
+// main.scss
+@import 'critical-css.scss';
+@import 'style.scss';
 
-    // Overide default gutenberg styles
-    .card {
-        position: inherit;
-        margin-top: inherit;
-        padding: inherit;
-        min-width: inherit;
-        max-width: inherit;
-        border: inherit;
-        box-shadow: inherit;
-        background: inherit;
-        box-sizing: inherit;
-    }
 
-    // main.scss
-    @import 'critical-css.scss';
-    @import 'style.scss';
+// For smaller devices, wrapper should have smaller x paddings to prevent content to shrink roo much
+@media (min-width: map-get($breakpoints, lg)) {
+    section {
+        .wrapper {
+            padding: map-get($sec-spacings, lg-y) (map-get($sec-spacings, lg-x) * 0.5);
+        } 
+    } 
 
-    // @import 'acf-blocks/actualities.scss';
-    // @import 'acf-blocks/card-list.scss';
-    @import 'acf-blocks/content-media.scss';
-    // @import 'acf-blocks/content-only.scss';
-    @import 'acf-blocks/cta.scss';
-    // @import 'acf-blocks/heading-fp.scss';
+}
+
+@media (min-width: map-get($breakpoints, xl)) {
+    section {
+        .wrapper {
+            padding: map-get($sec-spacings, xl-y) (map-get($sec-spacings, xl-x) * 0.5);
+        } 
+    } 
 }

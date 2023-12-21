@@ -1,7 +1,8 @@
-{% set bg = b_prop.backgroundColor ? "bg-" ~ b_prop.backgroundColor : "" %}
-{% set separation = b.options.separation ? "sep sep-" ~ b.options.separation : "" %}
+{% set bg = b_prop.backgroundColor ? " bg-" ~ b_prop.backgroundColor : "" %}
+{% set separation = b.options.separation ? " sep sep-" ~ b.options.separation : "" %}
 
-<section class="{{ b_prop.name|replace({'acf/': ''}) }} {{ b_prop.className }} {{ bg }} {{ separation }}">
+{{ b_prop.name }}
+<section class="{{ b_prop.name|replace({'acf/': '', '-' : '_'}) }}{% if b_prop.className %} {{ b_prop.className }}{% endif %}{{ bg }}{{ separation }}">
     {% block content %} <p>Please insert content in you block.</p> {% endblock %}
 </section>
 

@@ -11,7 +11,7 @@
 					<li role="menuitem" 
 					{% if p.id == item.id %} aria-current="page" {% endif %} 
 					{% if item.children %} aria-haspopup="true" aria-expanded="false" {% endif %}>
-						<a class="{{ item.classes|join(' ') }}" href="{{ item.link }}">{{ item.title }}{% if item.children %}{% include 'assets/static/icons/menu-arrow.svg' %}{% endif %}</a>
+						<a class="{{ item.classes|join(' ') }}" href="{{ item.link }}">{{ item.title }}{% if item.children %}{% include 'assets/static/icons/menu/dropdown-menu-arrow.svg' %}{% endif %}</a>
 						{% if item.children %}
 							<ul class="dropdown" role="menu" aria-hidden="true">
 								{% for child in item.children %}
@@ -28,8 +28,8 @@
 		
 		<div class="nav-bottom">
 			<button class="btn btn-menu js--toggle" data-toggle="menu" aria-label="{{ __('Ouvrir/fermer le menu', 'Non-editable strings') }}">
-				{% include 'assets/static/icons/open-menu.svg' %}
-				{% include 'assets/static/icons/close-menu.svg' %}
+				<span class="icon">{% include 'assets/static/icons/menu/open-menu.svg' %}</span>
+				<span class="icon">{% include 'assets/static/icons/menu/close-menu.svg' %}</span>
 			</button>
 
 			{% if g.bottom_nav_link.title %}

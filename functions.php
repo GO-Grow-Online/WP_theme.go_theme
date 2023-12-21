@@ -20,13 +20,13 @@ require_once( __DIR__ . '/vendor/autoload.php' );
 function register_acf_blocks() {
 	// General blocks
 	$acf_blocks = array(
-		'heading-fp',
+		'heading_fp',
 		'cta',
-		'content-media',
-		'card-list',
+		'content_media',
+		'card_list',
 		'actualities',
-		'solo-content',
-		'solo-media',
+		'solo_content',
+		'solo_media',
 	);
 	foreach($acf_blocks as $acf_block_name) {
 		register_block_type( __DIR__ . '/acf-blocks/' . $acf_block_name );
@@ -175,6 +175,7 @@ function give_editor_access_to_menus() {
 	$current_user = wp_get_current_user();
     if (in_array('editor', $current_user->roles)) {
 		global $submenu;
+		
 		// Remove "themes"
         unset($submenu['themes.php'][5]);
 		// Remove "customize"
@@ -185,7 +186,7 @@ add_action( 'admin_init', 'give_editor_access_to_menus' );
  
 
 // Image formats
-add_image_size( 'card-thumbnail', 550, null, false );
+add_image_size( 'card-thumbnail', 550, 550, false );
 
 
 // Remove unused image sizes
@@ -194,11 +195,40 @@ add_filter('intermediate_image_sizes', function($sizes) {
 });
 
 function remove_large_image_sizes() {
-	remove_image_size( '1536x1536' );             // 2 x Medium Large (1536 x 1536)
-	remove_image_size( '2048x2048' );             // 2 x Large (2048 x 2048)
+	remove_image_size( '1536x1536' );  // 2 x Medium Large (1536 x 1536)
+	remove_image_size( '2048x2048' );  // 2 x Large (2048 x 2048)
 }
 add_action( 'init', 'remove_large_image_sizes' );
 
+
+// Remove default image after the sizes are generated
+function txt_domain_delete_fullsize_image($metadata) {
+    $upload_dir = wp_upload_dir();
+    $full_image_path = trailingslashit($upload_dir['basedir']) . $metadata['file'];
+
+    // Obtain file informations - version "-scaled"
+    $path_info = pathinfo($full_image_path);
+
+    // Obtain file name without the last "-scaled"
+    $new_file_name = substr($path_info['filename'], 0, strrpos($path_info['filename'], '-scaled')) . '.' . $path_info['extension'];
+
+    // Contruct filepath
+    $new_full_image_path = $path_info['dirname'] . '/' . $new_file_name;
+
+    // Verify if the file exist
+    if (file_exists($new_full_image_path)) {
+        // Delete it
+        $deleted = unlink($new_full_image_path);
+
+        if (!$deleted) {
+            // Error log is case of failure (can't tell what could go wrong lmao)
+            error_log("La suppression de l'image a échoué : $new_full_image_path");
+        }
+    }
+
+    return $metadata;
+}
+add_filter('wp_generate_attachment_metadata', 'txt_domain_delete_fullsize_image');
 
 
 /////////////////////////
@@ -237,14 +267,21 @@ add_action('login_head', 'custom_login_logo');
 
 // Admin styles
 function admin_styles() {
-    wp_enqueue_style( 'admin-css', get_template_directory_uri() . '/assets/css/admin-style.css' );
-
-	// If user is editor, limit ui
 	if (!current_user_can('administrator')) {
 		wp_enqueue_style( 'wp-editor-ui', get_template_directory_uri() . '/assets/css/wp-editor-ui.css' );
 	}
 }
 add_action( 'admin_enqueue_scripts', 'admin_styles' );
+
+
+// Gutenberg styles & scripts
+function gutenberg_assets() {
+	my_theme_scripts();
+    wp_enqueue_script('admin-js', get_template_directory_uri() . '/assets/js/app.js', array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'), '', true);
+    wp_enqueue_style( 'admin-css', get_template_directory_uri() . '/assets/css/admin-style.css' );
+}
+add_action( 'enqueue_block_editor_assets', 'gutenberg_assets' );
+
 
 // Script de l'administration - disactivated
 // ACF blocks's fields are loaded dynamically - update accordions's names is then not working 

@@ -21,7 +21,7 @@
                 {% set link = item.link %}
                 <li class="link-list-item">
                     <a target="{{ link.target }}" href="{{ link.url }}" class="link-icon">
-                    {% include 'assets/static/icons/arrow-right.svg' %}
+                        <span class="icon">{% include 'assets/static/icons/footer-link.svg' %}</span>
                         {{ link.title }}
                     </a>
                 </li>
@@ -41,7 +41,7 @@
                 {% for post in links %}
                 <li class="link-list-item">
                     <a href="{{ post.link }}" class="link-icon">
-                        {% include 'assets/static/icons/arrow-right.svg' %}
+                        <span class="icon">{% include 'assets/static/icons/footer-link.svg' %}</span>
                         {{ post.title }}
                     </a>
                 </li>
@@ -49,19 +49,19 @@
                 {% else %}
                 <li class="link-list-item">
                     <a href="{{ g.itinirary }}" class="link-icon">
-                        {% include 'assets/static/icons/address.svg' %}
+                        <span class="icon">{% include 'assets/static/icons/contact/address.svg' %}</span>
                         {{ g.address }}
                     </a>
                 </li>
                 <li class="link-list-item">
                     <a href="tel:{{ g.phone }}" class="link-icon">
-                        {% include 'assets/static/icons/phone.svg' %}
+                        <span class="icon">{% include 'assets/static/icons/contact/phone.svg' %}</span>
                         {{ g.phone }}
                     </a>
                 </li>
                 <li class="link-list-item">
                     <a href="mailto:{{ g.email }}" class="link-icon">
-                        {% include 'assets/static/icons/email.svg' %}
+                        <span class="icon">{% include 'assets/static/icons/contact/email.svg' %}</span>
                         {{ g.email }}
                     </a>
                 </li>
