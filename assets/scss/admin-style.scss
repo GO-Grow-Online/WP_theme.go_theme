@@ -19,6 +19,14 @@
     }
 }
 
+// Enlarge the aside section containing ACF Fields
+@media (min-width: 782px) {
+    .interface-complementary-area {
+        width: 25vw!important;
+        min-width: 250px!important;
+    }
+}
+
 // Overide default gutenberg styles
 html :where(.wp-block) {
     max-width: 100%;
@@ -47,18 +55,13 @@ div.edit-post-visual-editor, .editor-styles-wrapper, .editor-canvas {
 
 // For smaller devices, wrapper should have smaller x paddings to prevent content to shrink roo much
 @media (min-width: map-get($breakpoints, lg)) {
-    section {
-        .wrapper {
-            padding: map-get($sec-spacings, lg-y) (map-get($sec-spacings, lg-x) * 0.5);
-        } 
+    div.edit-post-visual-editor section .wrapper {
+        padding: map-get($sec-spacings, lg-y) (map-get($sec-spacings, lg-x) * 0.5)!important;
     } 
-
 }
 
 @media (min-width: map-get($breakpoints, xl)) {
-    section {
-        .wrapper {
-            padding: map-get($sec-spacings, xl-y) (map-get($sec-spacings, xl-x) * 0.5);
-        } 
+    div.edit-post-visual-editor section .wrapper {
+        padding: map-get($sec-spacings, xl-y) (map-get($sec-spacings, xl-x) * 0.5)!important;
     } 
 }

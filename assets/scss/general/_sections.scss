@@ -69,7 +69,7 @@ section {
 @media (min-width: map-get($breakpoints, xl)) {
     section {
         .wrapper {
-            padding: map-get($sec-spacings, xl-y) map-get($sec-spacings, xl-x);
+            padding: map-get($sec-spacings, xl-y) map-get($sec-spacings, xl-x)!important;
         } 
     } 
 }

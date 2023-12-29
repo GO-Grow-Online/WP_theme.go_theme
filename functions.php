@@ -17,6 +17,10 @@ require_once( __DIR__ . '/vendor/autoload.php' );
 ///// ACF BLOCKS /////
 //////////////////////
 
+// By default, block's styles and scripts are all loaded wether or not the block is loaded.
+// This line load scripts and styles ONLY if the block is used on the page.
+add_filter( 'should_load_separate_core_block_assets', '__return_true' );
+
 function register_acf_blocks() {
 	// General blocks
 	$acf_blocks = array(
@@ -235,7 +239,9 @@ add_filter('wp_generate_attachment_metadata', 'txt_domain_delete_fullsize_image'
 ///// FRONT SCRIPTS /////
 /////////////////////////
 
-// Scripts & APIs
+// Load Scripts & APIs regarding wich blocks are used
+
+// $bxslider = has_block('acf/card_list', $post->post_content) || has_block('acf/actualities', $post->post_content)
 function my_theme_scripts() {
 	// wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/assets/js/api/lightbox.js', array( 'jquery' ), null, true );
 	wp_enqueue_script( 'bxslider', get_template_directory_uri() . '/assets/js/api/bxslider.js', array( 'jquery' ), null, true );
@@ -269,30 +275,19 @@ add_action('login_head', 'custom_login_logo');
 function admin_styles() {
 	if (!current_user_can('administrator')) {
 		wp_enqueue_style( 'wp-editor-ui', get_template_directory_uri() . '/assets/css/wp-editor-ui.css' );
-	}
+	} 
 }
 add_action( 'admin_enqueue_scripts', 'admin_styles' );
 
 
 // Gutenberg styles & scripts
 function gutenberg_assets() {
+	// Load general styles and scripts
 	my_theme_scripts();
-    wp_enqueue_script('admin-js', get_template_directory_uri() . '/assets/js/app.js', array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'), '', true);
+	wp_enqueue_script('admin-js', get_template_directory_uri() . '/assets/js/app.js', array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'), '', true);
     wp_enqueue_style( 'admin-css', get_template_directory_uri() . '/assets/css/admin-style.css' );
 }
-add_action( 'enqueue_block_editor_assets', 'gutenberg_assets' );
-
-
-// Script de l'administration - disactivated
-// ACF blocks's fields are loaded dynamically - update accordions's names is then not working 
-function acf_admin_enqueue_script($hook) {
-    if ('post.php' !== $hook) {
-        return;
-    }
-    wp_enqueue_script('admin-js',  get_template_directory_uri() . '/assets/js/admin.js' );
-}
-
-// add_action('admin_enqueue_scripts', 'acf_admin_enqueue_script');
+add_action( 'enqueue_block_assets', 'gutenberg_assets' );
 
 
 
