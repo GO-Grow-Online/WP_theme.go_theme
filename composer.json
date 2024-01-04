@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-	  "timber/timber": "^2.0"
+	  "timber/timber": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.0"

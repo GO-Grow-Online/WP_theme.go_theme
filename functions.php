@@ -302,10 +302,10 @@ add_action( 'admin_enqueue_scripts', 'admin_styles' );
 function gutenberg_assets() {
 	// Load general styles and scripts
 	my_theme_scripts();
+	
     wp_enqueue_style( 'admin-css', get_template_directory_uri() . '/assets/css/admin-style.css' );
 }
-add_action( 'enqueue_block_assets', 'gutenberg_assets' );
-
+add_action( 'enqueue_block_editor_assets', 'gutenberg_assets' );
 
 
 
