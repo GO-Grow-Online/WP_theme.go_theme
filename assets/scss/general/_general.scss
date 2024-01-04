@@ -51,6 +51,7 @@
     font-family: 'Bebas';
     font-style: normal;
     src: url('../static/fonts/BebasNeue-Regular.ttf') format('truetype');
+    font-display: swap;
 }
 
 @font-face {
@@ -58,6 +59,7 @@
     font-style: normal;
     font-weight: 400;
     src: url('../static/fonts/MontserratAlternates-Regular.ttf') format('truetype');
+    font-display: swap;
 }
 
 @font-face {
@@ -65,6 +67,7 @@
     font-style: italic;
     font-weight: 400;
     src: url('../static/fonts/MontserratAlternates-Italic.ttf') format('truetype');
+    font-display: swap;
 }
 
 @font-face {
@@ -72,6 +75,7 @@
     font-style: normal;
     font-weight: 600;
     src: url('../static/fonts/MontserratAlternates-Bold.ttf') format('truetype');
+    font-display: swap;
 }
 
 @font-face {
@@ -79,6 +83,7 @@
     font-style: italic;
     font-weight: 600;
     src: url('../static/fonts/MontserratAlternates-BoldItalic.ttf') format('truetype');
+    font-display: swap;
 }
 
 // Page menu
