@@ -269,13 +269,6 @@ function my_theme_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
 
-
-// Service worker
-function enqueue_service_worker_script() {
-    wp_enqueue_script('service-worker', get_template_directory_uri() . '/service-worker.js', array(), null, true);
-}
-
-add_action('wp_enqueue_scripts', 'enqueue_service_worker_script');
   
 
 
