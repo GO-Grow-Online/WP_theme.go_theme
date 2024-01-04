@@ -1,6 +1,7 @@
 <section  {% if b_prop.anchor %} id="{{ b_prop.anchor }}"{% endif %} class="heading_fp hidden-animate">
     {% set img = get_image(b.bg_img) %}
     {% set image_format = "medium" %}
+    {% set eager_loading = true %}
     {% set is_seamless = true %}
     <span class="heading_fp-bg">
         {% include "elements/image.twig" %}
@@ -13,10 +14,12 @@
             <div class="heading_fp-pictures lines">
                 {% set img = get_image(b.first_img) %}
                 {% set figcaption = true %}
+                {% set eager_loading = true %}
                 {% include "elements/image.twig" %}
                 
                 {% set img = get_image(b.second_img) %}
                 {% set figcaption = true %}
+                {% set eager_loading = true %}
                 {% include "elements/image.twig" %}
             </div>
         </div>
