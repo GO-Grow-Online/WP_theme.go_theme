@@ -1,6 +1,9 @@
 section {
     position: relative;
-    overflow: hidden;
+
+    &:not(.bg-illu-top, .bg-illu-bottom) {
+        // overflow: hidden;
+    }
 }
 
 .wrapper {
@@ -22,12 +25,24 @@ section {
     }
 }
 
+main section:first-of-type {
+    & > .wrapper{
+        padding-top: calc(map-get($sec-spacings, sm-y) + 5rem)!important;
+    }
+}
+
 
 @media (min-width: map-get($breakpoints, md)) {
     section {
         .wrapper {
             gap: map-get($sec-spacings, sm-y) * 0.5;
             padding: map-get($sec-spacings, md-y) map-get($sec-spacings, md-x);
+        }
+    }
+
+    main section:first-of-type {
+        & > .wrapper{
+            padding-top: calc(map-get($sec-spacings, md-y) + 5rem)!important;
         }
     }
 }
@@ -42,7 +57,7 @@ section {
             &.wrapper-lg-2col {
                 grid-template-columns: 1fr 1fr;
                 gap: 0 calc(map-get($sec-spacings, lg-x) / 2);
-                align-items: center;
+                align-items: stretch;
                 
                 &.wrapper-align-start {
                     align-items: start;
@@ -63,13 +78,25 @@ section {
                 .col-lg-right { grid-column: 1 / 2; grid-row: 1 / 2; }
             }
         }
-    }    
+    } 
+    
+    main section:first-of-type {
+        & > .wrapper{
+            padding-top: calc(map-get($sec-spacings, lg-y) + 13rem)!important;
+        }
+    }
 }
 
 @media (min-width: map-get($breakpoints, xl)) {
     section {
         .wrapper {
-            padding: map-get($sec-spacings, xl-y) map-get($sec-spacings, xl-x);
+            padding: map-get($sec-spacings, xl-y) map-get($sec-spacings, xl-x)!important;
         } 
     } 
+
+    main section:first-of-type {
+        & > .wrapper{
+            padding-top: calc(map-get($sec-spacings, xl-y) + 13rem)!important;
+        }
+    }
 }

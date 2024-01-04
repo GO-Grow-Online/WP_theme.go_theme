@@ -3,6 +3,6 @@
 
 $context = Timber::context();
 
-$timber_post     = new Timber\Post();
+$timber_post     = Timber::get_post();
 $context['p'] = $timber_post;
 Timber::render( 'page-legal.twig' , $context );

@@ -2,8 +2,117 @@
 
 .card_list {
     .wrapper {
-        h2 {
+        .ctn-title {
+
+            margin-left: auto;
+            margin-right: auto;
             text-align: center;
+
+            &-main {
+                &::after {
+                    content: none;
+                }
+            }
+        }
+    }
+
+    .bx-wrapper {
+        padding-bottom: 2.5rem;
+    }
+
+    .list {
+        &-item {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+
+            & > * { 
+                margin: 0; 
+
+                &:not(:first-child) {
+                    margin-top: 1rem;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .icon {
+                
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                width: 4rem;
+                height: 4rem;
+                background: $white;
+                box-shadow: $shadow;
+                border-radius: $round;
+
+                svg {
+                    width: 2rem;
+                    height: 2rem;
+                }
+            }
+
+        }
+    }
+}
+
+@media (min-width :  map-get($breakpoints, md)) {
+    .card_list {
+        .list {
+            &-item {
+                .icon {
+
+                    width: 5.5rem;
+                    height: 5.5rem;
+    
+                    svg {
+                        width: 3rem;
+                        height: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width :  map-get($breakpoints, lg)) {
+    .card_list {
+        .list {
+            &--3col {
+
+                margin-top: $card-lg-spacing * -2;
+
+                .list-item:nth-child(2) {
+                    margin-top: $card-lg-spacing * 4;
+                }
+
+                .list-item {
+                    .icon {
+                        transform: scale(1) rotate(0);
+                        opacity: 1;
+                        transition: all ($on-scroll * 1.5) $ease-both;
+                    }
+                }
+
+                @for $i from 1 through 10 {
+                    .list-item:nth-child(#{$i}) .icon {
+                        transition-delay: calc(($on-scroll * #{$i}) * 0.2);
+                    }
+                }
+            }
+        }
+
+        &.hidden-animate {
+            .list--3col .list-item .icon {
+                transform: scale(.2) rotate(360deg);
+                opacity: 0;
+            }
         }
     }
 }

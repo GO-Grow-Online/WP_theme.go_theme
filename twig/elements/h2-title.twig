@@ -3,8 +3,8 @@
 
 {% if title is not empty %}
 <h2 class="ctn-title">
-    {% if subTitle %}<span>{{ subTitle }}</span>{% endif %}
-    {{ title }}
+    {% if subTitle %}<span class="ctn-title-sub">{{ subTitle }}</span>{% endif %}
+    <span class="ctn-title-main">{{ title }}</span>
 </h2>
 {% endif %}
 

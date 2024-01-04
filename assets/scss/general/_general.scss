@@ -48,8 +48,47 @@
 //////////////////////////
 
 @font-face {
-    font-family: 'Urbanist';
-    src: url('../static/fonts/urbanist.ttf') format('truetype');
+    font-family: 'Bebas';
+    font-style: normal;
+    src: url('../static/fonts/BebasNeue-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../static/fonts/MontserratAlternates-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../static/fonts/MontserratAlternates-Italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../static/fonts/MontserratAlternates-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 600;
+    src: url('../static/fonts/MontserratAlternates-BoldItalic.ttf') format('truetype');
+}
+
+// Page menu
+.page-template-page-menu {
+    object {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background-color: $dark;
+    }
 }
 
 ///////////////////////////
@@ -81,7 +120,6 @@ svg {
     
     &:not(.imgWrap--seamless) {
         overflow: hidden;
-        border-radius: $radius2;
         box-shadow: $shadow;
     }
 }
@@ -155,8 +193,6 @@ svg {
         height: 3rem;
         width: calc(100% - ($sp * 2));
 
-        border-radius: $radius;
-
         margin: $sp;
         background-color: $white;
 
@@ -226,7 +262,6 @@ svg {
                 
                 height: 0.75rem;
                 background-color: darken($light, 20%);
-                border-radius: $round;
     
                 &::-webkit-progress-bar {
                     width: 100%;
@@ -326,14 +361,127 @@ svg {
     color: red;
 } 
 
+.lines {
+    position: relative;
+    &::before, &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -5;
+
+        $wdt : 5px;
+        $c : $dark;
+        background: repeating-linear-gradient(
+            -45deg, 
+            transparent, 
+            transparent $wdt,
+            $c $wdt,
+            $c calc($wdt * 1.4),
+            transparent calc($wdt * 1.4)
+        );   
+        
+        opacity: .1;
+    }
+}
+
+.lines {
+    // Lines        
+    &::before {
+        clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+        transition: clip-path $on-scroll $ease-both;
+        transition-delay: $on-scroll * 0.75;
+    }
+
+    &::after {
+        clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+        transition: clip-path $on-scroll $ease-both;
+        transition-delay: $on-scroll;
+    }
+} 
+
+// Animations
+.hidden-animate {
+    .lines {
+        // Lines        
+        &::before {
+            clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+        }
+
+        &::after {
+            clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+        }
+    }       
+}
+
 // General
+
 .ctn {
     max-width: 550px;
 
     &-title {
         
+        white-space: nowrap;
+
+        &-main {
+
+            width: auto;
+            display: flex;
+            align-items: center;
+            
+            &::after {
+                content: "";
+
+                margin-top: -0.4rem;
+                margin-left: 1.25rem;
+
+                width: 100%;
+                height: 0.35rem;
+                
+                background-color: $primary;
+                clip-path: polygon(100% 100%, 100% 0, 0 0, 0 100%);
+
+                transition: clip-path $on-scroll $ease-both;
+            }
+        }
+    }
+
+    .btn-group {
+        .btn {
+
+            transform: translateX(0);
+            opacity: 1;
+            transition-duration: $on-scroll;
+            transition-timing-function: $ease-both;
+
+            &:first-child {
+                transition-delay: $on-scroll * 0.1;
+            }
+
+            &:last-child {
+                transition-delay: $on-scroll * 0.2;
+            }
+        }
     }
 }
+
+// Textual content animations
+@media (min-width : map-get($breakpoints, lg)) {
+    .hidden-animate {
+        .ctn {
+
+            &-title-main::after {
+                clip-path: polygon(100% 100%, 100% 0, 100% 0, 100% 100%);
+            }
+
+            .btn-group .btn {
+                transform: translateX(-3rem);
+                opacity: 0;
+            }
+        }
+    }
+}
+
+
 
 .wysiwyg {
     *:last-child {
@@ -345,21 +493,37 @@ main {
     position: relative;
     overflow: hidden;
     width: 100%;
-    padding-top: $header-height-mobile;
 }
 
 // Backgorunds
 .bg {
+
+    position: absolute;
+    width: 100%;
+    z-index: -10;
+
     &-light { background-color: $light; }
-    &-pretty {
-        background: radial-gradient(#0000000C 4.5px, transparent 4.5px), radial-gradient(#0000000C 4.5px, transparent 4.5px);
-        background-size: 56px 56px;
-        background-position: 0 0, 28px 28px;
+
+    &-illu-top .bg, &-illu-bottom .bg {
+        height: 150%;
+
+        img { 
+            position: absolute;
+            width: 100%;
+            object-position: contain;
+            opacity: .04; 
+        }
+        background: transparent!important;
+    }
+
+    &-illu-top .bg img {
+        transform: rotate(180deg);
     }
 }
 
 // Section's separations
 .sep {
+
     &::after { content: ""; position: absolute; display: block; left: 0; width: 100%; height: 25%; pointer-events: none; }
     &-grad-top::after { 
         top: 0;
@@ -379,6 +543,22 @@ main {
         position: relative;
         z-index: 1;
     }
+
+    &-border::after {
+
+        width: calc(100vw - map-get($sec-spacings, sm-x) * 2);
+        height: 0.2rem;
+        background-color: $light;
+        left: map-get($sec-spacings, sm-x);
+
+        &-bottom::after {
+            bottom: 0;
+        }
+
+        &-top::after {
+            top: 0;
+        }
+    }
 }
 
 // Icon size
@@ -389,12 +569,12 @@ main {
 
 // Link with an icon in it
 .link-icon {
-    display: flex;
-    align-items: flex-start;
     font-size: 1rem;
     font-weight: 700;
     
     .icon, svg {
+        display: inline-block;
+        vertical-align: 5%;
         width: $icon-size-sm;
         min-width: $icon-size-sm;
         height: $icon-size-sm;
@@ -475,14 +655,21 @@ $sp : $card-sm-spacing;
             }
         }
     }
+
+    .sep-border::after {
+        width: calc(100vw - map-get($sec-spacings, md-x) * 2);
+        left: map-get($sec-spacings, md-x);
+    }
 }
 
 
 @media (min-width :  map-get($breakpoints, lg)) {
 
-    // General stuff
-    main {
-        padding-top: $header-height-desktop;
+    // Page menu
+    .page-template-page-menu {
+        object {
+            padding-top: 10rem;
+        }
     }
 
     // Icon sizes
@@ -524,9 +711,17 @@ $sp : $card-sm-spacing;
             }
         }
     }
+
+    .sep-border::after {
+        width: calc(100vw - map-get($sec-spacings, lg-x) * 2);
+        left: map-get($sec-spacings, lg-x);
+    }
 }
 
 
 @media (min-width :  map-get($breakpoints, xl)) {
-
+    .sep-border::after {
+        width: calc(100vw - map-get($sec-spacings, xl-x) * 2);
+        left: map-get($sec-spacings, xl-x);
+    }
 }

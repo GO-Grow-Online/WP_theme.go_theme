@@ -1,22 +1,27 @@
-.sass-cache
-twig-cache/*
+!/src/Cache
+.tmp
+*~
+
+# OS
 .DS_Store
+
+# IDE and local environment
 .idea
+.vscode
+*.swp
+
+# Packages
+composer.lock
+node_modules
 vendor
+
+# Application
 build
 /cache
-!/lib/Cache
-*.swp
-*~
-wp-content
+twig-cache/*
+
+# Tests
+.phpunit.result.cache
 timber-starter-theme
-docs/markdown
-.tmp
-node_modules
-docs/cache
-docs/mkdocs
-docs/output
-/Timber.php
+wp-content
 wordpress
-composer.lock
-.vscode

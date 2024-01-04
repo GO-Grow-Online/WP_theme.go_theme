@@ -1,6 +1,7 @@
 $sp : $card-sm-spacing;
 
 .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -8,7 +9,6 @@ $sp : $card-sm-spacing;
 
     background-color: $white;
     box-shadow: $shadow;
-    border-radius: $radius2;
 
     .icon {
         color: $primary;
@@ -36,13 +36,7 @@ $sp : $card-sm-spacing;
         display: flex;
         flex-direction: column;
 
-        border-top: calc($card-sm-spacing / 5) solid $light;
-
         padding: $sp;
-
-        border-bottom-right-radius: $radius2;
-        border-bottom-left-radius: $radius2;
-
 
         position: relative;
         z-index: 1;
@@ -65,6 +59,10 @@ $sp : $card-sm-spacing;
 
         *:last-child {
             margin-bottom: 0;
+        }
+
+        *:first-child {
+            margin-top: 0;
         }
     }
 }

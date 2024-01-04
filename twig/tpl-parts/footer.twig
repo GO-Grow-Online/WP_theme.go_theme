@@ -1,75 +1,74 @@
 {# This template is used as an ACF-block #}
 
-<footer id="footer" class="footer">
-    <div class="wrapper">
-        <div>
-            {% set logo = g.logo %}
-            <a href="{{ site.link }}" class="footer-logo">
-                <img src="{{ g.logo.url }}" alt="{{ __('Logo de', 'Non-editable strings') }} {{ g.name }}">
-            </a>
-            {% include 'elements/social-links.twig' %}
-        </div>
+<footer id="{{ b_prop.anchor }}" class="footer bg-illu-bottom hidden-animate">
 
-        {% set first_col = b.f_link_list %}
-        {% if first_col.t %}
-        {% set links = first_col.links %}
-        <div>
-            <h2 class="h3">{{ first_col.t }}</h2>
-            {% if links %}
-            <ul class="link-list">
-                {% for item in links %}
-                {% set link = item.link %}
-                <li class="link-list-item">
-                    <a target="{{ link.target }}" href="{{ link.url }}" class="link-icon">
-                        <span class="icon">{% include 'assets/static/icons/footer-link.svg' %}</span>
-                        {{ link.title }}
-                    </a>
+    <!--googleoff: index-->
+    <div class="bg">
+        <img src="{{ theme.link }}/assets/static/svg/illu-dark.svg" alt="{{ __('Image décorative', 'Non-editable strings') }}">
+    </div>
+    <!--googleon: index-->
+    
+
+    <div class="wrapper" itemscope itemtype="http://schema.org/LocalBusiness">
+        <div class="col-lg-left">
+            {% set title_group = b.title %}
+            {% include 'elements/h2-title.twig' %}
+
+            {% if g.schedule %}
+            <ul class="schedule">
+                {% for item in g.schedule %}
+                <li class="schedule-item">
+                    <p>
+                        <strong>{{ item.day }}</strong>
+                        <span>{{ item.time }}</span>
+                    </p>
                 </li>
                 {% endfor %}
             </ul>
             {% endif %}
+            
+            <div class="footer-map">
+                {{ g.map }}
+            </div>
         </div>
-        {% endif %}
+        <div class="col-lg-right">
+            <h3>{{ g.form_title }}</h3>
+            {% set form_id = "footer-form" %}
+            {% include 'elements/contact-form.twig' %}
 
-        {% set last_col = b.f_last_col %}
-        {% if last_col.t %}
-        {% set links = footer_post_type %}
-        <div>
-            <h2 class="h3">{{ last_col.t }}</h2>
-            <ul class="link-list">
-                {% if links %}
-                {% for post in links %}
-                <li class="link-list-item">
-                    <a href="{{ post.link }}" class="link-icon">
-                        <span class="icon">{% include 'assets/static/icons/footer-link.svg' %}</span>
-                        {{ post.title }}
-                    </a>
-                </li>
-                {% endfor %}
-                {% else %}
-                <li class="link-list-item">
-                    <a href="{{ g.itinirary }}" class="link-icon">
-                        <span class="icon">{% include 'assets/static/icons/contact/address.svg' %}</span>
-                        {{ g.address }}
-                    </a>
-                </li>
-                <li class="link-list-item">
-                    <a href="tel:{{ g.phone }}" class="link-icon">
-                        <span class="icon">{% include 'assets/static/icons/contact/phone.svg' %}</span>
-                        {{ g.phone }}
-                    </a>
-                </li>
-                <li class="link-list-item">
-                    <a href="mailto:{{ g.email }}" class="link-icon">
-                        <span class="icon">{% include 'assets/static/icons/contact/email.svg' %}</span>
-                        {{ g.email }}
-                    </a>
-                </li>
+            <div class="btn-group">
+                {% if g.email %}
+                <a class="btn btn-lg" itemprop="email" href="tel:{{ g.email }}">
+                    <span>{% include 'assets/static/icons/contact/email.svg' %}</span>
+                    {{ g.email }}
+                </a>
                 {% endif %}
-            </ul>
-        </div>
-        {% endif %}
 
+                {% if g.phone %}
+                <a class="btn btn-lg" itemprop="telephone" href="tel:{{ g.phone }}">
+                    <span>{% include 'assets/static/icons/contact/phone.svg' %}</span>
+                    {{ g.phone }}
+                </a>
+                {% endif %}
+
+                {% if g.address %}
+                    {% if g.itinirary %}
+                    <a class="btn btn-lg" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" href="{{ g.itinirary }}">
+                    {% else %}
+                    <span class="btn btn-lg" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    {% endif %}
+
+                        <span>{% include 'assets/static/icons/contact/address.svg' %}</span>
+                        {{ g.address }}
+
+                    {% if g.itinirary %}
+                    </a>
+                    {% else %}
+                    </span>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
     </div>
     <div class="wrapper footer-bottom">
         <p>© {{ "now"|date('Y') }} - {{ g.name }} - Tous droits réservés</p>

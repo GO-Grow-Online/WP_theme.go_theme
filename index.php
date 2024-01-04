@@ -20,7 +20,7 @@ $templates        = array( 'index.twig' );
 if ( is_home() || is_archive() && 'post' == get_post_type() ) {
 	array_unshift( $templates, 'blog.twig', 'page.twig' );
 	$context['archive'] = new Timber\PostQuery();
-	$context['p'] = new Timber\Post();
+	$context['p'] = Timber::get_post();
 }
 
 Timber::render( $templates, $context );

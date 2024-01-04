@@ -16,7 +16,7 @@
     ],
     "supports": {
         "align": false,
-        "anchor": false,
+        "anchor": true,
         "alignContent": false,
         "color": {
             "text": false,

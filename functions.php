@@ -17,16 +17,22 @@ require_once( __DIR__ . '/vendor/autoload.php' );
 ///// ACF BLOCKS /////
 //////////////////////
 
+// By default, block's styles and scripts are all loaded wether or not the block is loaded.
+// This line load scripts and styles ONLY if the block is used on the page.
+add_filter( 'should_load_separate_core_block_assets', '__return_true' );
+
 function register_acf_blocks() {
 	// General blocks
 	$acf_blocks = array(
 		'heading_fp',
 		'cta',
+		'menu_slider',
+		'partners',
 		'content_media',
 		'card_list',
-		'actualities',
-		'solo_content',
-		'solo_media',
+		// 'actualities',
+		// 'solo_content',
+		// 'solo_media',
 	);
 	foreach($acf_blocks as $acf_block_name) {
 		register_block_type( __DIR__ . '/acf-blocks/' . $acf_block_name );
@@ -66,9 +72,14 @@ function custom_gutenberg_color_palette() {
 				'color' => '#f1f1f1',
 			),
 			array(
-				'name'  => esc_html__( 'Special', 'acf-admin' ),
-				'slug' => 'pretty',
-				'color' => 'radial-gradient(rgba(0, 0, 0, 0.05) 4.5px, transparent 4.5px), radial-gradient(rgba(0, 0, 0, 0.05) 4.5px, transparent 4.5px);',
+				'name'  => esc_html__( 'Illustration top', 'acf-admin' ),
+				'slug' => 'illu-top',
+				'color' => 'linear-gradient(to bottom, #000 0%, #000 50%, transparent 50.1%, transparent 100%)',
+			),
+			array(
+				'name'  => esc_html__( 'Illustration bottom', 'acf-admin' ),
+				'slug' => 'illu-bottom',
+				'color' => 'linear-gradient(to top, #000 0%, #000 50%, transparent 50.1%, transparent 100%)',
 			)
 		)
 	);
@@ -186,7 +197,7 @@ add_action( 'admin_init', 'give_editor_access_to_menus' );
  
 
 // Image formats
-add_image_size( 'card-thumbnail', 550, 550, false );
+// add_image_size( 'card-thumbnail', 550, 550, false );
 
 
 // Remove unused image sizes
@@ -210,21 +221,32 @@ function txt_domain_delete_fullsize_image($metadata) {
     $path_info = pathinfo($full_image_path);
 
     // Obtain file name without the last "-scaled"
-    $new_file_name = substr($path_info['filename'], 0, strrpos($path_info['filename'], '-scaled')) . '.' . $path_info['extension'];
+    $scaled_image_name = substr($path_info['filename'], 0, strrpos($path_info['filename'], '-scaled')) . '.' . $path_info['extension'];
+    $original_image_name = $path_info['filename'] . '.' . $path_info['extension'];
 
     // Contruct filepath
-    $new_full_image_path = $path_info['dirname'] . '/' . $new_file_name;
+    $scaled_image = $path_info['dirname'] . '/' . $scaled_image_name;
+    $original_image = $path_info['dirname'] . '/' . $original_image_name;
 
-    // Verify if the file exist
-    if (file_exists($new_full_image_path)) {
-        // Delete it
-        $deleted = unlink($new_full_image_path);
 
-        if (!$deleted) {
-            // Error log is case of failure (can't tell what could go wrong lmao)
-            error_log("La suppression de l'image a échoué : $new_full_image_path");
-        }
-    }
+	$to_delete = array(
+		$scaled_image,
+		$original_image,
+	);
+
+	foreach ($to_delete as $image) {
+		// Verify if the file exist
+		if (file_exists($image)) {
+			// Delete it
+			$deleted = unlink($image);
+	
+			if (!$deleted) {
+				// Error log is case of failure (can't tell what could go wrong lmao)
+				error_log("La suppression de l'image a échoué : $image");
+			}
+		}
+	}
+
 
     return $metadata;
 }
@@ -235,7 +257,9 @@ add_filter('wp_generate_attachment_metadata', 'txt_domain_delete_fullsize_image'
 ///// FRONT SCRIPTS /////
 /////////////////////////
 
-// Scripts & APIs
+// Load Scripts & APIs regarding wich blocks are used
+
+// $bxslider = has_block('acf/card_list', $post->post_content) || has_block('acf/actualities', $post->post_content)
 function my_theme_scripts() {
 	// wp_enqueue_script( 'lightbox', get_template_directory_uri() . '/assets/js/api/lightbox.js', array( 'jquery' ), null, true );
 	wp_enqueue_script( 'bxslider', get_template_directory_uri() . '/assets/js/api/bxslider.js', array( 'jquery' ), null, true );
@@ -269,34 +293,19 @@ add_action('login_head', 'custom_login_logo');
 function admin_styles() {
 	if (!current_user_can('administrator')) {
 		wp_enqueue_style( 'wp-editor-ui', get_template_directory_uri() . '/assets/css/wp-editor-ui.css' );
-	}
+	} 
 }
 add_action( 'admin_enqueue_scripts', 'admin_styles' );
 
 
 // Gutenberg styles & scripts
 function gutenberg_assets() {
+	// Load general styles and scripts
 	my_theme_scripts();
-    wp_enqueue_script('admin-js', get_template_directory_uri() . '/assets/js/app.js', array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'), '', true);
+	
     wp_enqueue_style( 'admin-css', get_template_directory_uri() . '/assets/css/admin-style.css' );
 }
 add_action( 'enqueue_block_editor_assets', 'gutenberg_assets' );
-
-
-// Script de l'administration - disactivated
-// ACF blocks's fields are loaded dynamically - update accordions's names is then not working 
-function acf_admin_enqueue_script($hook) {
-    if ('post.php' !== $hook) {
-        return;
-    }
-    wp_enqueue_script('admin-js',  get_template_directory_uri() . '/assets/js/admin.js' );
-}
-
-// add_action('admin_enqueue_scripts', 'acf_admin_enqueue_script');
-
-
-
-
 
 
 
@@ -309,7 +318,7 @@ function acf_admin_enqueue_script($hook) {
  * If not, it gives an error message to help direct developers on where to activate
  */
 
-$timber = new Timber\Timber();
+$timber = Timber\Timber::init();
 
 if ( ! class_exists( 'Timber' ) ) {
 
@@ -367,7 +376,7 @@ class StarterSite extends Timber\Site {
 	 * @param string $context context['this'] Being the Twig's {{ this }}.
 	 */
 	public function add_to_context( $context ) {
-		$context['menu']  = new Timber\Menu();
+		$context['menu']  = Timber::get_menu();
 		$context['g'] = get_fields('options');
 		$context['site']  = $this;
 		
@@ -458,10 +467,10 @@ class StarterSite extends Timber\Site {
 		$twig->addFilter( new Twig\TwigFilter( 'myfoo', array( $this, 'myfoo' ) ) );
 
 		// Get svg for svg files
-		$twig->addFunction( new Timber\Twig_Function( 'get_svg', 'get_svg' ) );
+		$twig->addFunction( new Twig\TwigFunction( 'get_svg', 'get_svg' ) );
 
 		// Easily get an archive link
-		$twig->addFunction( new Timber\Twig_Function( 'get_archive_link', 'get_archive_link' ) );
+		$twig->addFunction( new Twig\TwigFunction( 'get_archive_link', 'get_archive_link' ) );
 		
 		return $twig;
 	}

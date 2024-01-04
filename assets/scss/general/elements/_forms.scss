@@ -1,56 +1,20 @@
 $sp : map-get($sec-spacings, sm-x);
-$p-x : $card-sm-spacing;
+$p-x : 1rem;
 $p-y : 0.75rem;
 
 .form {
 
     position: relative;
     padding: $card-sm-spacing;
-    border-radius: $radius;
     overflow: hidden;
+
+    box-shadow: $shadow ;
 
     display: flex;
     flex-wrap: wrap;
+    gap: $p-x;
 
-    &-bg {
-        position: absolute;
-        top: 0;    
-        left: 0;
-        width: 100%;    
-        height: 100%; 
-
-        z-index: $back;  
-
-        pointer-events: none;
-
-        & > span {
-            position: absolute;
-            top: 0;    
-            left: 0;
-            width: 100%;    
-            height: 100%; 
-            z-index: $back;
-
-            opacity: 0;
-
-            transition: opacity $fast $ease-both;
-
-            &.current-bg {
-                opacity: 1;
-            }
-        }
-
-        &::before {
-            @include psd-el;
-            width: 100%;
-            height: 100%;
-    
-            background-color: #000000a9;
-
-            z-index: calc($back + 1);  
-        }
-    }
-
+    background-color: $white;
 
     &-field {
 
@@ -58,39 +22,64 @@ $p-y : 0.75rem;
         color: $white;
         width: 100%;
 
-        
-        &:not(:first-of-type) {
-            padding-top: $p-y;
-        }
-
         label {
+            position: absolute;
+            z-index: 1;
+            max-width: 100%;
+            width: 100%;
+
+            line-height: $line-height;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 600;
+
+            padding: ($p-y - 0.16rem) $p-x;
+
             display: block;
             transform-origin: left center;
-            transform: scale(1.1) translateY(85%);
+
+            color: #1d1e2559;
+            background-color: $light;
+
             opacity: 1;
 
             transition: all $fast $ease-both;
 
             pointer-events: none;
+
+            &[for="time"] {
+                padding: ($p-y - 0.14rem) $p-x;
+            }
+
+            /*
+            &[for="date"] {
+                width: calc(100% - 2.5rem)!important;
+            }
+
+            &[for="info"] {
+                white-space: inherit;
+            }
+            */
         }
 
         textarea, input, select {
             position: relative;
-            background-color: transparent;
+            background-color: $light;
+            font-size: inherit;
             width: 100%;
+            font-size: 0.9rem;
             font-weight: 600;
+            line-height: 1!important;
             appearance: none;
             -webkit-appearance: none;
 
-            font-family: $font2;
-            font-size: 1rem;
-            color: $white;
+            font-family: $font1;
+            color: $text-color;
 
             border: none;
-            box-shadow: 0 3px 0 -1px $white;
             
-            padding: $p-y 0;
-            padding-top: 0;
+            padding: $p-y $p-x;
 
             transition: all $fast $ease-both;
 
@@ -104,11 +93,15 @@ $p-y : 0.75rem;
 
             &[type="date"] {
                 appearance: none;
-                color-scheme: dark;
+                // color-scheme: dark;
                 
                 &:placeholder {
                     opacity: 0;
                 }
+            }
+
+            &[type="time"] {
+                padding-bottom: calc($p-y - 0.15rem);
             }
         }
 
@@ -140,8 +133,8 @@ $p-y : 0.75rem;
         }
 
         textarea {
-            padding: $p-y 0 ;
-            height: 15rem!important;
+            resize: none;
+            height: calc($p-x * 2 + 5rem)!important;
         }
 
         &.form-field {
@@ -163,13 +156,13 @@ $p-y : 0.75rem;
 
             &--focus, &--complete, &--labelUp {
                 label {
-                    transform: inherit;
-                    opacity: .5;
+                    transform: translateX(1rem);
+                    opacity: 0;
                 }
             }
             
             &--error {
-                textarea, input, select {
+                textarea, input, select, label {
                     box-shadow: 0 1px 0 0 $failed!important;
                 }
             }
@@ -181,9 +174,7 @@ $p-y : 0.75rem;
         position: absolute;
         left: 0;
         bottom: 0;
-        z-index: 5;
-        margin: $card-sm-spacing;
-        width: calc(100% - ($card-sm-spacing * 2));
+        z-index: 5;        width: calc(100% - ($card-sm-spacing * 2));
         padding: 1rem;
 
         text-align: center;
@@ -229,14 +220,24 @@ $p-y : 0.75rem;
     }
     
     .btn[type="submit"] {
-        margin-top: $card-sm-spacing;
+        min-width: calc(100% + $card-sm-spacing * 2);
+        padding: 1rem;
+        margin-left: -$card-sm-spacing;
+        margin-bottom: -$card-sm-spacing;
+
+        &::after, &::before {
+            content: none;
+        }
+
+        // &:hover {
+        //     background-color: $dark;
+        // }
     }
-    
 }
 
-@media (min-width :  450px) {
+@media (min-width :  map-get($breakpoints, lg)) {
     .form {
-        gap: 0 $p-x;
+        gap: $p-x;
         &-field {
             &--half { width: calc(50% - ($p-x / 2)); }
         }
@@ -246,33 +247,45 @@ $p-y : 0.75rem;
 
 @media (min-width: map-get($breakpoints, md)) {
 
-    $p-x : $card-lg-spacing;
-    $p-y : 1rem;
+    $p-x : 1.5rem;
+    $p-y : 1.25rem;
 
     .form {
         padding: $card-lg-spacing;
-        border-radius: $radius-desk;
-
-        gap: 0 $p-x;
+        gap: $p-x;
 
         &-field {
             &--half {
                 width: calc(50% - ($p-x / 2));
             }
+
+            label {
+                padding: ($p-y - 0.22rem) $p-x;
+            }
+
+            textarea, input, select {
+                padding: $p-y $p-x;
+
+                &[type="time"] {
+                    padding-bottom: $p-y - 0.17rem!important;
+                }
+            }
         }
+        
 
         &-message {
             margin: $card-lg-spacing;
             width: calc(100% - ($card-lg-spacing * 2));
         }
-    }
 
-    textarea, input, select {
-        padding: $p-y $p-x;
-        padding-left: $p-x;
+        .btn[type="submit"] {
+            min-width: calc(100% + $card-lg-spacing * 2);
+            margin-left: -$card-lg-spacing;
+            margin-bottom: -$card-lg-spacing;
+        }
     }
 
     textarea {
-        padding: $p-y $p-x;
+        height: calc($p-x * 2 + 5rem)!important;
     }
 }

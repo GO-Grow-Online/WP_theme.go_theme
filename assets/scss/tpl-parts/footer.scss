@@ -5,38 +5,127 @@
 @import '../utils/_variables';  
 
 footer {
-    margin-bottom: 4rem;
+    margin-bottom: $nav-bottom-height;
+
+    position: relative;
+    overflow: hidden;
+
+    .bg {
+        height: 100%!important;
+    }
+
+    @keyframes show {
+        0% {
+            box-shadow: 0 0 0 0rem $primary, $shadow;
+            transform: scale(1);
+        }
+        50% { transform: scale(1.02); }
+        100% {
+            box-shadow: 0 0 0 3rem transparent, $shadow;
+            transform: scale(1);
+        }
+    }
+
+    #footer-form {
+        &.animate {
+            animation: show 1s 0.3s;
+        }
+    }
 
     .wrapper {
         display: grid;
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
         gap: map-get($sec-spacings, sm-y);
+
         
         align-items: flex-start!important;
         justify-content: flex-start!important;
 
         padding: map-get($sec-spacings, sm-y) map-get($sec-spacings, sm-x);
+        padding-bottom: 0;
 
-        .footer-logo img {
-            width: 80%;
-            max-width: 300px;
-            height: auto;
-            object-fit: contain;
-        }
-
-        .link-list {
-
-            .link-list-item {
-
-                a {
-                    padding: 0.25rem 0;
+        .ctn-title {
+            &-main {
+                &::after {
+                    content: none;
                 }
             }
         }
 
+        .footer-map {
+            position: relative;
+            height: 400px;
+
+            width: calc(100% - map-get($sec-spacings, sm-x) * 2);
+            height: calc(100vw - map-get($sec-spacings, sm-x) * 2);
+            margin-left: map-get($sec-spacings, sm-x);
+
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+
+            $sp : $card-sm-spacing;
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: -$sp;
+                left: -$sp;
+
+                width: $sp * 3;
+                height: $sp * 2;
+
+                border-left: 0.3rem solid $primary;
+                border-bottom: 0.3rem solid $primary;
+            }
+        }
+
+        .btn-group {
+            
+            position: relative;
+
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                left: -100vw;
+                top: 0;
+
+                z-index: -10;
+
+                width: 300vw;
+                height: 200%;
+
+                background: $dark;
+            }
+        }
+
+        .schedule {
+            &-item {
+                &:not(:last-child) {
+                    margin-bottom: $card-sm-spacing;
+                    padding-bottom: $card-sm-spacing;
+                    border-bottom: 1px solid $light;
+                }
+
+                p {
+                    display: flex;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    margin-bottom: 0;
+                }
+            }
+
+            margin-bottom: 3rem;
+        }
+
         &.footer-bottom {
-            background-color: $light;
+            color: $white;
+            background-color: lighten($dark, 5%);
             padding-top: $card-sm-spacing!important;
             padding-bottom: $card-sm-spacing!important;
     
@@ -72,11 +161,40 @@ footer {
     
 }
 
-
 @media (min-width: map-get($breakpoints, md)) {
     footer {
         & > .wrapper {
             padding: map-get($sec-spacings, md-y) map-get($sec-spacings, md-x);
+            padding-bottom: 0;
+
+            .schedule {
+                &-item {
+                    p {
+                        flex-direction: row;
+                        font-size: 1.15rem;
+
+                        & > * {
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+
+            $sp : $card-md-spacing * 2;
+            .footer-map {
+                height: 450px;
+                width: 100%;
+                margin: 0;
+                margin-bottom: $sp;
+    
+                &::before {
+                    bottom: -$sp;
+                    left: -$sp;
+    
+                    width: $sp * 3;
+                    height: $sp * 2;
+                }
+            }
         }
     }
 }
@@ -89,16 +207,120 @@ footer {
 
             padding: map-get($sec-spacings, lg-y) map-get($sec-spacings, lg-x);
 
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 1fr;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 calc(map-get($sec-spacings, lg-x) / 2);
+            align-items: stretch;
+            gap: 5rem!important;
+
+            & > div {
+                height: 100%;
+
+                &.col-lg-right {
+                    margin-top: 3.5rem;
+                }
+
+                &.col-lg-left {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+
+            .ctn-title {
+                margin-bottom: 0;
+            }
+
+            .schedule {
+
+                margin-top: 3rem;
+                margin-bottom: 4rem;
+
+                &-item {
+                    &:not(:last-child) {
+                        margin-bottom: $card-lg-spacing;
+                        padding-bottom: $card-lg-spacing;
+    
+                        p {
+                            font-size: 1.25rem;
+                        }
+                    }
+
+                }
+            }
+
+            .footer-map {
+                height: 100%;
+                margin: 0;
+
+                $sp : $card-lg-spacing * 2;
+                &::before {
+                    bottom: -$sp;
+                    left: -$sp;
+    
+                    width: $sp * 5;
+                    height: $sp * 2;
+                }
+            }
+    
+            .btn-group {
+                margin-top: 5rem;
+                padding-top: 5rem;
+                padding-bottom: 0;
+            }
 
             &.footer-bottom {
                 flex-direction: row;
                 padding-top: $card-lg-spacing!important;
                 padding-bottom: $card-lg-spacing!important;
             }
-        }   
+        }
 
+
+        // On scroll animations
+
+        .schedule {
+            &-item {
+                transform: translateY(0);
+                opacity: 1;
+                transition: all $on-scroll $ease-both;
+                @for $i from 1 through 5 {
+                    &:nth-child(#{$i}) {
+                        transition-delay: calc(($on-scroll * #{$i}) * 0.1);
+                    }
+                }
+            }
+        }
+
+        .footer-map {
+            transform: scale(1);
+            opacity: 1;
+            transition: all $on-scroll $ease-both;
+            transition-delay: $on-scroll * 0.5;
+        }
+
+        .form {
+            box-shadow: 0 0 0 2rem transparent, $shadow;
+            transition: box-shadow ($on-scroll * 2) $on-scroll $ease-both;
+        }
+
+        &.hidden-animate {
+            .footer-map {
+                transform: scale(.9);
+                opacity: 0;
+            }
+
+            .schedule {
+                &-item {
+                    @for $i from 1 through 5 {
+                        transform: translateY(-2rem);
+                        opacity: 0;
+                    }
+                }
+            }
+
+            .form {
+                box-shadow: 0 0 0 0rem $primary, $shadow;
+            }
+        }
     }
 }
 

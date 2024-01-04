@@ -3,6 +3,6 @@
     {% set video = media.vid %}
     {% include 'elements/video.twig' %}
 {% else %}
-    {% set img = media.img %}
+    {% set img = get_image(media.img) %}
     {% include 'elements/image.twig' %}    
 {% endif %} 
