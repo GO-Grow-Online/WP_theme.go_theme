@@ -271,21 +271,11 @@ add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
 
 
 // Service worker
-function register_service_worker() {
-	if ('serviceWorker' in navigator) {
-	  echo '<script>
-			  navigator.serviceWorker.register("/service-worker.js")
-				.then(function(registration) {
-				  console.log("Service Worker enregistré avec succès:", registration);
-				})
-				.catch(function(error) {
-				  console.error("Erreur Service Worker:", error);
-				});
-			</script>';
-	}
+function enqueue_service_worker_script() {
+    wp_enqueue_script('service-worker', get_template_directory_uri() . '/service-worker.js', array(), null, true);
 }
-  
-add_action('wp_footer', 'register_service_worker');
+
+add_action('wp_enqueue_scripts', 'enqueue_service_worker_script');
   
 
 
