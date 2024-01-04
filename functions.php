@@ -270,6 +270,24 @@ function my_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'my_theme_scripts' );
 
 
+// Service worker
+function register_service_worker() {
+	if ('serviceWorker' in navigator) {
+	  echo '<script>
+			  navigator.serviceWorker.register("/service-worker.js")
+				.then(function(registration) {
+				  console.log("Service Worker enregistré avec succès:", registration);
+				})
+				.catch(function(error) {
+				  console.error("Erreur Service Worker:", error);
+				});
+			</script>';
+	}
+}
+  
+add_action('wp_footer', 'register_service_worker');
+  
+
 
 ///////////////////////////
 ///////// ADMIN ///////////
