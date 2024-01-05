@@ -203,12 +203,29 @@ header {
     .nav-top {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         
         position: fixed;
         bottom: 0;
 
         height: $nav-bottom-height;
         width: calc(100% - $nav-bottom-height);
+
+        .link-icon {
+            &:first-child {
+                display: none;
+            }
+
+            &:not(:last-child) {
+                font-size: 0;
+                color: transparent;
+                position: absolute;
+            }
+
+            &:last-child {
+                background-origin: lighten($dark, 5%);
+            }
+        }
     }
 }
 
