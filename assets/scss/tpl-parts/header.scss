@@ -197,9 +197,18 @@ header {
             content: none;
         }
     }
+}
 
+@media (max-width: calc(map-get($breakpoints, lg) - 1px)) {
     .nav-top {
-        display: none;
+        display: flex;
+        align-items: center;
+        
+        position: fixed;
+        bottom: 0;
+
+        height: $nav-bottom-height;
+        width: calc(100% - $nav-bottom-height);
     }
 }
 
@@ -367,8 +376,6 @@ body.scrolled {
             padding-bottom: 0;
             height: 3rem;
             padding-top: 0.2rem;
-            display: flex;
-            align-items: center;
             justify-content: space-between;
 
             & > span {
