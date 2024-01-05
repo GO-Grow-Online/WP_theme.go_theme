@@ -222,11 +222,11 @@ header {
             .link-icon{
                 
                 height: $nav-bottom-height;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 
                 &:not(:last-child) {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
                     
                     width: $nav-bottom-height;
                     font-size: 0;
