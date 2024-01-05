@@ -213,18 +213,28 @@ header {
         left: $nav-bottom-height;
         width: calc(100% - $nav-bottom-height);
 
-        .link-icon {
-            &:first-of-type {
-                display: none;
-            }
+        & > .link-icon {
+            display: none;
+        }
 
-            &:not(:last-of-type) {
+        & > span .link-icon{
+
+            height: $nav-bottom-height;
+
+            &:not(:last-child) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                width: $nav-bottom-height;
                 font-size: 0;
                 color: transparent;
                 position: absolute;
             }
 
             &:last-child {
+                padding-left: $nav-bottom-height * 0.5;
+                padding-right: $nav-bottom-height * 0.5;
                 background-color: lighten($dark, 5%);
             }
         }
