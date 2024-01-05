@@ -13,7 +13,7 @@
 		<span>
 			{% if g.phone %} <a class="link-icon" href="tel:{{ g.phone }}"><span class="icon">{% include 'assets/static/icons/contact/phone.svg' %}</span> {{ g.phone }}</a> {% endif %}
 			{% if g.email %} <a class="link-icon" href="mailto:{{ g.email }}"><span class="icon">{% include 'assets/static/icons/contact/email.svg' %}</span> {{ g.email }}</a> {% endif %}
-			{% if g.meta('menu') %} <a class="link-icon link-icon--primary" href="{{ g.meta('menu') }}"><span class="icon">{% include 'assets/static/icons/menu-icon.svg' %}</span> {{ __('Menu', 'Non-editable strings') }}</a> {% endif %}
+			{% if g.menu %} <a class="link-icon link-icon--primary" href="{{ g.menu }}"><span class="icon">{% include 'assets/static/icons/menu-icon.svg' %}</span> {{ __('Menu', 'Non-editable strings') }}</a> {% endif %}
 		</span>
 		{% endif %}
 	</div>
