@@ -207,8 +207,10 @@ header {
         
         position: fixed;
         bottom: 0;
+        z-index: 5;
 
         height: $nav-bottom-height;
+        left: $nav-bottom-height;
         width: calc(100% - $nav-bottom-height);
 
         .link-icon {
@@ -216,14 +218,14 @@ header {
                 display: none;
             }
 
-            &:not(:last-child) {
+            &:not(:last-of-type) {
                 font-size: 0;
                 color: transparent;
                 position: absolute;
             }
 
             &:last-child {
-                background-origin: lighten($dark, 5%);
+                background-color: lighten($dark, 5%);
             }
         }
     }
