@@ -214,7 +214,7 @@ header {
         width: calc(100% - $nav-bottom-height);
 
         .link-icon {
-            &:first-child {
+            &:first-of-type {
                 display: none;
             }
 
