@@ -588,6 +588,13 @@ main {
         margin-right: 0.5rem;
 
         color: $primary;
+        
+        svg {
+            width: $icon-size-sm;
+            min-width: $icon-size-sm;
+            height: $icon-size-sm;
+            min-height: $icon-size-sm;    
+        }
     }
 
     &--primary {
