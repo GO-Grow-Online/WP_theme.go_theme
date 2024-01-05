@@ -225,6 +225,10 @@ header {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
+                .icon {
+                    margin-bottom: 0;
+                }
                 
                 &:not(:last-child) {
                     
