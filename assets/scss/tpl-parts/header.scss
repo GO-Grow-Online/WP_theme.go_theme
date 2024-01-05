@@ -218,6 +218,7 @@ header {
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            width: 100%;
 
             .link-icon{
                 
@@ -225,10 +226,6 @@ header {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
-                .icon {
-                    margin-bottom: 0!important;
-                }
                 
                 &:not(:last-child) {
                     
