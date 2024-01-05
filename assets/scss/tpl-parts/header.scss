@@ -200,11 +200,7 @@ header {
 }
 
 @media (max-width: calc(map-get($breakpoints, lg) - 1px)) {
-    .nav-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        
+    .nav-top {        
         position: fixed;
         bottom: 0;
         z-index: 5;
@@ -217,25 +213,33 @@ header {
             display: none;
         }
 
-        & > span .link-icon{
+        & > span {
 
-            height: $nav-bottom-height;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-            &:not(:last-child) {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                width: $nav-bottom-height;
-                font-size: 0;
-                color: transparent;
-                position: absolute;
-            }
-
-            &:last-child {
-                padding-left: $nav-bottom-height * 0.5;
-                padding-right: $nav-bottom-height * 0.5;
-                background-color: lighten($dark, 5%);
+            .link-icon{
+                
+                height: $nav-bottom-height;
+                
+                &:not(:last-child) {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    width: $nav-bottom-height;
+                    font-size: 0;
+                    width: 0;
+                    height: 0;
+                    color: transparent;
+                }
+                
+                &:last-child {
+                    padding-left: $nav-bottom-height * 0.5;
+                    padding-right: $nav-bottom-height * 0.5;
+                    background-color: lighten($dark, 5%);
+                }
             }
         }
     }
