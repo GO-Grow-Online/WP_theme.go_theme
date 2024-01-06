@@ -1,0 +1,116 @@
+//////////////////////////////
+///// ACF REUSABLE BLOCK /////
+//////////////////////////////
+
+@import '../utils/_variables';  
+
+footer {
+    margin-bottom: 4rem;
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: map-get($sec-spacings, sm-y);
+        
+        align-items: flex-start!important;
+        justify-content: flex-start!important;
+
+        padding: map-get($sec-spacings, sm-y) map-get($sec-spacings, sm-x);
+
+        .footer-logo img {
+            width: 80%;
+            max-width: 300px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .link-list {
+
+            .link-list-item {
+
+                a {
+                    padding: 0.25rem 0;
+                }
+            }
+        }
+
+        &.footer-bottom {
+            background-color: $light;
+            padding-top: $card-sm-spacing!important;
+            padding-bottom: $card-sm-spacing!important;
+    
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between!important;
+            gap: 1.5rem;
+    
+            p > a {
+                &::after {
+                    content:  " - ";
+                }
+    
+                &:last-child {
+                    &::after {
+                        content: none;
+                    }
+                }
+            }
+    
+            a {
+                opacity: 1;
+                transition: opacity $fast $bezier;
+    
+                &:hover {
+                    opacity: .3;
+                }
+            }
+    
+            * { margin: 0; }
+        }
+    }  
+    
+}
+
+
+@media (min-width: map-get($breakpoints, md)) {
+    footer {
+        & > .wrapper {
+            padding: map-get($sec-spacings, md-y) map-get($sec-spacings, md-x);
+        }
+    }
+}
+
+
+@media (min-width: map-get($breakpoints, lg)) {
+    footer {
+        margin-bottom: 0;
+        & > .wrapper {
+
+            padding: map-get($sec-spacings, lg-y) map-get($sec-spacings, lg-x);
+
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+
+            &.footer-bottom {
+                flex-direction: row;
+                padding-top: $card-lg-spacing!important;
+                padding-bottom: $card-lg-spacing!important;
+            }
+        }   
+
+    }
+}
+
+@media (min-width: map-get($breakpoints, xl)) {
+    footer {
+        & > .wrapper {
+            padding: map-get($sec-spacings, xl-y) map-get($sec-spacings, xl-x);
+
+            &.footer-bottom {
+                padding-top: $card-xl-spacing!important;
+                padding-bottom: $card-xl-spacing!important;
+            }
+        } 
+    }  
+}

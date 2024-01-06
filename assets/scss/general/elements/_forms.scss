@@ -1,0 +1,231 @@
+$sp : map-get($sec-spacings, sm-x);
+$p-x : $card-sm-spacing;
+$p-y : 0.75rem;
+
+.form {
+
+    position: relative;
+    padding: $card-sm-spacing;
+    border-radius: $radius;
+    overflow: hidden;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: $sp;
+
+    &-field {
+
+        position: relative;
+        color: $text-color;
+        width: 100%;
+
+        // Champ honeypot, doit être masqué à tous prix.
+        // Si ce champ est complété, le mail n'est pas envoyé, c'est pour cette raison que l'utilisateur le peux pas le voir
+        // Seul les Spam-bots seront succeptibles de le compléter
+        &--send {
+            display: none;
+        }
+
+        label {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: block;
+            transform-origin: left center;
+            opacity: 1;
+
+            padding: $p-y $p-x;
+
+            transition: all $fast $bezier;
+
+            pointer-events: none;
+        }
+
+        textarea, input, select {
+            position: relative;
+            background-color: transparent;
+            width: 100%;
+            font-weight: 600;
+            appearance: none;
+            -webkit-appearance: none;
+
+            font-family: $font2;
+            font-size: 1rem;
+            color: $text-color;
+
+            border: none;
+
+            box-shadow: 0 3px 0 -1px $white;
+            
+            padding: $p-y $p-x;
+
+            transition: all $fast $bezier;
+
+            &:focus {
+                outline: none!important;
+            }
+            
+            &::placeholder {
+                color: darken($light, 40%);
+            }
+        }
+
+        select {
+            padding-right: $p-y;
+
+            option {
+                font-weight: 600;
+                color: $text-color;
+                padding: 1rem;
+
+                &:first-child {
+                    display: none;
+                }
+            }
+
+            & + svg {
+                position: absolute;
+                right: 0;
+                bottom: $p-y * 1.25;
+
+                max-width: 1rem;
+                min-width: 1rem;
+                max-height: 1rem;
+                min-height: 1rem;
+
+                transition: transform $fast $bezier;
+            }
+        }
+
+        textarea {
+            height: 15rem!important;
+        }
+
+        &.form-field {
+            &--required {
+                label::after {
+                    content: " *";
+                }
+            }
+
+            &--focus {
+                textarea, input, select {
+                    box-shadow: 0 2px 0 -1px $white;
+                }
+
+                select + svg {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &--focus, &--complete, &--labelUp {
+                label {
+                    opacity: 0;
+                }
+            }
+            
+            &--error {
+                textarea, input, select {
+                    box-shadow: 0 1px 0 0 $failed!important;
+                }
+            }
+        }
+    }
+
+    &-message {
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 5;
+        margin: $card-sm-spacing;
+        width: calc(100% - ($card-sm-spacing * 2));
+        padding: 1rem;
+
+        text-align: center;
+        font-weight: 800;
+
+        background-color: $white;
+        border-radius: $radius;
+
+        transform: translateY(2rem);
+        opacity: 0;
+
+        transition: all $fast $bezier;
+
+        &--failed { color: $failed; }
+        &--succes { color: $succes; }
+
+        p {
+            margin: 0;
+
+            padding: 1rem;
+
+            &:last-child { padding-bottom: 0; }
+            &:first-child { padding-top: 0; }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $light;
+            }
+        }
+    }
+
+    &--succes {
+        .form-message--succes {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    &--failed {
+        .form-message--failed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .btn[type="submit"] {
+        margin-top: $card-sm-spacing;
+        color: $white;
+    }
+    
+}
+
+@media (min-width :  450px) {
+    .form {
+        gap: $p-x;
+        &-field {
+            &--half { width: calc(50% - ($p-x / 2)); }
+        }
+    }
+}
+
+
+@media (min-width: map-get($breakpoints, md)) {
+
+    $p-x : $card-lg-spacing;
+    $p-y : 1rem;
+
+    .form {
+        padding: $card-lg-spacing;
+        border-radius: $radius-lg;
+
+        gap: $p-y $p-x;
+
+        &-field {
+            &--half {
+                width: calc(50% - ($p-x / 2));
+            }
+        }
+
+        &-message {
+            margin: $card-lg-spacing;
+            width: calc(100% - ($card-lg-spacing * 2));
+        }
+    }
+
+    textarea, input, select {
+        padding: $p-y $p-x;
+    }
+}

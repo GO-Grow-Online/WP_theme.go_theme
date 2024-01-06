@@ -1,0 +1,67 @@
+@import 'utils/_variables';  
+
+// Style for Gutenberg site preview
+
+.acf-image-uploader .image-wrap img {
+    object-fit: contain;
+}
+
+.edit-post-visual-editor__post-title-wrapper {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+    margin: 0!important;
+    background-color: $light!important;
+    text-align: center!important;
+    
+    h1 {
+        font-size: 2rem!important;
+        margin-bottom: 0!important;
+    }
+}
+
+// Enlarge the aside section containing ACF Fields
+@media (min-width: 782px) {
+    .interface-complementary-area {
+        width: 25vw!important;
+        min-width: 250px!important;
+    }
+}
+
+// Overide default gutenberg styles
+html :where(.wp-block) {
+    max-width: 100%;
+}
+
+div.edit-post-visual-editor, .editor-styles-wrapper, .editor-canvas {
+    padding: 0!important;
+}
+
+.card {
+    position: inherit;
+    margin-top: inherit;
+    padding: inherit;
+    min-width: inherit;
+    max-width: inherit;
+    border: inherit;
+    box-shadow: inherit;
+    background: inherit;
+    box-sizing: inherit;
+}
+
+// main.scss
+@import 'critical-css.scss';
+@import 'style.scss';
+
+
+// For smaller devices, wrapper should have smaller x paddings to prevent content to shrink roo much
+@media (min-width: map-get($breakpoints, lg)) {
+    div.edit-post-visual-editor section .wrapper {
+        padding: map-get($sec-spacings, lg-y) (map-get($sec-spacings, lg-x) * 0.5)!important;
+    } 
+}
+
+@media (min-width: map-get($breakpoints, xl)) {
+    div.edit-post-visual-editor section .wrapper {
+        padding: map-get($sec-spacings, xl-y) (map-get($sec-spacings, xl-x) * 0.5)!important;
+    } 
+}

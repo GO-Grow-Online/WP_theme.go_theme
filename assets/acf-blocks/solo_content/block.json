@@ -1,0 +1,24 @@
+{
+    "name": "solo_content",
+    "title": "Textual content",
+    "description": "Some content with 2 buttons.",
+    "style": [ "file:./solo_content.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["Content", "Text"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "solo_content.php"
+    },        
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": true,
+            "link": false
+        },
+        "alignText": false
+    }
+}
