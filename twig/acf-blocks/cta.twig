@@ -1,20 +1,16 @@
 {% extends "acf-blocks/base.twig" %}
 
 {% block content %}
-
-{% set target = b.cond_ext ? "_blank" : "_self" %}
-{% set link = b.cond_ext ? b.ext_link : b.int_link %}
-
-
-<a target="{{ target }}" href="{{ link }}" class="cta-wrapper">
-    {% set img = get_image(b.bg_img) %}
-    {% set is_fs = true %}
-    {% set is_seamless = true %}
-    {% include 'elements/image.twig' %}
-    <p class="h2">
-        <strong>{{ b.link_label }}</strong>
-        {{ b.text }}
-    </p>
-</a>
-
+<div class="wrapper">
+    {% set target = b.cond_ext ? "_blank" : "_self" %}
+    {% set link = b.cond_ext ? b.ext_link : b.int_link %}
+    <a target="{{ target }}" href="{{ link }}" class="cta-wrapper">
+        <div class="ctn">
+            {% set title_group = b.title %}
+            {% include 'elements/h2-title.twig' %}
+            <div class="wysiwyg ctn-wysiwyg">{{ b.content }}</div>
+        </div>
+        <button class="btn btn-primary">{{ b.cta_text }}</button>
+    </a>
+</div>
 {% endblock %}

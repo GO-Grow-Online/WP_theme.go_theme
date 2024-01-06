@@ -1,29 +1,8 @@
 {# This template is used as an ACF-block #}
-<header class="hidden-animate">
-	<div class="wrapper nav-top">
-		{% if g.address %} 
-		{% if g.itinirary %}<a class="link-icon" href="{{ g.itinirary }}">{% else %} <span class="link-icon"> {% endif %}
-
-			<span class="icon">{% include 'assets/static/icons/contact/address.svg' %}</span> {{ g.address|striptags }}
-			
-		{% if g.itinirary %}</a>{% else %}</span>{% endif %}
-		{% endif %}
-
-		{% if g.phone or g.email %}
-		<span>
-			{% if g.phone %} <a class="link-icon" href="tel:{{ g.phone }}"><span class="icon">{% include 'assets/static/icons/contact/phone.svg' %}</span> {{ g.phone }}</a> {% endif %}
-			{% if g.email %} <a class="link-icon" href="mailto:{{ g.email }}"><span class="icon">{% include 'assets/static/icons/contact/email.svg' %}</span> {{ g.email }}</a> {% endif %}
-			{% if g.menu %} <a class="link-icon link-icon--primary" href="{{ g.menu }}"><span class="icon">{% include 'assets/static/icons/menu-icon.svg' %}</span> {{ __('Menu', 'Non-editable strings') }}</a> {% endif %}
-		</span>
-		{% endif %}
-	</div>
-
+<header>
 	<div class="wrapper">
-		<a class="logo" href="{{site.link}}#introduction" aria-label="{{ g.name }}">
-			<img width="30" height="30" src="{{ g.logo_solo.url }}" alt="{{ g.name }}">
-			<span>
-				{{ g.name }}
-			</span>
+		<a class="logo" href="{{ site.link }}" aria-label="{{ __("Retourner à l'accueil", "Non-editable strings") }}">
+			<img src="{{ g.logo.url }}" alt="{{ __('Logo de', 'Non-editable strings') }} {{ g.name }}">
 		</a>
 		
 		<nav class="nav-main" role="navigation">

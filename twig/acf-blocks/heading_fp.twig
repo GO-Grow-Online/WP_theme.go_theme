@@ -1,34 +1,3 @@
-<section  {% if b_prop.anchor %} id="{{ b_prop.anchor }}"{% endif %} class="heading_fp hidden-animate">
-    {% set img = get_image(b.bg_img) %}
-    {% set image_format = "medium" %}
-    {% set eager_loading = true %}
-    {% set is_seamless = true %}
-    <span class="heading_fp-bg">
-        {% include "elements/image.twig" %}
-    </span>
+<section class="heading_fp">
 
-    <div class="wrapper wrapper-lg-2col">
-        <div class="col-lg-left">
-            <h1>{{ b.title }}</h1>
-
-            <div class="heading_fp-pictures lines">
-                {% set img = get_image(b.first_img) %}
-                {% set figcaption = true %}
-                {% set eager_loading = true %}
-                {% include "elements/image.twig" %}
-                
-                {% set img = get_image(b.second_img) %}
-                {% set figcaption = true %}
-                {% set eager_loading = true %}
-                {% include "elements/image.twig" %}
-            </div>
-        </div>
-        <div class="col-lg-right">
-            {% if g.form_title %}
-            <p class="h3">{{ g.form_title }}</p>
-            {% endif %}
-            {% set form_id = "heading-form" %}
-            {% include 'elements/contact-form.twig' %}
-        </div>
-    </div>
 </section>

@@ -1,88 +1,66 @@
 $sp : map-get($sec-spacings, sm-x);
-$p-x : 1rem;
+$p-x : $card-sm-spacing;
 $p-y : 0.75rem;
 
 .form {
 
     position: relative;
     padding: $card-sm-spacing;
+    border-radius: $radius;
     overflow: hidden;
-
-    box-shadow: $shadow ;
 
     display: flex;
     flex-wrap: wrap;
-    gap: $p-x;
-
-    background-color: $white;
+    gap: $sp;
 
     &-field {
 
         position: relative;
-        color: $white;
+        color: $text-color;
         width: 100%;
+
+        // Champ honeypot, doit être masqué à tous prix.
+        // Si ce champ est complété, le mail n'est pas envoyé, c'est pour cette raison que l'utilisateur le peux pas le voir
+        // Seul les Spam-bots seront succeptibles de le compléter
+        &--send {
+            display: none;
+        }
 
         label {
             position: absolute;
-            z-index: 1;
-            max-width: 100%;
-            width: 100%;
-
-            line-height: $line-height;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-weight: 600;
-
-            padding: ($p-y - 0.16rem) $p-x;
+            top: 0;
+            left: 0;
 
             display: block;
             transform-origin: left center;
-
-            color: #1d1e259d;
-            background-color: $light;
-
             opacity: 1;
 
-            transition: all $fast $ease-both;
+            padding: $p-y $p-x;
+
+            transition: all $fast $bezier;
 
             pointer-events: none;
-
-            &[for="time"] {
-                padding: ($p-y - 0.14rem) $p-x;
-            }
-
-            /*
-            &[for="date"] {
-                width: calc(100% - 2.5rem)!important;
-            }
-
-            &[for="info"] {
-                white-space: inherit;
-            }
-            */
         }
 
         textarea, input, select {
             position: relative;
-            background-color: $light;
-            font-size: inherit;
+            background-color: transparent;
             width: 100%;
-            font-size: 0.9rem;
             font-weight: 600;
-            line-height: 1!important;
             appearance: none;
             -webkit-appearance: none;
 
-            font-family: $font1;
+            font-family: $font2;
+            font-size: 1rem;
             color: $text-color;
 
             border: none;
-            border-radius: 0;
+
+            box-shadow: 0 3px 0 -1px $white;
             
             padding: $p-y $p-x;
 
-            transition: all $fast $ease-both;
+            transition: all $fast $bezier;
 
             &:focus {
                 outline: none!important;
@@ -90,19 +68,6 @@ $p-y : 0.75rem;
             
             &::placeholder {
                 color: darken($light, 40%);
-            }
-
-            &[type="date"] {
-                appearance: none;
-                // color-scheme: dark;
-                
-                &:placeholder {
-                    opacity: 0;
-                }
-            }
-
-            &[type="time"] {
-                padding-bottom: calc($p-y - 0.15rem);
             }
         }
 
@@ -129,13 +94,12 @@ $p-y : 0.75rem;
                 max-height: 1rem;
                 min-height: 1rem;
 
-                transition: transform $fast $ease-both;
+                transition: transform $fast $bezier;
             }
         }
 
         textarea {
-            resize: none;
-            height: calc($p-x * 2 + 5rem)!important;
+            height: 15rem!important;
         }
 
         &.form-field {
@@ -157,13 +121,12 @@ $p-y : 0.75rem;
 
             &--focus, &--complete, &--labelUp {
                 label {
-                    transform: translateX(1rem);
                     opacity: 0;
                 }
             }
             
             &--error {
-                textarea, input, select, label {
+                textarea, input, select {
                     box-shadow: 0 1px 0 0 $failed!important;
                 }
             }
@@ -175,7 +138,9 @@ $p-y : 0.75rem;
         position: absolute;
         left: 0;
         bottom: 0;
-        z-index: 5;        width: calc(100% - ($card-sm-spacing * 2));
+        z-index: 5;
+        margin: $card-sm-spacing;
+        width: calc(100% - ($card-sm-spacing * 2));
         padding: 1rem;
 
         text-align: center;
@@ -187,7 +152,7 @@ $p-y : 0.75rem;
         transform: translateY(2rem);
         opacity: 0;
 
-        transition: all $fast $ease-both;
+        transition: all $fast $bezier;
 
         &--failed { color: $failed; }
         &--succes { color: $succes; }
@@ -221,22 +186,13 @@ $p-y : 0.75rem;
     }
     
     .btn[type="submit"] {
-        min-width: calc(100% + $card-sm-spacing * 2);
-        padding: 1rem;
-        margin-left: -$card-sm-spacing;
-        margin-bottom: -$card-sm-spacing;
-
-        &::after, &::before {
-            content: none;
-        }
-
-        // &:hover {
-        //     background-color: $dark;
-        // }
+        margin-top: $card-sm-spacing;
+        color: $white;
     }
+    
 }
 
-@media (min-width :  map-get($breakpoints, lg)) {
+@media (min-width :  450px) {
     .form {
         gap: $p-x;
         &-field {
@@ -248,45 +204,28 @@ $p-y : 0.75rem;
 
 @media (min-width: map-get($breakpoints, md)) {
 
-    $p-x : 1.5rem;
-    $p-y : 1.25rem;
+    $p-x : $card-lg-spacing;
+    $p-y : 1rem;
 
     .form {
         padding: $card-lg-spacing;
-        gap: $p-x;
+        border-radius: $radius-lg;
+
+        gap: $p-y $p-x;
 
         &-field {
             &--half {
                 width: calc(50% - ($p-x / 2));
             }
-
-            label {
-                padding: ($p-y - 0.22rem) $p-x;
-            }
-
-            textarea, input, select {
-                padding: $p-y $p-x;
-
-                &[type="time"] {
-                    padding-bottom: $p-y - 0.17rem!important;
-                }
-            }
         }
-        
 
         &-message {
             margin: $card-lg-spacing;
             width: calc(100% - ($card-lg-spacing * 2));
         }
-
-        .btn[type="submit"] {
-            min-width: calc(100% + $card-lg-spacing * 2);
-            margin-left: -$card-lg-spacing;
-            margin-bottom: -$card-lg-spacing;
-        }
     }
 
-    textarea {
-        height: calc($p-x * 2 + 5rem)!important;
+    textarea, input, select {
+        padding: $p-y $p-x;
     }
 }

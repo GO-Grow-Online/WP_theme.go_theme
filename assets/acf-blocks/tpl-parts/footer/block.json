@@ -1,0 +1,28 @@
+{
+    "name": "footer",
+    "title": "Footer",
+    "description": "This block is programmatically called into tempaltes and appears at the end of each pages.",
+    "style": [ "file:./footer.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["Footer"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "footer.php",
+        "postTypes": []
+    },
+    "styles": [
+        { "name": "default", "label": "Default", "isDefault": true }
+    ],
+    "supports": {
+        "align": false,
+        "anchor": false,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": false,
+            "link": false
+        },
+        "alignText": false
+    }
+}

@@ -14,13 +14,10 @@
  */
 
 $context          = Timber::context();
+$context['posts'] = Timber::get_posts();
+$context['foo']   = 'bar';
 $templates        = array( 'index.twig' );
-
-// Is is blog
-if ( is_home() || is_archive() && 'post' == get_post_type() ) {
-	array_unshift( $templates, 'blog.twig', 'page.twig' );
-	$context['archive'] = new Timber\PostQuery();
-	$context['p'] = Timber::get_post();
+if ( is_home() ) {
+	array_unshift( $templates, 'front-page.twig', 'home.twig' );
 }
-
 Timber::render( $templates, $context );

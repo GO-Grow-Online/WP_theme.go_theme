@@ -1,137 +1,36 @@
 // Buttons
-
-$p-x : 1rem;
-$p-y : 1rem;
-$bar-width : 1rem;
 .btn {
 
     position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
     line-height: 1;
-    font-weight: 600;
+
+    border-radius: $radius;
 
     font-size: 0.9rem;
-    padding: $p-y calc(($p-x * 2) + $bar-width);
+    padding: 1rem 1.25rem;
 
-    transition: all $fast $bezier;
-
-    &:not(.btn-lg) {
-        &::after, &::before {
-            content: "";
-            display: block;
-            position: absolute;
-            width: $bar-width;
-            height: 0.2rem;
-            
-            transition: all $fast $bezier;
-        }
-        
-        &::after {
-            left: calc(100% - $p-x - $bar-width);
-        }
-        
-        &::before {
-            right: calc(100% - $p-x - $bar-width);
-        }
-    }
-
-    
-    &:hover {
-        &::after, &::before {
-            width: calc($bar-width + $p-x);
-        }
-
-        &::after {
-            left: 100%;
-        }
-    
-        &::before {
-            right: 100%;
-        }
-    }
-
+    transition: $fast $bezier;
 
     &.btn-primary {
         background-color: $primary;
-        color: $white!important;
-        
-        &::after, &::before {
-            background-color: $white;
-        }
-
-        box-shadow: inset 0 0 0 0 $white;
-
-        &:hover {
-            box-shadow: inset 0 0 0 0.4rem #ffffff68;
-        }
+        color: $white;
     }
 
-    &.btn-white {
-        color: $primary!important;
-        background-color: $white;
-
-        box-shadow: $shadow;
-        
-        &::after, &::before {
-            background-color: $primary;
-        }
-
-        box-shadow: inset 0 0 0 0 $primary, $shadow;
-
-        &:hover {
-            box-shadow: inset 0 0 0 0.4rem #fab53474, $shadow;
-        }
+    &.btn-secondary {
+        color: $primary;
+        background-color: $light;
     }
 
-    &-lg {
-
-        padding-left: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        min-height: 3rem;
-        background-color: $white;
-        box-shadow: $shadow;
-
-        & > span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 3rem;
-            height: 3rem;
-
-            margin-right: $p-x;
-
-            background-color: $primary;
-            color: $white;
-
-            box-shadow: inset 0 0 0 0 $white;
-
-            transition: box-shadow $fast $ease-both;
-
-            svg {
-                transition: transform $fast $ease-both;
-            }
-        }
-
-        &:hover {
-            & > span {
-                box-shadow: inset 0 0 0 0.4rem #ffffff74, $shadow;
-
-                svg {
-                    transform: scale(.95);
-                }
-            }
-
-        }
+    &:hover {
+        background-color: $secondary;
+        color: $white;
     }
     
     &-group {
         display: flex;
         flex-wrap: wrap;
-        gap: $card-sm-spacing;
+        gap: 1.5rem;
         margin-top: 2.5rem;        
     }
 
@@ -148,41 +47,11 @@ $bar-width : 1rem;
 
 @media (min-width :  map-get($breakpoints, md)) {
 
-    $p-x : 1.5rem;
-
-    .btn {
-        &-group {
-            gap: $card-md-spacing;
-        }
-
-        &-lg {
-
-            padding-right: $p-x;
-
-            min-height: 4rem;
-    
-            & > span {
-                width: 4rem;
-                height: 4rem;
-
-                margin-right: $p-x;
-
-                svg {
-                    width: 50%;
-                    height: 50%;
-                }
-            }
-        }
-    }
 }
 
 
 @media (min-width :  map-get($breakpoints, lg)) {
     .btn {
         font-size: 1rem;
-
-        &-group {
-            gap: $card-lg-spacing;
-        }
     }
 }
