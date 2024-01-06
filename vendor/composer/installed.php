@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'upstatement/timber-starter-theme',
-        'pretty_version' => '2.x-dev',
-        'version' => '2.9999999.9999999.9999999-dev',
-        'reference' => 'f0d6acf966680997a843a6cb811599c6954ebb88',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '973d2da30834eae050759d499e67575f03c23566',
         'type' => 'wordpress-theme',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -74,9 +74,9 @@
             'dev_requirement' => false,
         ),
         'upstatement/timber-starter-theme' => array(
-            'pretty_version' => '2.x-dev',
-            'version' => '2.9999999.9999999.9999999-dev',
-            'reference' => 'f0d6acf966680997a843a6cb811599c6954ebb88',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '973d2da30834eae050759d499e67575f03c23566',
             'type' => 'wordpress-theme',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
