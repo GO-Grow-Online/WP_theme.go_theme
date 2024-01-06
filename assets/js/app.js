@@ -12,7 +12,7 @@ jQuery(function($) {
     init_defer_video();
     // activate_video_controls();
     // my_lightbox();
-    ajax_form();
+    // ajax_form();
 
     function smooth_scroll() {
       
