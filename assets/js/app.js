@@ -83,8 +83,6 @@ jQuery(function($) {
         form.removeClass('form--sended');
         form.addClass('form--sending');
 
-        var formData = form.serialize();
-
         // Form loaded serve to detect if form has allready been sent a first time
         let form_valid = true;
 
@@ -123,6 +121,8 @@ jQuery(function($) {
         form.removeClass('form--loaded');
         form.addClass('form--sended');
         form.removeClass('form--sending');
+
+        var formData = form.serialize();
 
         if(form_valid) {
           // Send the AJAX request
@@ -164,7 +164,6 @@ jQuery(function($) {
         }else{
           form.addClass('form--failed');
           $('.form-message--failed').html(errors);
-          
         }
       });
     }
