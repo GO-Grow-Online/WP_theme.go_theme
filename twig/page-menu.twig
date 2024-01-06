@@ -1,0 +1,8 @@
+{% extends "base.twig" %}
+
+
+{% block content %}
+<object data="{{ g.meta('menu') }}" frameborder="0" type="application/pdf" width="100%" height="600">
+    <embed src="{{ g.meta('menu') }}" type="application/pdf">
+</object>
+{% endblock %}

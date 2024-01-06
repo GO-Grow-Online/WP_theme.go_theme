@@ -8,9 +8,16 @@ Here are ways to get involved:
 2. Answer questions that come in through [GitHub issues](https://github.com/timber/timber/issues?state=open).
 3. [Report a bug](https://github.com/timber/timber/issues/new?assignees=&labels=&projects=&template=bug_report.yml&title=%5BBUG%5D+Your+title) that you find.
 4. Share a theme you’ve built with Timber. This helps transfer knowledge about best practices, etc. _Add it to the [Showcase list](https://github.com/timber/timber/wiki/Showcase)_.
+<<<<<<< HEAD
 5. Browse ["help wanted"](https://github.com/timber/timber/labels/help%20wanted) and ["good first issue"](https://github.com/timber/timber/labels/good%20first%20issue) labels for areas of WordPress/PHP/code you know well to consider, build or document.
 6. Answer questions on [Stack Overflow posted under the «Timber» tag](https://stackoverflow.com/questions/tagged/timber). You can also [subscribe to a tag](https://stackoverflow.blog/2010/12/20/subscribe-to-tags-via-emai/) via email to get notified when someone needs help.
 7. Answer questions and join in on [GitHub Discussions](https://github.com/timber/timber/discussions).
+=======
+5. Tweet and [blog](http://www.oomphinc.com/blog/2013-10/php-templating-wordpress/#post-content) about the advantages (and criticisms) of the project and Twig.
+6. Browse ["help wanted"](https://github.com/timber/timber/labels/help%20wanted) and ["good first issue"](https://github.com/timber/timber/labels/good%20first%20issue) labels for areas of WordPress/PHP/code you know well to consider, build or document.
+7. Answer questions on [Stack Overflow posted under the «Timber» tag](https://stackoverflow.com/questions/tagged/timber). You can also [subscribe to a tag](https://stackoverflow.blog/2010/12/20/subscribe-to-tags-via-emai/) via email to get notified when someone needs help.
+8. Answer questions and join in on [GitHub Discussions](https://github.com/timber/timber/discussions).
+>>>>>>> 2c602b02d6e37814c7fdda4c6899a6e6256a686c
 
 ## Pull Requests
 

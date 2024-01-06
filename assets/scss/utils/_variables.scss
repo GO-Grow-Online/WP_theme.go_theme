@@ -2,13 +2,12 @@
 // BOOTSTRAP RESET //
 /////////////////////
 
-
 // Breakpoints
 $breakpoints: (
   sm: 400px,
   md: 720px,
   lg: 1200px,
-  xl: 1400px,
+  xl: 1920px,
 );
 
 
@@ -18,20 +17,20 @@ $sec-spacings: (
   sm-x: 1.5rem,
 
   md-y: 5rem,
-  md-x: 15vw,
+  md-x: 20vw,
 
-  lg-y: 8rem,
+  lg-y: 10rem,
   lg-x: 12vw,
 
-  xl-y: 8rem,
-  xl-x: 20vw,
+  xl-y: 10rem,
+  xl-x: 22vw,
 );
 
 
 // Fonts
-$base-fs : 1rem;
+$base-fs : 0.9rem;
 $line-height : 1.7;
-$fs-multiplier : 1.3;
+$fs-multiplier : 1.6;
 
 $h6-fs : $base-fs * $fs-multiplier;
 $h5-fs : $base-fs * $fs-multiplier;
@@ -40,26 +39,32 @@ $h3-fs : $h4-fs * $fs-multiplier;
 $h2-fs : $h3-fs * $fs-multiplier;
 $h1-fs : $h2-fs * $fs-multiplier;
 
-$fs-md-multiplier: 1.1;
+$fs-md-multiplier: 1.3;
 
 $font-sizes : (
-  1 : $h1-fs,
-  2 : $h2-fs,
-  3 : $h3-fs,
+  1 : 3.5rem,
+  2 : 3rem,
+  3 : 1.1rem,
   4 : $h4-fs,
   // 5 : $h5-fs,
   // 6 : $h6-fs,
 );
 
-$font1 : 'Urbanist', sans-serif;
-$font2 : 'Urbanist', sans-serif;
+$font1 : 'Montserrat', sans-serif;
+$font2 : 'Bebas', sans-serif;
 
 // Transitions
 $slow: 0.6s;
 $fast: 0.3s;
 $superfast: 0.1s;
+$on-scroll : 0.6s;
 
 $bezier : cubic-bezier(0.83, 0, 0.17, 1);
+$ease-both : cubic-bezier(0.65, 0, 0.35, 1);
+
+// Form
+$failed : red;
+$succes : green;
 
 // z-index
 $ui : 1000;
@@ -80,8 +85,8 @@ $shadow: 0px 10px 30px -10px #00000026;
 $light-shadow:  0px 10px 40px -10px #00000012;
 
 // Colors 
-$primary : #ffae51;
-$secondary : #242424;
+$primary : #ffad28;
+$secondary : #1D1E25;
 
 $primary-gradient : linear-gradient(to left, $primary, darken($primary, 10%));
 
@@ -90,7 +95,7 @@ $succes : #74a439;
 
 $white : #fff;
 $light : #f1f1f1;
-$dark : #242424;
+$dark : #1D1E25;
 $text-color : $dark;
 
 // Section separation colors
@@ -101,28 +106,28 @@ $white-corner-size-mobile : 4rem;
 $white-corner-size-desktop : 8rem;
 
 // Icons
-$icon-size-sm : 1.5rem;
-$icon-size-md : 1.5rem;
-$icon-size-lg : 1.5rem;
-$icon-size-xl : 1.5rem;
+$icon-size-sm : 1.25rem;
+$icon-size-md : 1.25rem;
+$icon-size-lg : 1.25rem;
+$icon-size-xl : 1.25rem;
 
 // Header
-$nav-bottom-height : 4rem;
+$nav-bottom-height : 3.75rem;
 
 $header-height-mobile : 5.5rem;
 $header-height-desktop : 8rem;
 
 // Cards
 $card-sm-spacing : map-get($sec-spacings, sm-x);
-$card-md-spacing : map-get($sec-spacings, sm-x);
+$card-md-spacing : 1.5rem;
 $card-lg-spacing : 1.75rem;
 $card-xl-spacing : 2rem;
 
 // Lists
 $list-sm-gap : map-get($sec-spacings, sm-x);
 $list-md-gap : map-get($sec-spacings, sm-x);
-$list-lg-gap : calc($card-lg-spacing / 1.75);
-$list-xl-gap : $card-lg-spacing;
+$list-lg-gap : $card-lg-spacing * 1.3;
+$list-xl-gap : $card-lg-spacing * 1.3;
 
 // Video player 
 $video-sm-spacing : $card-sm-spacing;

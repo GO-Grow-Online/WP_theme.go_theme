@@ -1,0 +1,251 @@
+@import '../utils/_variables';  
+
+$sp : $card-sm-spacing;
+.menu_slider {
+
+    position: relative;
+
+    .col-lg-right {
+        position: relative;
+
+        // Lines        
+        &::before {
+            width: 150px;
+            height: 150px;
+
+            right: 0;
+            top: $sp;
+        }
+
+        &::after {
+            width: 250px;
+            height: 150px;
+
+            left: 0;
+            bottom: 2rem;
+        }
+    }
+
+    .bx-controls{ 
+        .bx-controls-direction {
+
+            .bx-prev, .bx-next {
+                width: 3rem;
+                height: 3rem;
+                bottom: calc((100vw - (map-get($sec-spacings, sm-x) * 2) - ($sp * 2)) / 2 - 1.5rem);
+            }
+            
+            .bx-prev {
+                left: -1.5rem + $sp;
+            }
+            
+            .bx-next {
+                right: -1.5rem + $sp;
+            }
+        }
+
+        .bx-pager {
+            position: relative;
+            z-index: 5;
+
+            text-align: right;
+            right: $sp;
+            bottom: -2rem;
+
+            .bx-controls-direction {
+                .bx-prev, .bx-next {
+                    bottom: calc((100vw - (map-get($sec-spacings, sm-x) * 2) - ($sp * 2)) / 2 - 1.5rem);
+                }
+            }
+        }
+    }
+
+    &-slider {
+
+        pointer-events: none;
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+
+            opacity: 1!important;
+
+            .card {
+
+                left: 0;
+
+                width: calc(100% - $sp * 2);
+
+                margin-bottom: -$sp;
+                height: auto;
+
+                opacity: 1;
+                transform: translateY(0rem);
+                clip-path: polygon(-5rem -5rem, calc(100% + 5rem) -5rem, calc(100% + 5rem) calc(100% + 5rem), -5rem calc(100% + 5rem));
+
+                will-change: opacity, transform, clip-path;
+
+                transition: all $slow $bezier;
+                transition-delay: $slow * 0.75;
+
+                p { margin: 0; }
+                p:first-child { margin-bottom: 0.5rem; }
+            }
+
+            .imgWrap {
+                margin-left: $sp;
+                width: calc(100% - $sp * 2);
+                height: calc(100vw - (map-get($sec-spacings, sm-x) * 2) - ($sp * 2));
+
+                opacity: 1;
+
+                transform: translateX(0%);
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+                will-change: clip-path, transform, opacity;
+                transition: all $slow $ease-both;
+            }
+
+            &[aria-hidden="true"] {
+                opacity: 0;
+
+                .card-body {
+                    transform: translateY(4rem);
+                    transition-delay: 0s;
+                    opacity: 0;
+                    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                }
+
+                .imgWrap {
+                    opacity: 0;
+                    transform: translateX(50%);
+                    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+                }
+            }
+        }
+    }
+}
+
+$sp : $card-md-spacing * 2;
+$slider-size : 600px;
+@media (min-width :  map-get($breakpoints, md)) {
+    .menu_slider {
+
+        .col-lg-right {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: $slider-size;
+            width: 100%;
+
+            // Lines        
+            &::before {
+                right: 0;
+                top: $sp;
+            }
+
+            &::after {
+                left: -2rem;
+                bottom: 2rem;
+            }
+        }
+
+        &-slider {
+            &-item {
+                width: calc(100vw - map-get($sec-spacings, md-x) * 2);
+                max-width: $slider-size;
+
+                .imgWrap {
+                    max-width: calc($slider-size - $sp);
+                    max-height: calc($slider-size - $sp);
+
+                    width: calc(100% - $sp);
+                    height: calc(100vw - (map-get($sec-spacings, md-x) * 2) - ($sp * 2));
+                }
+
+                .card {
+                    width: calc(100% - $sp);
+                }
+            }
+        }
+
+        .bx-controls {
+
+            .bx-pager {
+                text-align: right;
+                bottom: -$sp + 1.5rem;
+                right: $sp * 0.5;
+            }
+            
+            .bx-controls-direction {
+                .bx-next, .bx-prev {
+                    bottom: calc(50% - 3.5rem);
+                }
+            }
+        }
+    }
+}
+
+$sp : $card-lg-spacing * 2;
+$slider-size : 600px;
+@media (min-width :  map-get($breakpoints, lg)) {
+    .menu_slider {
+
+        & > .wrapper {
+            align-items: center!important;
+            grid-template-columns: 1fr $slider-size!important;
+
+            .col-lg-right {
+                margin-bottom: -$sp * 2;
+
+                // Lines        
+                &::before {
+                    right: -$sp;
+                    height: calc(100% - ($sp * 2) - 5rem);
+                }
+
+                &::after {
+                    left: 0;
+                    bottom: 2rem;
+                }
+            }
+        }
+
+        &-slider {
+
+            height: $slider-size;
+
+            &-item {
+
+                .card {
+                    position: absolute;
+                    top: -$sp;
+                    left: 0;
+                    width: calc(100% - $sp);
+                }
+
+                .imgWrap {
+                    margin-left: $sp;
+                    width: 35vw;
+                    max-width: calc($slider-size - $sp);
+                    height: 35vw;
+                    max-height: calc($slider-size - $sp);
+                }
+            }
+
+        }
+        
+        .bx-controls .bx-controls-direction {
+            .bx-next, .bx-prev {
+                bottom: calc(50% - 2rem);
+            }
+
+            .bx-prev {
+                left: $sp - 2rem;
+            }
+
+            .bx-next {
+                right: -2rem!important;
+            }
+        }
+    }
+}

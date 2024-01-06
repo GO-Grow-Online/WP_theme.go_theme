@@ -1,5 +1,9 @@
 <div style="text-align: center">
+<<<<<<< HEAD
 <a href="https://upstatement.com/timber/"><img src="https://i.imgur.com/PbEwvZ9.png" style="display:block; margin:auto; width:100%; max-width:100%"/></a>
+=======
+<a href="https://upstatement.com/timber/"><img src="http://i.imgur.com/PbEwvZ9.png" style="display:block; margin:auto; width:100%; max-width:100%"/></a>
+>>>>>>> 2c602b02d6e37814c7fdda4c6899a6e6256a686c
 </div>
 
 ## Timber 2.0
@@ -56,7 +60,11 @@ Once Timber is installed, it gives any WordPress theme the ability to take advan
 
 * [Timber Documentation](https://timber.github.io/docs/)
 * [Timber 2.0 Upgrade Guide](https://timber.github.io/docs/v2/upgrade-guides/2.0/)
+<<<<<<< HEAD
 * [Twig Reference](https://twig.symfony.com/doc/3.x/)
+=======
+* [Twig Reference](http://twig.sensiolabs.org/doc/templates.html)
+>>>>>>> 2c602b02d6e37814c7fdda4c6899a6e6256a686c
 * [Overview / Getting Started Guide](https://timber.github.io/docs/v2/getting-started/introduction/)
 
 * * *
@@ -80,6 +88,7 @@ Timber is a tool for developers who want to translate their HTML into high-quali
 Nothing. Timber is meant for you to build a theme on. Like [underscores](https://github.com/Automattic/_s) it comes style-free, because you're the style expert. Instead, Timber handles the logic you need to make a kick-ass looking site.
 
 ### Who is it good for?
+<<<<<<< HEAD
 Timber is great for any WordPress developer who cares about writing good, maintainable code. It helps teams of designers and developers working together. At [Upstatement](https://upstatement.com) we made Timber because while our entire team needs to participate in building WordPress sites, not everyone knows the ins-and-outs of the_loop(),  codex and PHP (nor should they). With Timber your best WordPress engineer can focus on building the `.php` files with requests from WordPress and pass the data into `.twig` files. Once there, designers can easily mark-up data and build out a site's look-and-feel.
 
 ### Should I use it?
@@ -94,6 +103,18 @@ You can find the code for Timber 1 on the [1.x branch](https://github.com/timber
 
 ### Related & Official Projects
 
+=======
+Timber is great for any WordPress developer who cares about writing good, maintainable code. It helps teams of designers and developers working together. At [Upstatement](http://upstatement.com) we made Timber because while our entire team needs to participate in building WordPress sites, not everyone knows the ins-and-outs of the_loop(),  codex and PHP (nor should they). With Timber your best WordPress engineer can focus on building the `.php` files with requests from WordPress and pass the data into `.twig` files. Once there, designers can easily mark-up data and build out a site's look-and-feel.
+
+### Should I use it?
+
+Timber is MIT-licensed, so please use in personal or commercial work. Just don't re-sell it. Timber is used on [tens of thousands of sites](https://www.upstatement.com/timber/#showcase) (and tons more we don't know about)
+
+## Links
+
+### Related & Official Projects
+
+>>>>>>> 2c602b02d6e37814c7fdda4c6899a6e6256a686c
 * [**Twig**](https://github.com/twigphp/Twig) The template language used by Timber.
 * [**Timber Starter Theme**](https://github.com/timber/starter-theme) The "_s" of Timber to give you an easy start to the most basic theme you can build upon and customize.
 * [**Timber Debug Bar**](https://github.com/timber/debug-bar-timber) Adds a debug bar panel that will show you which template is in-use and the data sent to your twig file.
@@ -130,7 +151,11 @@ You can find the code for Timber 1 on the [1.x branch](https://github.com/timber
 * [**TutsPlus**](https://code.tutsplus.com/articles/kick-start-wordpress-development-with-twig-introduction--cms-24781) A guide to getting started by [@ahmadawais](https://github.com/ahmadawais)
 
 ## Support
+<<<<<<< HEAD
 Please post on [StackOverflow under the "Timber" tag](https://stackoverflow.com/questions/tagged/timber). Please use GitHub issues _only_ for specific bugs, feature requests and other types of issues.
+=======
+Please post on [StackOverflow under the "Timber" tag](http://stackoverflow.com/questions/tagged/timber). Please use GitHub issues _only_ for specific bugs, feature requests and other types of issues.
+>>>>>>> 2c602b02d6e37814c7fdda4c6899a6e6256a686c
 
 ## Contributing & Community
 We love PRs! Read the [Contributor Guidelines](https://github.com/timber/timber/blob/master/CONTRIBUTING.md) for more info. Say hello, share your tips/work, and spread the love on Twitter at [@TimberWP](https://twitter.com/TimberWP).

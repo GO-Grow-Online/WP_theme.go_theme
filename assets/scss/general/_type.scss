@@ -10,18 +10,31 @@ body {
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
-    line-height: 1.25;
-    &:first-child {
-        margin-top: 0;
-    }
+    font-family: $font2;
+    line-height: 0.9;
+    font-weight: 400;
 
-    span {
+    margin-block-end: inherit;
+    margin-bottom: 2rem;
+
+    &:first-child { margin-top: 0; }
+
+    .ctn-title-sub {
         display: block;
-        font-size: 1rem;
-        font-weight: 400;
+        line-height: 1;
+        font-size: $base-fs;
+        font-weight: 600;
         color: $primary;
-        text-transform: uppercase;
+
+        margin-bottom: 0.75rem;
+        
+        font-family: $font1;
     }
+}
+
+h3, .h3 {
+    font-family: $font1;
+    font-weight: 600;
 }
 
 @each $size, $font-size in $font-sizes {
