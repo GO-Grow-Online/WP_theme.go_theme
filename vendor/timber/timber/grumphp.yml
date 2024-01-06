@@ -1,7 +1,0 @@
-grumphp:
-    tasks:
-        composer_normalize: ~
-        ecs: ~
-        phplint: ~
-        # phpstan:
-        #     memory_limit: "-1"
