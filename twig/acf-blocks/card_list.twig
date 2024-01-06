@@ -1,0 +1,29 @@
+{% extends "acf-blocks/base.twig" %}
+
+{% block content %}
+<div class="wrapper">
+
+    {% set title_group = b.title %}
+    {% include 'elements/h2-title.twig' %}
+
+    {% if b.card_rep %}
+
+    {% set col_num = b.col_num ? b.col_num : "3" %}
+    <ul class="list list-md list--{{ col_num }}col">
+    {% for card in b.card_rep %}
+        <li class="list-item">
+            <div class="card card-body">
+                {% set icon = card.icon %}
+                
+                {% if card.icon.mime_type == "image/svg+xml" %}  
+                    <div class="icon">{{ get_svg(icon) }}</div>
+                {% endif %}
+                <h3>{{ card.title }}</h3>
+                <p>{{ card.content }}</p>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

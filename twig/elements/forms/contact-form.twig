@@ -1,0 +1,47 @@
+<form id="{{ form_id }}" class="card card-body form form--loaded" action="{{ theme.link }}/send_form.php" method="post">
+    
+    <div class="form-field form-field--half required">
+        <label for="{{ form_id }}-name">{{ __('Nom et prénom', 'Non-editable strings') }}</label>
+        <input autocomplete="off" type="text" name="name" id="{{ form_id }}-name">
+    </div>
+
+    <div class="form-field form-field--half required">
+        <label for="{{ form_id }}-email">{{ __('Email', 'Non-editable strings') }}</label>
+        <input autocomplete="off" type="text" name="email" id="{{ form_id }}-email">
+    </div>
+
+    <div class="form-field form-field--half required">
+        <label for="{{ form_id }}-phone">{{ __('Téléphone', 'Non-editable strings') }}</label>
+        <input type="text" name="phone" id="{{ form_id }}-phone">
+    </div>
+
+    <div class="form-field form-field--half required">
+        <label for="{{ form_id }}-subject">{{ __('Subject', 'Non-editable strings') }}</label>
+        <input type="text" name="subject" id="{{ form_id }}-subject">
+    </div>
+
+
+
+    <div class="form-field">
+        <label for="{{ form_id }}-message">{{ __('Message', 'Non-editable strings') }}</label>
+        <textarea name="message" id="{{ form_id }}-message" rows="2"></textarea>
+    </div>
+
+
+
+    {# Last field must ALWAYS be the honeypot, otherwise, modify send_mail.php #}
+    <div class="form-field form-field--send">
+        <label for="{{ form_id }}-send">{{ __('Champ obligatoire', 'Non-editable strings') }}</label>
+        <input type="text" name="send" id="{{ form_id }}-send">
+    </div>
+
+
+
+    <span class="form-message form-message--succes">{{ __("Merci pour votre demande de réservation ! Nous vous recontacterons afin de confirmer celle-ci.", 'Non-editable strings') }}</span>
+    <span class="form-message form-message--failed">{{ __("L'envois à échoué. Veuillez contacter l'hôte du site internet via", 'Non-editable strings') }} "{{ g.phone }}"</span>
+
+    <button aria-label="{{ __('Envoyer', 'Non-editable strings') }}" class="btn btn-primary" type="submit">{% include "assets/static/icons/contact/send.svg" %}</button>
+
+</form>
+
+{% set form_id = empty %}

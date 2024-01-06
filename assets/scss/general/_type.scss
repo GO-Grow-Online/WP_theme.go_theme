@@ -1,0 +1,43 @@
+//////////
+// TYPE //
+//////////
+
+body {
+    font-size: 14px;
+    line-height: $line-height;
+    font-family: $font1;
+    color: $text-color;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    line-height: 1.25;
+    &:first-child {
+        margin-top: 0;
+    }
+
+    span {
+        display: block;
+        font-size: 1rem;
+        font-weight: 400;
+        color: $primary;
+        text-transform: uppercase;
+    }
+}
+
+@each $size, $font-size in $font-sizes {
+    h#{$size}, .h#{$size} {
+        font-size: $font-size;
+    }
+}
+
+@media (min-width: map-get($breakpoints, md)) {
+    body {
+        font-size: 15px;
+    }
+
+    @each $size, $font-size in $font-sizes {
+        h#{$size}, .h#{$size} {
+            font-size: $font-size * $fs-md-multiplier;
+        }
+    }
+}
