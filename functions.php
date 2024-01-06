@@ -220,7 +220,7 @@ add_action( 'init', 'remove_large_image_sizes' );
 function redimensionner_image_originale($image_id) {
 
     $image_path = get_attached_file($image_id);
-    $max_width = 2400;
+    $max_width = 2560;
     $resized = wp_get_image_editor($image_path);
 
     if (!is_wp_error($resized)) {
