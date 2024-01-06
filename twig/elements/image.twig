@@ -13,7 +13,7 @@
 
     {% if force_portrait == true and mime_type != "image/svg+xml" %} 
     <!--googleoff: index-->
-    <img class="imgWrap--portrait-bg" loading="{{ loading_type }}" type="image/webp" src="{{ img.sizes.thumbnail|towebp(90) }}" alt="{{ img.alt }}">
+    <img class="imgWrap--portrait-bg" loading="{{ loading_type }}" type="image/webp" src="{{ img.src.thumbnail|towebp }}" alt="{{ img.alt }}">
     <!--googleon: index-->
     {% endif %}
 
@@ -28,16 +28,16 @@
         
         {% set mob = fn('get_field','mob_img', img.id)  %}
         {% set tab = fn('get_field','mob_img', img.id)  %}
-        {% set thumbnail = mob is not empty ? mob.sizes.thumbnail : img.sizes.thumbnail %}
-        {% set medium = tab is not empty ? tab.sizes.medium : img.sizes.medium %}
+        {% set thumbnail = mob is not empty ? mob.src('thumbnail') : img.src('thumbnail') %}
+        {% set medium = tab is not empty ? tab.src('medium') : img.src('medium') %}
 
         <picture>
-            <source media="(max-width: 500px)" type="image/webp" srcset="{{ thumbnail|towebp(90) }}">
-            <source media="(max-width: 900px)" type="image/webp" srcset="{{ medium|towebp(90) }}">
+            <source media="(max-width: 500px)" type="image/webp" srcset="{{ thumbnail|towebp }}">
+            <source media="(max-width: 900px)" type="image/webp" srcset="{{ medium|towebp }}">
             {% if is_fs == true %}
-                <source media="(min-width: 901px)" type="image/webp" srcset="{{ img.sizes.large|towebp(90) }}">
+                <source media="(min-width: 901px)" type="image/webp" srcset="{{ img.src('large')|towebp }}">
             {% endif %}
-            <img loading="{{ loading_type }}" alt="{{ img.alt }}" src="{{ medium|towebp(90) }}">
+            <img loading="{{ loading_type }}" alt="{{ img.alt }}" src="{{ medium|towebp }}">
         </picture>
 
     {% else  %}
@@ -45,9 +45,9 @@
         {# If there is a predefined image format, no need for "picture" element #}
         {# Also check if image is svg #}
         {% if mime_type != "image/svg+xml" %}
-            <img loading="{{ loading_type }}" width="{{ img.sizes[image_format].width }}" height="{{ img.sizes[image_format].height }}" type="image/webp" src="{{ img.sizes[image_format]|towebp(90) }}" alt="{{ img.alt }}">
+            <img loading="{{ loading_type }}" type="image/webp" src="{{ img.src(image_format)|towebp }}" alt="{{ img.alt }}">
         {% else %}
-            <img loading="{{ loading_type }}" width="{{ img.sizes[image_format].width }}" height="{{ img.sizes[image_format].height }}" type="image/svg+xml" src="{{ img.url }}" alt="{{ img.alt }}">
+            <img loading="{{ loading_type }}" type="image/svg+xml" src="{{ img.url }}" alt="{{ img.alt }}">
         {% endif %}
 
     {% endif %}

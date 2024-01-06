@@ -11,65 +11,33 @@ $p-y : 0.75rem;
 
     display: flex;
     flex-wrap: wrap;
-
-    &-bg {
-        position: absolute;
-        top: 0;    
-        left: 0;
-        width: 100%;    
-        height: 100%; 
-
-        z-index: $back;  
-
-        pointer-events: none;
-
-        & > span {
-            position: absolute;
-            top: 0;    
-            left: 0;
-            width: 100%;    
-            height: 100%; 
-            z-index: $back;
-
-            opacity: 0;
-
-            transition: opacity $fast $ease-both;
-
-            &.current-bg {
-                opacity: 1;
-            }
-        }
-
-        &::before {
-            @include psd-el;
-            width: 100%;
-            height: 100%;
-    
-            background-color: #000000a9;
-
-            z-index: calc($back + 1);  
-        }
-    }
-
+    gap: $sp;
 
     &-field {
 
         position: relative;
-        color: $white;
+        color: $text-color;
         width: 100%;
 
-        
-        &:not(:first-of-type) {
-            padding-top: $p-y;
+        // Champ honeypot, doit être masqué à tous prix.
+        // Si ce champ est complété, le mail n'est pas envoyé, c'est pour cette raison que l'utilisateur le peux pas le voir
+        // Seul les Spam-bots seront succeptibles de le compléter
+        &--send {
+            display: none;
         }
 
         label {
+            position: absolute;
+            top: 0;
+            left: 0;
+
             display: block;
             transform-origin: left center;
-            transform: scale(1.1) translateY(85%);
             opacity: 1;
 
-            transition: all $fast $ease-both;
+            padding: $p-y $p-x;
+
+            transition: all $fast $bezier;
 
             pointer-events: none;
         }
@@ -84,15 +52,15 @@ $p-y : 0.75rem;
 
             font-family: $font2;
             font-size: 1rem;
-            color: $white;
+            color: $text-color;
 
             border: none;
+
             box-shadow: 0 3px 0 -1px $white;
             
-            padding: $p-y 0;
-            padding-top: 0;
+            padding: $p-y $p-x;
 
-            transition: all $fast $ease-both;
+            transition: all $fast $bezier;
 
             &:focus {
                 outline: none!important;
@@ -100,15 +68,6 @@ $p-y : 0.75rem;
             
             &::placeholder {
                 color: darken($light, 40%);
-            }
-
-            &[type="date"] {
-                appearance: none;
-                color-scheme: dark;
-                
-                &:placeholder {
-                    opacity: 0;
-                }
             }
         }
 
@@ -135,12 +94,11 @@ $p-y : 0.75rem;
                 max-height: 1rem;
                 min-height: 1rem;
 
-                transition: transform $fast $ease-both;
+                transition: transform $fast $bezier;
             }
         }
 
         textarea {
-            padding: $p-y 0 ;
             height: 15rem!important;
         }
 
@@ -163,8 +121,7 @@ $p-y : 0.75rem;
 
             &--focus, &--complete, &--labelUp {
                 label {
-                    transform: inherit;
-                    opacity: .5;
+                    opacity: 0;
                 }
             }
             
@@ -195,7 +152,7 @@ $p-y : 0.75rem;
         transform: translateY(2rem);
         opacity: 0;
 
-        transition: all $fast $ease-both;
+        transition: all $fast $bezier;
 
         &--failed { color: $failed; }
         &--succes { color: $succes; }
@@ -230,13 +187,14 @@ $p-y : 0.75rem;
     
     .btn[type="submit"] {
         margin-top: $card-sm-spacing;
+        color: $white;
     }
     
 }
 
 @media (min-width :  450px) {
     .form {
-        gap: 0 $p-x;
+        gap: $p-x;
         &-field {
             &--half { width: calc(50% - ($p-x / 2)); }
         }
@@ -251,9 +209,9 @@ $p-y : 0.75rem;
 
     .form {
         padding: $card-lg-spacing;
-        border-radius: $radius-desk;
+        border-radius: $radius-lg;
 
-        gap: 0 $p-x;
+        gap: $p-y $p-x;
 
         &-field {
             &--half {
@@ -268,11 +226,6 @@ $p-y : 0.75rem;
     }
 
     textarea, input, select {
-        padding: $p-y $p-x;
-        padding-left: $p-x;
-    }
-
-    textarea {
         padding: $p-y $p-x;
     }
 }

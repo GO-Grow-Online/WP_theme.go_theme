@@ -2,7 +2,7 @@
 
     {% set figcaption = 0 %}
     {% set image_format = 'card-thumbnail' %}
-    {% set img = item.meta('thumb') %}
+    {% set img = get_image(item.thumb) %}
 
     <div class="card-header">
         <div class="card-header-img">

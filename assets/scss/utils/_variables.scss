@@ -70,7 +70,10 @@ $back : -10;
 // Border-radius
 $round: 1000px;
 $radius: 0.5rem; 
-$radius2: 2rem;  
+$radius2: 2rem;
+
+$radius-lg: 1rem; 
+$radius2-lg: 3rem;
 
 // Shadows
 $shadow: 0px 10px 30px -10px #00000026;  
@@ -81,6 +84,9 @@ $primary : #ffae51;
 $secondary : #242424;
 
 $primary-gradient : linear-gradient(to left, $primary, darken($primary, 10%));
+
+$failed : #c93131;
+$succes : #74a439;
 
 $white : #fff;
 $light : #f1f1f1;

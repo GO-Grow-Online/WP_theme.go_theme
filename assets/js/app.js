@@ -12,21 +12,38 @@ jQuery(function($) {
     init_defer_video();
     // activate_video_controls();
     // my_lightbox();
+    // ajax_form();
 
     function smooth_scroll() {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = $(this.getAttribute('href'));
-            const duration = 300; // Durée maximale en millisecondes
+      
+      var scroll_duration = 500; // Trasition duration
+      
+      // Smooth scroll on anchor link click
+      $('a[href^="#"]').each(function() {
+        $(this).on('click', function (e) {
+          e.preventDefault();
+          
+          var scroll_target = $(this).attr('href');
 
-            if (target.length) {
-              $('html, body').animate({
-                scrollTop: target.offset().top
-              }, duration);
-            }
+          if (scroll_target.length) {
+            $('html, body').animate({
+              scrollTop: scroll_target.offset().top
+            }, scroll_duration);
+          }
         });
       });
+
+      // Smooth scroll on page load if id in url
+      if (window.location.hash) {
+        var scroll_target = $(window.location.hash);
+        if (scroll_target.length) {
+            setTimeout(() => {              
+              $('html, body').animate({
+                  scrollTop: scroll_target.offset().top
+              }, scroll_duration);
+            }, 100);
+        }
+      }
     }
 
 
@@ -59,9 +76,11 @@ jQuery(function($) {
 
     function init_defer_video() {
       var videos = $('.vidWrap.defer .video');
-      videos.each(function() {
-        defer_video($(this), $(this).parent().parent());
-      });
+      if (videos.length) { 
+        videos.each(function() {
+          defer_video($(this), $(this).parent().parent());
+        });
+      }
     }
 
     
@@ -359,4 +378,127 @@ jQuery(function($) {
     function rand(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min)
     }    
+
+
+    function ajax_form() {
+
+      var msg_empty = "<p>Veuillez compléter les champs mis en avant pour envoyer le formulaire.</p>";
+      var msg_php_failed = "<p>L'envois à échoué, veuillez contacter l'hôte du site internet.</p>";
+      var msg_email = "<p>Veuillez entrer une adresse email valide.</p>"
+      var msg_phone = "<p>Veuillez entrer numéro de téléphone valide.</p>"
+      
+      $('select option').parent().parent().removeClass('form-field--focus');
+
+      // Add classes to upgrade fields styles and UX
+      $('input, textarea, select').on('focus', function() {
+        $(this).parent().addClass('form-field--focus');
+        $('.form').removeClass('form--failed');
+        $('.form').removeClass('form--succes');
+      }).on('blur', function() {
+        $(this).parent().removeClass('form-field--focus');
+
+        if ($(this).val().trim() !== '') {
+            $(this).parent().addClass('form-field--complete');
+        } else {
+            $(this).parent().removeClass('form-field--complete');
+        }
+      });
+
+
+        
+      $('#heading-form, #footer-form').on('submit', function(event) {
+
+        var errors = "";
+
+        event.preventDefault();
+
+        var form = $(this);
+
+        form.find('.form-field--error').removeClass('form-field--error');
+        form.removeClass('form--sended');
+        form.addClass('form--sending');
+
+        var formData = form.serialize();
+
+        // Form loaded serve to detect if form has allready been sent a first time
+        let form_valid = true;
+
+        // Check if required field have a value
+        var required_fields = form.find(".required textarea, .required select, .required input, .required button");
+        required_fields.each(function() {
+          if (!$(this).val().trim()) {
+            $(this).parent().addClass('form-field--error');
+            form_valid = false;
+          } 
+        });
+        errors += !form_valid ? msg_empty : "";
+
+        // Check if email is valid
+        var email_field = form.find('input[name="email"]')
+        if (email_field.val()) {
+          var is_email_valid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email_field.val());
+          if(!is_email_valid) {
+            errors += msg_email;
+            email_field.parent().addClass('form-field--error');
+            form_valid = false;
+          }
+        }
+
+        // Check if phone is valid
+        var phone_field = form.find('input[name="phone"]')
+        if (phone_field.val()) {
+          var is_phone_valid = /^(?=[+\d\s]{7,}$)[+\d\s]+$/.test(phone_field.val());
+          if(!is_phone_valid) {
+            errors += msg_phone;
+            phone_field.parent().addClass('form-field--error');
+            form_valid = false;
+          }
+        }
+
+        form.removeClass('form--loaded');
+        form.addClass('form--sended');
+        form.removeClass('form--sending');
+
+        if(form_valid) {
+          // Send the AJAX request
+          $.ajax({
+            type: 'POST',
+
+            url: form.attr("action"),
+            data: formData,
+            dataType: 'json',
+
+            success: function(response) {
+
+              // Handle response if not AJAX hapenned
+              if (response.success === true) {
+                form.addClass('form--succes');
+                $('.form--succes .form-field--complete, .form--succes .form-field--focus').removeClass('form-field--focus form-field--complete');
+                form.trigger('reset');
+                $('.form-field').removeClass('form-field--error');
+                // Use this line to redirect the user avec the form was sent
+                // window.location.href = 'success-page.html';
+
+              } else {
+
+                form.addClass('form--failed');
+                errors += msg_php_failed;
+
+                $('.form-message--failed').text(response.error);
+              }
+            },
+            error: function(response) {
+              // Handle AJAX errors, if any
+              form.addClass('form--failed');
+              $('.form-message--failed').text(response.error);
+              console.log(response.error);
+              console.log(response);
+            }
+          });
+        }else{
+          form.addClass('form--failed');
+          $('.form-message--failed').html(errors);
+        }
+      });
+    }
 });

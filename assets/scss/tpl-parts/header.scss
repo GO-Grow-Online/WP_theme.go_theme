@@ -106,7 +106,7 @@ header {
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 4rem;
+        height: $nav-bottom-height;
 
         display: flex;
         justify-content: space-between;
@@ -127,7 +127,7 @@ header {
 
             padding-left: map-get($sec-spacings, sm-x);
             padding-right: map-get($sec-spacings, sm-x);
-            height: 4rem;
+            height: $nav-bottom-height;
 
             img {
                 margin-right: 0.5rem;
@@ -151,18 +151,19 @@ header {
         justify-content: center;
         align-items: center;
 
-        svg {
+        span {
             position: absolute;
             transition: all $fast $bezier;
 
-            &.open {
+            &:first-child {
                 opacity: 1;
             }
 
-            &.close {
+            &:last-child {
                 opacity: 0;
             }
         }
+
 
         svg, path {
             stroke: $white!important;
@@ -179,12 +180,12 @@ body.menu--open {
         }
 
         .btn-menu {
-            svg {
-                &.open {
+            span {
+                &:first-child {
                     opacity: 0;
                 }
 
-                &.close {
+                &:last-child {
                     opacity: 1;
                 }
             }
