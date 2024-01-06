@@ -3,7 +3,7 @@
         'name' => 'upstatement/timber-starter-theme',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '2a4b019d1f51741fb9542100185beef5b9637a67',
+        'reference' => '27e256c52266b1cd6d45f1e4c566b8bac1a4c919',
         'type' => 'wordpress-theme',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -76,7 +76,7 @@
         'upstatement/timber-starter-theme' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '2a4b019d1f51741fb9542100185beef5b9637a67',
+            'reference' => '27e256c52266b1cd6d45f1e4c566b8bac1a4c919',
             'type' => 'wordpress-theme',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
